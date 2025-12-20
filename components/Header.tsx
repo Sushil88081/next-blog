@@ -2,30 +2,19 @@
 
 import Link from 'next/link'
 import { useTheme } from './ThemeProvider'
-import AdSenseSlot from './AdSenseSlot'
-import SearchBar from './SearchBar'
 
 export default function Header() {
   const { theme, toggleTheme } = useTheme()
 
   return (
-    <header className="sticky top-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-md backdrop-blur-sm bg-opacity-95 dark:bg-opacity-95">
-      {/* AdSense Slot - Header */}
-      <div className="hidden md:block py-2">
-        <AdSenseSlot 
-          slotId="header-ad"
-          style={{ display: 'block', textAlign: 'center' }}
-          format="auto"
-        />
-      </div>
-
+    <header className="sticky top-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-md">
       <div className="container mx-auto px-3 md:px-4 py-5 md:py-6">
         <div className="flex items-center justify-between gap-4">
           <Link 
             href="/" 
-            className="text-2xl md:text-3xl font-bold text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors duration-200 flex-shrink-0"
+            className="text-2xl md:text-3xl font-bold text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors duration-200"
           >
-            React हिंदी
+            Programming Blog
           </Link>
 
           <nav className="hidden md:flex items-center space-x-1 lg:space-x-2 flex-1 justify-center">
@@ -33,24 +22,17 @@ export default function Header() {
               href="/" 
               className="px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 font-medium"
             >
-              होम
-            </Link>
-            <Link 
-              href="/categories" 
-              className="px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 font-medium"
-            >
-              श्रेणियाँ
+              Home
             </Link>
             <Link 
               href="/about" 
               className="px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 font-medium"
             >
-              हमारे बारे में
+              About
             </Link>
           </nav>
 
-          <div className="flex items-center space-x-3 md:space-x-4 flex-shrink-0">
-            <SearchBar />
+          <div className="flex items-center">
             <button
               onClick={toggleTheme}
               className="p-2.5 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 hover:scale-105 active:scale-95"
@@ -72,4 +54,3 @@ export default function Header() {
     </header>
   )
 }
-

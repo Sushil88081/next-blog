@@ -1,0 +1,6 @@
+# Assets Folder
+This folder contains all static assets like images, icons, etc.
+
+Images should be placed in the `images/` subfolder.
+Icons should be placed in the `icons/` subfolder.
+

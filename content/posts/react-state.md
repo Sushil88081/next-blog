@@ -1,24 +1,24 @@
 ---
-title: "React में State क्या होता है?"
+title: "What is State in React?"
 date: "2025-01-20"
-description: "React में State का उपयोग कैसे करें, पूरी गाइड। useState hook, state management और best practices के बारे में जानें।"
+description: "How to use State in React, complete guide. Learn about useState hook, state management and best practices."
 category: "React Basics"
-tags: ["react", "state", "hooks", "useState", "हिंदी"]
+tags: ["react", "state", "hooks", "useState"]
 image: "/images/react-state.jpg"
-author: "आपका नाम"
+author: "sushil kumar"
 ---
 
-# React में State क्या होता है?
+# What is State in React?
 
-State React में एक बहुत महत्वपूर्ण concept है। State component का internal data है जो समय के साथ बदल सकता है। जब state बदलता है, तो component automatically re-render होता है।
+State is a very important concept in React. State is the internal data of a component that can change over time. When state changes, the component automatically re-renders.
 
-## State क्यों जरूरी है?
+## Why is State Important?
 
-State component को dynamic बनाता है। बिना state के, components static रहते हैं और user interaction के साथ change नहीं कर सकते।
+State makes components dynamic. Without state, components remain static and cannot change with user interaction.
 
 ## useState Hook
 
-React Hooks में, `useState` hook का उपयोग state बनाने के लिए किया जाता है।
+In React Hooks, the `useState` hook is used to create state.
 
 ### Basic Syntax
 
@@ -39,13 +39,13 @@ function Counter() {
 }
 ```
 
-### useState कैसे काम करता है?
+### How does useState work?
 
-1. `useState(0)` - initial value 0 के साथ state बनाता है
+1. `useState(0)` - creates state with initial value 0
 2. `count` - current state value
-3. `setCount` - state को update करने का function
+3. `setCount` - function to update state
 
-## State के उदाहरण
+## State Examples
 
 ### Counter Example
 
@@ -83,9 +83,9 @@ function NameInput() {
         type="text"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        placeholder="अपना नाम दर्ज करें"
+        placeholder="Enter your name"
       />
-      <p>नमस्ते, {name}!</p>
+      <p>Hello, {name}!</p>
     </div>
   );
 }
@@ -93,7 +93,7 @@ function NameInput() {
 
 ## Multiple State Variables
 
-आप एक component में multiple state variables use कर सकते हैं:
+You can use multiple state variables in one component:
 
 ```jsx
 function UserProfile() {
@@ -106,19 +106,19 @@ function UserProfile() {
       <input
         value={name}
         onChange={(e) => setName(e.target.value)}
-        placeholder="नाम"
+        placeholder="Name"
       />
       <input
         type="number"
         value={age}
         onChange={(e) => setAge(e.target.value)}
-        placeholder="उम्र"
+        placeholder="Age"
       />
       <input
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        placeholder="ईमेल"
+        placeholder="Email"
       />
     </div>
   );
@@ -129,7 +129,7 @@ function UserProfile() {
 
 ### 1. Functional Updates
 
-जब previous state पर depend करना हो:
+When you need to depend on previous state:
 
 ```jsx
 setCount(prevCount => prevCount + 1);
@@ -164,17 +164,16 @@ setItems(items.filter(item => item.id !== id));
 
 | State | Props |
 |-------|-------|
-| Component के अंदर बनता है | Parent से pass होता है |
-| Change हो सकता है | Read-only है |
-| Component को re-render करता है | Props change होने पर re-render |
+| Created inside component | Passed from parent |
+| Can be changed | Read-only |
+| Causes component to re-render | Re-renders when props change |
 
-## निष्कर्ष
+## Conclusion
 
-State React में dynamic components बनाने का मुख्य तरीका है। `useState` hook का उपयोग करके आप easily state manage कर सकते हैं।
+State is the main way to create dynamic components in React. Using the `useState` hook, you can easily manage state.
 
-## अगले कदम
+## Next Steps
 
-- useEffect Hook सीखें
-- State management patterns जानें
-- Context API के बारे में पढ़ें
-
+- Learn useEffect Hook
+- Learn State management patterns
+- Read about Context API

@@ -1,0 +1,5 @@
+# Images Folder
+Place all blog post images, featured images, and other images here.
+
+Access images in your code using: /assets/images/filename.jpg
+

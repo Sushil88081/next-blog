@@ -1,42 +1,42 @@
 ---
-title: "React Components - शुरुआत से सीखें"
+title: "React Components - Learn from Scratch"
 date: "2025-02-01"
-description: "React Components क्या हैं? Functional और Class components, component composition और best practices के बारे में जानें।"
+description: "What are React Components? Learn about Functional and Class components, component composition and best practices."
 category: "React Basics"
-tags: ["react", "components", "jsx", "हिंदी"]
+tags: ["react", "components", "jsx"]
 image: "/images/react-components.jpg"
-author: "आपका नाम"
+author: "Your Name"
 ---
 
-# React Components - शुरुआत से सीखें
+# React Components - Learn from Scratch
 
-Components React की building blocks हैं। वे reusable pieces of code हैं जो UI elements बनाते हैं।
+Components are the building blocks of React. They are reusable pieces of code that create UI elements.
 
-## Components क्या हैं?
+## What are Components?
 
-Components independent और reusable pieces हैं जो UI बनाते हैं। वे JavaScript functions की तरह हैं जो HTML return करते हैं।
+Components are independent and reusable pieces that create UI. They are like JavaScript functions that return HTML.
 
 ## Functional Components
 
-Functional components सबसे common और recommended approach हैं:
+Functional components are the most common and recommended approach:
 
 ```jsx
 function Welcome() {
-  return <h1>नमस्ते, React!</h1>;
+  return <h1>Hello, React!</h1>;
 }
 ```
 
-या arrow function के साथ:
+Or with arrow function:
 
 ```jsx
 const Welcome = () => {
-  return <h1>नमस्ते, React!</h1>;
+  return <h1>Hello, React!</h1>;
 };
 ```
 
-## Component का उपयोग
+## Using Components
 
-Components को HTML tags की तरह use किया जा सकता है:
+Components can be used like HTML tags:
 
 ```jsx
 function App() {
@@ -50,34 +50,34 @@ function App() {
 }
 ```
 
-## Props के साथ Components
+## Components with Props
 
-Props components के बीच data pass करने का तरीका है:
+Props are a way to pass data between components:
 
 ```jsx
 function Greeting(props) {
-  return <h1>नमस्ते, {props.name}!</h1>;
+  return <h1>Hello, {props.name}!</h1>;
 }
 
 function App() {
   return (
     <div>
-      <Greeting name="राज" />
-      <Greeting name="प्रिया" />
-      <Greeting name="अमित" />
+      <Greeting name="John" />
+      <Greeting name="Jane" />
+      <Greeting name="Bob" />
     </div>
   );
 }
 ```
 
-Destructuring के साथ:
+With destructuring:
 
 ```jsx
 function Greeting({ name, age }) {
   return (
     <div>
-      <h1>नमस्ते, {name}!</h1>
-      <p>आपकी उम्र {age} है</p>
+      <h1>Hello, {name}!</h1>
+      <p>Your age is {age}</p>
     </div>
   );
 }
@@ -85,7 +85,7 @@ function Greeting({ name, age }) {
 
 ## Component Composition
 
-आप components को combine करके complex UIs बना सकते हैं:
+You can combine components to create complex UIs:
 
 ```jsx
 function Header() {
@@ -115,36 +115,36 @@ function Layout() {
 
 ## Conditional Rendering
 
-Components में conditional rendering:
+Conditional rendering in components:
 
 ```jsx
 function UserGreeting({ isLoggedIn, name }) {
   if (isLoggedIn) {
-    return <h1>नमस्ते, {name}!</h1>;
+    return <h1>Hello, {name}!</h1>;
   }
-  return <h1>कृपया लॉगिन करें</h1>;
+  return <h1>Please log in</h1>;
 }
 ```
 
-Ternary operator के साथ:
+With ternary operator:
 
 ```jsx
 function UserStatus({ isLoggedIn }) {
   return (
     <div>
       {isLoggedIn ? (
-        <p>आप लॉगिन हैं</p>
+        <p>You are logged in</p>
       ) : (
-        <p>कृपया लॉगिन करें</p>
+        <p>Please log in</p>
       )}
     </div>
   );
 }
 ```
 
-## Lists और Components
+## Lists and Components
 
-Arrays को render करना:
+Rendering arrays:
 
 ```jsx
 function TodoList({ todos }) {
@@ -161,16 +161,16 @@ function TodoList({ todos }) {
 ## Component Best Practices
 
 ### 1. Single Responsibility
-हर component का एक clear purpose होना चाहिए।
+Each component should have a clear purpose.
 
 ### 2. Reusability
-Components को reusable बनाएं।
+Make components reusable.
 
 ### 3. Naming Convention
-Components के नाम CapitalCase में होने चाहिए।
+Component names should be in CapitalCase.
 
 ### 4. Props Validation
-TypeScript या PropTypes का उपयोग करें।
+Use TypeScript or PropTypes.
 
 ```jsx
 import PropTypes from 'prop-types';
@@ -209,13 +209,12 @@ function Button({
 export default Button;
 ```
 
-## निष्कर्ष
+## Conclusion
 
-Components React की foundation हैं। वे code को organized, reusable, और maintainable बनाते हैं।
+Components are the foundation of React. They make code organized, reusable, and maintainable.
 
-## अगले कदम
+## Next Steps
 
-- Props और State के बारे में जानें
-- Component lifecycle समझें
-- Advanced component patterns सीखें
-
+- Learn about Props and State
+- Understand Component lifecycle
+- Learn Advanced component patterns

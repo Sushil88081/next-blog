@@ -1,29 +1,29 @@
 ---
-title: "React Hooks - पूरी गाइड"
+title: "React Hooks - Complete Guide"
 date: "2025-01-25"
-description: "React Hooks क्या हैं? useState, useEffect, useContext और अन्य hooks के बारे में विस्तृत जानकारी।"
+description: "What are React Hooks? Detailed information about useState, useEffect, useContext and other hooks."
 category: "React Advanced"
-tags: ["react", "hooks", "useState", "useEffect", "हिंदी"]
+tags: ["react", "hooks", "useState", "useEffect"]
 image: "/images/react-hooks.jpg"
-author: "आपका नाम"
+author: "Your Name"
 ---
 
-# React Hooks - पूरी गाइड
+# React Hooks - Complete Guide
 
-React Hooks React 16.8 में introduce किए गए थे। Hooks functions हैं जो आपको functional components में state और lifecycle features use करने की अनुमति देते हैं।
+React Hooks were introduced in React 16.8. Hooks are functions that allow you to use state and lifecycle features in functional components.
 
-## Hooks क्यों जरूरी हैं?
+## Why are Hooks Important?
 
-पहले, state और lifecycle methods केवल class components में use हो सकते थे। Hooks के साथ, आप functional components में भी ये features use कर सकते हैं।
+Previously, state and lifecycle methods could only be used in class components. With Hooks, you can use these features in functional components as well.
 
-## Hooks के नियम
+## Rules of Hooks
 
-1. **Hooks को केवल top level पर call करें** - loops, conditions, या nested functions में नहीं
-2. **केवल React functions में call करें** - regular JavaScript functions में नहीं
+1. **Only call Hooks at the top level** - not inside loops, conditions, or nested functions
+2. **Only call from React functions** - not from regular JavaScript functions
 
 ## useState Hook
 
-`useState` state बनाने और manage करने के लिए use होता है।
+`useState` is used to create and manage state.
 
 ```jsx
 import { useState } from 'react';
@@ -36,7 +36,7 @@ function Example() {
 
 ## useEffect Hook
 
-`useEffect` side effects perform करने के लिए use होता है, जैसे data fetching, subscriptions, या DOM manipulation।
+`useEffect` is used to perform side effects, such as data fetching, subscriptions, or DOM manipulation.
 
 ### Basic Syntax
 
@@ -53,7 +53,7 @@ function Example() {
 }
 ```
 
-### Dependencies के साथ
+### With Dependencies
 
 ```jsx
 function UserProfile({ userId }) {
@@ -83,7 +83,7 @@ useEffect(() => {
 
 ## useContext Hook
 
-`useContext` context value को read करने के लिए use होता है।
+`useContext` is used to read context values.
 
 ```jsx
 import { useContext, createContext } from 'react';
@@ -98,7 +98,7 @@ function Button() {
 
 ## useReducer Hook
 
-`useReducer` complex state logic manage करने के लिए use होता है।
+`useReducer` is used to manage complex state logic.
 
 ```jsx
 import { useReducer } from 'react';
@@ -129,7 +129,7 @@ function Counter() {
 
 ## useMemo Hook
 
-`useMemo` expensive calculations को memoize करने के लिए use होता है।
+`useMemo` is used to memoize expensive calculations.
 
 ```jsx
 import { useMemo } from 'react';
@@ -145,7 +145,7 @@ function ExpensiveComponent({ items }) {
 
 ## useCallback Hook
 
-`useCallback` functions को memoize करने के लिए use होता है।
+`useCallback` is used to memoize functions.
 
 ```jsx
 import { useCallback } from 'react';
@@ -163,7 +163,7 @@ function Parent() {
 
 ## Custom Hooks
 
-आप अपने custom hooks भी बना सकते हैं:
+You can also create your own custom hooks:
 
 ```jsx
 function useCounter(initialValue = 0) {
@@ -193,21 +193,20 @@ function Counter() {
 
 | Hook | Purpose |
 |------|---------|
-| `useState` | State manage करने के लिए |
-| `useEffect` | Side effects के लिए |
-| `useContext` | Context read करने के लिए |
-| `useReducer` | Complex state logic के लिए |
-| `useMemo` | Expensive calculations memoize करने के लिए |
-| `useCallback` | Functions memoize करने के लिए |
-| `useRef` | DOM elements या values store करने के लिए |
+| `useState` | To manage state |
+| `useEffect` | For side effects |
+| `useContext` | To read context |
+| `useReducer` | For complex state logic |
+| `useMemo` | To memoize expensive calculations |
+| `useCallback` | To memoize functions |
+| `useRef` | To store DOM elements or values |
 
-## निष्कर्ष
+## Conclusion
 
-React Hooks functional components को powerful बनाते हैं। वे code को simpler और reusable बनाते हैं।
+React Hooks make functional components powerful. They make code simpler and more reusable.
 
-## अगले कदम
+## Next Steps
 
-- Custom hooks बनाना सीखें
-- Performance optimization के लिए hooks use करें
-- Advanced hooks patterns explore करें
-
+- Learn to create custom hooks
+- Use hooks for performance optimization
+- Explore advanced hooks patterns

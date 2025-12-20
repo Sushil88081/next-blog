@@ -1,0 +1,5 @@
+# Icons Folder
+Place all icon files here (SVG, PNG, etc.)
+
+Access icons in your code using: /assets/icons/filename.svg
+

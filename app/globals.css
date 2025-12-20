@@ -42,11 +42,11 @@
   }
   
   .prose pre {
-    @apply bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4;
+    @apply bg-gray-900 dark:bg-gray-950 p-4 rounded-lg overflow-x-auto mb-4 relative border border-gray-800 dark:border-gray-700;
   }
   
   .prose pre code {
-    @apply bg-transparent p-0;
+    @apply bg-transparent p-0 text-gray-100 text-sm font-mono;
   }
   
   .prose a {
