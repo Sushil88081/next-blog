@@ -5,6 +5,13 @@ export default function ReactPage() {
   // Sample React posts - you can replace this with your actual data
   const reactPosts = [
     {
+      title: "React Introduction",
+      description: "Reactjs is a javascript library for building user interfaces.",
+      image: "/assets/images/react.jpg",
+      date: "2025-12-20",
+      slug: "react-introduction"
+    },
+    {
       title: "what is state in react",
       description: "how to use state in react, complete guide with examples",
       image: "/assets/images/react.jpg",
@@ -12,33 +19,48 @@ export default function ReactPage() {
       slug: "react-state"
     },
     {
-      title: "React Components कैसे बनाएं",
-      description: "Functional और Class components के बारे में सीखें।",
+      title: "How to make components in react",
+      description: "Functional and class components in react",
       image: "/assets/images/react.jpg",
       date: "2025-01-25",
       slug: "react-components"
     },
     {
-      title: "React Props क्या हैं?",
-      description: "Props के माध्यम से data कैसे pass करें, complete guide।",
+      title: "What is props in react",
+      description: "how to use props in react, complete guide with examples",
       image: "/assets/images/react.jpg",
       date: "2025-01-30",
       slug: "react-props"
     },
     {
-      title: "React में Event Handling",
-      description: "Events को handle करना सीखें, onClick, onChange और अन्य events।",
+      title: "How to handle events in react",
+      description: "how to handle events in react, complete guide with examples",
       image: "/assets/images/react.jpg",
       date: "2025-02-05",
       slug: "react-events"
     },
     {
-      title: "React Context API",
-      description: "Context API के साथ state management, props drilling से बचें।",
+      title: "Redux in react",
+      description: "There is a toll redux toolkit to manage state in react",
       image: "/assets/images/react.jpg",
       date: "2025-02-10",
       slug: "react-context"
-    }
+    },
+    {
+      title: "React Router in react",
+      description: "There is a toll react router to manage routing in react",
+      image: "/assets/images/react.jpg",
+      date: "2025-02-10",
+      slug: "react-router"
+    },
+    {
+      title: "React Forms in react",
+      description: "There is a toll react forms to handle forms in react",
+      image: "/assets/images/react.jpg",
+      date: "2025-02-10",
+      slug: "react-forms"
+    },
+   
   ];
 
   return (
