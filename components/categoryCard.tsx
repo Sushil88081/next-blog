@@ -11,13 +11,13 @@ export default function CategoryCard() {
       image: "/assets/images/react.jpg",
       link: "/react",
     },
-    {
-      name: "Go Lang",
-      description:
-        "Go Lang is a programming language developed by Google for building efficient and scalable applications.",
-      image: "/assets/images/golang.jpg",
-      link: "/go/golang",
-    },
+    // {
+    //   name: "Go Lang",
+    //   description:
+    //     "Go Lang is a programming language developed by Google for building efficient and scalable applications.",
+    //   image: "/assets/images/golang.jpg",
+    //   link: "/go/golang",
+    // },
     // {
     //   name: "Python",
     //   description:
