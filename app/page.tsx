@@ -7,7 +7,7 @@ export default async function Home() {
         <h1 className="text-xl   md:text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">
           Learn Programming
         </h1>
-        <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        <p className="text-sm text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
           Comprehensive guides, tutorials and examples about programming languages and technologies.
         </p>
       </div>

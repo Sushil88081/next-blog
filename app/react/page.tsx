@@ -5,18 +5,11 @@ export default function ReactPage() {
   // Sample React posts - you can replace this with your actual data
   const reactPosts = [
     {
-      title: "React में State क्या होता है?",
-      description: "React में State का उपयोग कैसे करें, पूरी गाइड और उदाहरण के साथ।",
+      title: "what is state in react",
+      description: "how to use state in react, complete guide with examples",
       image: "/assets/images/react.jpg",
-      date: "2025-01-15",
+      date: "2025-12-20",
       slug: "react-state"
-    },
-    {
-      title: "React Hooks - पूरी गाइड",
-      description: "useState, useEffect, और अन्य hooks के बारे में विस्तृत जानकारी।",
-      image: "/assets/images/react.jpg",
-      date: "2025-01-20",
-      slug: "react-hooks"
     },
     {
       title: "React Components कैसे बनाएं",
