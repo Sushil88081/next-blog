@@ -19,13 +19,19 @@ export default function ReactPage() {
       slug: "jsx-in-react"
     },
     {
-      title: "How to make components in react",
-      description: "Functional and class components in react",
+      title: "components in react",
+      description: "Components in react",
       image: "/assets/images/react.jpg",
-      date: "2025-01-25",
+      date: "2025-12-22",
       slug: "react-components"
     },
-  
+    {
+      title: "Conditional Rendering in React",
+      description: "Conditional rendering in react",
+      image: "/assets/images/react.jpg",
+      date: "2025-12-23",
+      slug: "react-conditional-rendering"
+    },
    
     {
       title: "What is props in react",
