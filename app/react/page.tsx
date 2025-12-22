@@ -12,11 +12,11 @@ export default function ReactPage() {
       slug: "react-introduction"
     },
     {
-      title: "what is state in react",
-      description: "how to use state in react, complete guide with examples",
+      title:"JSX in React",
+      description: "JSX is a syntax extension for JavaScript that allows  to write HTML-like code in your JavaScript files.",
       image: "/assets/images/react.jpg",
-      date: "2025-12-20",
-      slug: "react-state"
+      date: "2025-12-21",
+      slug: "jsx-in-react"
     },
     {
       title: "How to make components in react",
@@ -25,6 +25,8 @@ export default function ReactPage() {
       date: "2025-01-25",
       slug: "react-components"
     },
+  
+   
     {
       title: "What is props in react",
       description: "how to use props in react, complete guide with examples",
@@ -33,33 +35,40 @@ export default function ReactPage() {
       slug: "react-props"
     },
     {
-      title: "How to handle events in react",
-      description: "how to handle events in react, complete guide with examples",
+      title: "what is state in react",
+      description: "how to use state in react, complete guide with examples",
       image: "/assets/images/react.jpg",
-      date: "2025-02-05",
-      slug: "react-events"
+      date: "2025-12-20",
+      slug: "react-state"
     },
-    {
-      title: "Redux in react",
-      description: "There is a toll redux toolkit to manage state in react",
-      image: "/assets/images/react.jpg",
-      date: "2025-02-10",
-      slug: "react-context"
-    },
-    {
-      title: "React Router in react",
-      description: "There is a toll react router to manage routing in react",
-      image: "/assets/images/react.jpg",
-      date: "2025-02-10",
-      slug: "react-router"
-    },
-    {
-      title: "React Forms in react",
-      description: "There is a toll react forms to handle forms in react",
-      image: "/assets/images/react.jpg",
-      date: "2025-02-10",
-      slug: "react-forms"
-    },
+    // {
+    //   title: "How to handle events in react",
+    //   description: "how to handle events in react, complete guide with examples",
+    //   image: "/assets/images/react.jpg",
+    //   date: "2025-02-05",
+    //   slug: "react-events"
+    // },
+    // {
+    //   title: "Redux in react",
+    //   description: "There is a toll redux toolkit to manage state in react",
+    //   image: "/assets/images/react.jpg",
+    //   date: "2025-02-10",
+    //   slug: "react-context"
+    // },
+    // {
+    //   title: "React Router in react",
+    //   description: "There is a toll react router to manage routing in react",
+    //   image: "/assets/images/react.jpg",
+    //   date: "2025-02-10",
+    //   slug: "react-router"
+    // },
+    // {
+    //   title: "React Forms in react",
+    //   description: "There is a toll react forms to handle forms in react",
+    //   image: "/assets/images/react.jpg",
+    //   date: "2025-02-10",
+    //   slug: "react-forms"
+    // },
    
   ];
 

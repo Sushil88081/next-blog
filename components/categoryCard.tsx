@@ -3,9 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function CategoryCard() {
+ 
   const categories = [
     {
-      name: "React",
+      name: `React`,
       description:
         "React is a JavaScript library for building user interfaces.",
       image: "/assets/images/react.jpg",
