@@ -36,7 +36,7 @@ export default function CategoryCard() {
       name: "TypeScript",
       description:
         "TypeScript is a programming language for building efficient and scalable applications.",
-      image: "/assets/images/typescript.jpg",
+      image: "/assets/images/typescript.png",
       link: "/typescript",
     },
   ];
