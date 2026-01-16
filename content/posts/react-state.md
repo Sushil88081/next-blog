@@ -10,135 +10,137 @@ author: "Sushil Kumar"
 
 # What is State in React?
 
-So you want to learn about state in React? Well, state is basically like the memory of your component. It's data that lives inside your component and can change over time. When the state changes, React will automatically update what you see on the screen.
+Hey there! Want to know what state is in React? Think of state as your component's personal storage box. It's where your component keeps data that can change. Every time that data changes, React automatically refreshes what shows up on your screen.
 
-The cool thing about state is that it's different from props. Props come from the parent component, but state is created and managed right inside the component itself. This is what makes your components interactive - they can respond to what users do, update data, and change what's displayed.
-
----
-
-## Why is State Important?
-
-Without state, your components are just static - they always show the same thing. But with state, you can do all kinds of stuff:
-
-- Track what users type in forms
-- Show or hide things like modals or menus
-- Make counters and timers work
-- Store and manage your app data
-- Make things interactive
-
-Basically, state is what makes your React components come alive. It turns boring static components into something that actually responds to users.
+What's neat about state is how it differs from props. Props get passed down from parent components, but state is something your component creates and controls all by itself. This is the secret sauce that makes components interactive - they can react to user actions, change their data, and update what they display.
 
 ---
 
-## Understanding useState Hook
+## Why Do We Need State?
 
-The `useState` hook is how you add state to your functional components. It's pretty simple actually - it gives you two things: the current value of your state, and a function to change it.
+Imagine a component without state - it's like a picture that never changes. Always the same, always boring. But add state, and suddenly you can do amazing things:
+
+- Keep track of what people type in input fields
+- Toggle visibility of popups, dropdowns, or sidebars
+- Build working counters and stopwatches
+- Save and update your application's data
+- Create interactive experiences
+
+In simple terms, state breathes life into your React components. It transforms them from static displays into responsive, interactive elements.
+
+---
+
+## Getting Started with useState Hook
+
+The `useState` hook is your tool for adding state to function components. It's actually quite straightforward - you get two things back: the current state value, and a function to modify it.
 
 ### Basic Syntax
 
 ```jsx
-const [counter, setCounter] = useState(0);
+const [number, setNumber] = useState(0);
 ```
 
-So here, `counter` is the first variable that contains the initial value which is 0. If you want to update the counter value, you have to use the `setCounter` method to update it.
+In this example, `number` holds the initial value (which is 0 here). To change that number, you call `setNumber` with the new value.
 
 ```jsx
 import { useState } from "react";
 
-function Counter() {
-  const [count, setCount] = useState(0);
-  const handleClick = () => {
-    setCount(count + 1);
+function ClickCounter() {
+  const [clicks, setClicks] = useState(0);
+  const onButtonClick = () => {
+    setClicks(clicks + 1);
   };
   return (
     <div>
-      <p>Count: {count}</p>
-      <button onClick={handleClick}>Increase</button>
+      <p>Clicks: {clicks}</p>
+      <button onClick={onButtonClick}>Click Me</button>
     </div>
   );
 }
 ```
 
-### How useState Works
+### Breaking Down useState
 
-Let me explain what's going on here:
+Here's what each part does:
 
-- **`useState(0)`** - This creates a new state variable and sets it to 0 initially
-- **`count`** - This is the current value of your state (starts at 0)
-- **`setCount`** - This is the function you use to update the state
-- **Array destructuring** - The `[count, setCount]` part just gets both values from the hook
+- **`useState(0)`** - Sets up a new state variable with starting value of 0
+- **`clicks`** - Holds the current state value (begins at 0)
+- **`setClicks`** - The function that updates your state
+- **Array destructuring** - The `[clicks, setClicks]` syntax extracts both values from the hook
 
-You can name these whatever you want, but most people use something like `[value, setValue]` or `[name, setName]`. It's just a convention that makes sense.
+Feel free to name these however you like. Common patterns include `[value, setValue]` or `[item, setItem]`. It's just a naming convention that helps keep things clear.
 
 ---
 
-## Types of State in React
+## Different Kinds of State
 
-State can hold different types of data. Let me show you the main ones you'll use.
+State can store various types of data. Here are the main categories you'll work with.
 
-### 1. Primitive State (Numbers, Strings, Booleans)
+### 1. Simple State (Numbers, Text, True/False)
 
-This is the simplest type - just one value like a number, string, or true/false.
+This is the easiest type - just a single value such as a number, text string, or boolean.
 
-#### Number State
+#### Working with Numbers
 
 ```jsx
-function Counter() {
-  const [count, setCount] = useState(0);
+function ScoreBoard() {
+  const [score, setScore] = useState(0);
 
-  const increment = () => {
-    setCount(count + 1);
+  const addPoint = () => {
+    setScore(score + 1);
   };
 
-  const decrement = () => {
-    setCount(count - 1);
+  const subtractPoint = () => {
+    setScore(score - 1);
   };
 
-  const reset = () => {
-    setCount(0);
+  const resetScore = () => {
+    setScore(0);
   };
 
   return (
     <div>
-      <h2>Count: {count}</h2>
-      <button onClick={increment}>+</button>
-      <button onClick={decrement}>-</button>
-      <button onClick={reset}>Reset</button>
+      <h2>Score: {score}</h2>
+      <button onClick={addPoint}>Add</button>
+      <button onClick={subtractPoint}>Subtract</button>
+      <button onClick={resetScore}>Reset</button>
     </div>
   );
 }
 ```
 
-#### String State
+#### Working with Text
 
 ```jsx
-function NameInput() {
-  const [name, setName] = useState("");
+function TextField() {
+  const [input, setInput] = useState("");
 
   return (
     <div>
       <input
         type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Enter your name"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        placeholder="Type something"
       />
-      {name && <p>Hello, {name}!</p>}
+      {input && <p>You typed: {input}</p>}
     </div>
   );
 }
 ```
 
-#### Boolean State
+#### Working with Booleans
 
 ```jsx
-function ToggleButton() {
-  const [isOn, setIsOn] = useState(false);
+function LightSwitch() {
+  const [isLightOn, setIsLightOn] = useState(false);
 
   return (
     <div>
-      <button onClick={() => setIsOn(!isOn)}>{isOn ? "ON" : "OFF"}</button>
-      <p>Status: {isOn ? "Active" : "Inactive"}</p>
+      <button onClick={() => setIsLightOn(!isLightOn)}>
+        {isLightOn ? "Turn Off" : "Turn On"}
+      </button>
+      <p>Light is: {isLightOn ? "On" : "Off"}</p>
     </div>
   );
 }
@@ -148,95 +150,95 @@ function ToggleButton() {
 
 ### 2. Object State
 
-Sometimes you need to store multiple things together. That's when you use object state.
+When you need to keep track of multiple related pieces of information together, object state is your friend.
 
 ```jsx
-function UserProfile() {
-  const [user, setUser] = useState({
-    name: "",
-    age: 0,
-    email: "",
+function ProfileForm() {
+  const [profile, setProfile] = useState({
+    firstName: "",
+    years: 0,
+    contact: "",
   });
 
-  const updateName = (name) => {
-    setUser({ ...user, name });
+  const changeFirstName = (firstName) => {
+    setProfile({ ...profile, firstName });
   };
 
-  const updateAge = (age) => {
-    setUser({ ...user, age: parseInt(age) || 0 });
+  const changeYears = (years) => {
+    setProfile({ ...profile, years: parseInt(years) || 0 });
   };
 
-  const updateEmail = (email) => {
-    setUser({ ...user, email });
+  const changeContact = (contact) => {
+    setProfile({ ...profile, contact });
   };
 
   return (
     <div>
       <input
-        value={user.name}
-        onChange={(e) => updateName(e.target.value)}
-        placeholder="Name"
+        value={profile.firstName}
+        onChange={(e) => changeFirstName(e.target.value)}
+        placeholder="First Name"
       />
       <input
         type="number"
-        value={user.age}
-        onChange={(e) => updateAge(e.target.value)}
+        value={profile.years}
+        onChange={(e) => changeYears(e.target.value)}
         placeholder="Age"
       />
       <input
         type="email"
-        value={user.email}
-        onChange={(e) => updateEmail(e.target.value)}
+        value={profile.contact}
+        onChange={(e) => changeContact(e.target.value)}
         placeholder="Email"
       />
       <div>
-        <p>Name: {user.name}</p>
-        <p>Age: {user.age}</p>
-        <p>Email: {user.email}</p>
+        <p>Name: {profile.firstName}</p>
+        <p>Age: {profile.years}</p>
+        <p>Email: {profile.contact}</p>
       </div>
     </div>
   );
 }
 ```
 
-**Important thing to remember**: When you update object state, always create a new object using the spread operator (`...`). Don't try to change the existing object directly - React won't like that!
+**Key point**: When updating object state, always build a new object using the spread operator (`...`). Never modify the existing object directly - React needs a new object to detect changes!
 
 ---
 
 ### 3. Array State
 
-Arrays are perfect for lists - like todos, products, or any collection of stuff.
+Arrays work great for managing collections - shopping lists, product catalogs, or any group of items.
 
-#### Basic Array Operations
+#### Working with Arrays
 
 ```jsx
-function TodoList() {
-  const [todos, setTodos] = useState([]);
-  const [inputValue, setInputValue] = useState("");
+function TaskManager() {
+  const [tasks, setTasks] = useState([]);
+  const [newTask, setNewTask] = useState("");
 
-  // Add item to array
-  const addTodo = () => {
-    if (inputValue.trim()) {
-      const newTodo = {
+  // Adding a new task
+  const addTask = () => {
+    if (newTask.trim()) {
+      const task = {
         id: Date.now(),
-        text: inputValue,
-        completed: false,
+        title: newTask,
+        done: false,
       };
-      setTodos([...todos, newTodo]);
-      setInputValue("");
+      setTasks([...tasks, task]);
+      setNewTask("");
     }
   };
 
-  // Remove item from array
-  const removeTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+  // Removing a task
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id));
   };
 
-  // Update item in array
-  const toggleComplete = (id) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+  // Toggling task completion
+  const markComplete = (id) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, done: !task.done } : task
       )
     );
   };
@@ -244,26 +246,26 @@ function TodoList() {
   return (
     <div>
       <input
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        placeholder="Add a todo"
+        value={newTask}
+        onChange={(e) => setNewTask(e.target.value)}
+        placeholder="New task"
       />
-      <button onClick={addTodo}>Add</button>
+      <button onClick={addTask}>Add Task</button>
 
       <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>
+        {tasks.map((task) => (
+          <li key={task.id}>
             <span
               style={{
-                textDecoration: todo.completed ? "line-through" : "none",
+                textDecoration: task.done ? "line-through" : "none",
               }}
             >
-              {todo.text}
+              {task.title}
             </span>
-            <button onClick={() => toggleComplete(todo.id)}>
-              {todo.completed ? "Undo" : "Complete"}
+            <button onClick={() => markComplete(task.id)}>
+              {task.done ? "Mark Incomplete" : "Mark Complete"}
             </button>
-            <button onClick={() => removeTodo(todo.id)}>Delete</button>
+            <button onClick={() => deleteTask(task.id)}>Remove</button>
           </li>
         ))}
       </ul>
@@ -272,84 +274,88 @@ function TodoList() {
 }
 ```
 
-#### Common Array Operations
+#### Useful Array Patterns
 
-Here are some common things you'll do with arrays:
+Here are some patterns you'll use often with arrays:
 
 ```jsx
-const [items, setItems] = useState([]);
+const [list, setList] = useState([]);
 
-// Add item to end
-setItems([...items, newItem]);
+// Append to end
+setList([...list, newItem]);
 
-// Add item to beginning
-setItems([newItem, ...items]);
+// Prepend to start
+setList([newItem, ...list]);
 
-// Remove item by id
-setItems(items.filter((item) => item.id !== idToRemove));
+// Delete by id
+setList(list.filter((item) => item.id !== idToDelete));
 
-// Update item in array
-setItems(
-  items.map((item) =>
-    item.id === idToUpdate ? { ...item, ...updatedFields } : item
-  )
+// Modify an item
+setList(
+  list.map((item) => (item.id === idToChange ? { ...item, ...changes } : item))
 );
 
-// Clear all items
-setItems([]);
+// Empty the array
+setList([]);
 ```
 
 ---
 
-### 4. Complex/Nested State
+### 4. Nested/Complex State
 
-Sometimes you need to store objects that have arrays inside them, or arrays with objects. It can get complicated, but here's how you handle it:
+Occasionally you'll need to manage more complex structures - objects containing arrays, or arrays of objects. Here's how to work with them:
 
 ```jsx
-function ShoppingCart() {
-  const [cart, setCart] = useState({
-    items: [],
-    total: 0,
-    discount: 0,
+function OrderManager() {
+  const [order, setOrder] = useState({
+    products: [],
+    subtotal: 0,
+    savings: 0,
   });
 
-  const addItem = (product) => {
-    const updatedItems = [...cart.items, product];
-    const newTotal = updatedItems.reduce((sum, item) => sum + item.price, 0);
+  const addProduct = (product) => {
+    const newProducts = [...order.products, product];
+    const newSubtotal = newProducts.reduce(
+      (total, item) => total + item.cost,
+      0
+    );
 
-    setCart({
-      ...cart,
-      items: updatedItems,
-      total: newTotal,
+    setOrder({
+      ...order,
+      products: newProducts,
+      subtotal: newSubtotal,
     });
   };
 
-  const removeItem = (itemId) => {
-    const updatedItems = cart.items.filter((item) => item.id !== itemId);
-    const newTotal = updatedItems.reduce((sum, item) => sum + item.price, 0);
+  const removeProduct = (productId) => {
+    const newProducts = order.products.filter((item) => item.id !== productId);
+    const newSubtotal = newProducts.reduce(
+      (total, item) => total + item.cost,
+      0
+    );
 
-    setCart({
-      ...cart,
-      items: updatedItems,
-      total: newTotal,
+    setOrder({
+      ...order,
+      products: newProducts,
+      subtotal: newSubtotal,
     });
   };
 
-  const applyDiscount = (discountPercent) => {
-    setCart({
-      ...cart,
-      discount: discountPercent,
+  const setSavings = (savingsPercent) => {
+    setOrder({
+      ...order,
+      savings: savingsPercent,
     });
   };
 
   return (
     <div>
-      <h2>Shopping Cart</h2>
-      <p>Items: {cart.items.length}</p>
-      <p>Subtotal: ${cart.total}</p>
-      <p>Discount: {cart.discount}%</p>
-      <p>Total: ${cart.total * (1 - cart.discount / 100)}</p>
-      {/* Cart items rendering */}
+      <h2>Your Order</h2>
+      <p>Products: {order.products.length}</p>
+      <p>Subtotal: ${order.subtotal}</p>
+      <p>Savings: {order.savings}%</p>
+      <p>Final Total: ${order.subtotal * (1 - order.savings / 100)}</p>
+      {/* Product list rendering */}
     </div>
   );
 }
@@ -357,139 +363,139 @@ function ShoppingCart() {
 
 ---
 
-## Multiple State Variables
+## Using Multiple useState Hooks
 
-You can use multiple `useState` hooks in one component. Sometimes this is cleaner than putting everything in one object:
+You're allowed to use several `useState` hooks in a single component. This can be cleaner than cramming everything into one object:
 
 ```jsx
-function UserForm() {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState(0);
-  const [email, setEmail] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+function RegistrationForm() {
+  const [firstName, setFirstName] = useState("");
+  const [yearsOld, setYearsOld] = useState(0);
+  const [emailAddress, setEmailAddress] = useState("");
+  const [isProcessing, setIsProcessing] = useState(false);
 
-  const handleSubmit = async () => {
-    setIsSubmitting(true);
-    // Submit logic here
-    setIsSubmitting(false);
+  const submitForm = async () => {
+    setIsProcessing(true);
+    // Form submission logic
+    setIsProcessing(false);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={submitForm}>
       <input
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Name"
+        value={firstName}
+        onChange={(e) => setFirstName(e.target.value)}
+        placeholder="First Name"
       />
       <input
         type="number"
-        value={age}
-        onChange={(e) => setAge(parseInt(e.target.value) || 0)}
+        value={yearsOld}
+        onChange={(e) => setYearsOld(parseInt(e.target.value) || 0)}
         placeholder="Age"
       />
       <input
         type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        value={emailAddress}
+        onChange={(e) => setEmailAddress(e.target.value)}
         placeholder="Email"
       />
-      <button type="submit" disabled={isSubmitting}>
-        {isSubmitting ? "Submitting..." : "Submit"}
+      <button type="submit" disabled={isProcessing}>
+        {isProcessing ? "Processing..." : "Register"}
       </button>
     </form>
   );
 }
 ```
 
-**When should you use multiple state variables vs object state?**
+**When to use multiple state variables vs object state?**
 
-- Use multiple variables when each value changes on its own
-- Use object state when the values are related and you often update them together
+- Use separate variables when each piece of data changes independently
+- Use object state when the data pieces are related and usually updated together
 
 ---
 
-## State Update Best Practices
+## Best Practices for Updating State
 
-### 1. Functional Updates
+### 1. Using Function Updates
 
-If your new state depends on the old state, use a function. This makes sure you're working with the latest value:
+When your new state value depends on the previous state, pass a function to the setter. This ensures you're always working with the most current value:
 
 ```jsx
-function Counter() {
-  const [count, setCount] = useState(0);
+function NumberCounter() {
+  const [number, setNumber] = useState(0);
 
   // Good - Uses previous state
-  const increment = () => {
-    setCount((prevCount) => prevCount + 1);
+  const increase = () => {
+    setNumber((previous) => previous + 1);
   };
 
   // Also good for multiple updates
-  const incrementByTwo = () => {
-    setCount((prevCount) => prevCount + 1);
-    setCount((prevCount) => prevCount + 1);
+  const increaseByTwo = () => {
+    setNumber((previous) => previous + 1);
+    setNumber((previous) => previous + 1);
   };
 
   return (
     <div>
-      <p>Count: {count}</p>
-      <button onClick={increment}>+1</button>
-      <button onClick={incrementByTwo}>+2</button>
+      <p>Number: {number}</p>
+      <button onClick={increase}>+1</button>
+      <button onClick={increaseByTwo}>+2</button>
     </div>
   );
 }
 ```
 
-### 2. Object State Updates
+### 2. Updating Object State
 
-Always make a new object when updating. Never change the old one directly:
+Always create a fresh object when updating. Never modify the existing object:
 
 ```jsx
-const [user, setUser] = useState({ name: "", age: 0, email: "" });
+const [person, setPerson] = useState({ firstName: "", years: 0, contact: "" });
 
-// ✅ Correct - Creates new object
-setUser({ ...user, name: "John" });
+// ✅ Right way - Makes new object
+setPerson({ ...person, firstName: "Alex" });
 
-// ✅ Also correct - Multiple updates
-setUser({ ...user, name: "John", age: 25 });
+// ✅ Also right - Multiple changes
+setPerson({ ...person, firstName: "Alex", years: 30 });
 
-// ❌ Wrong - Don't do this!
-user.name = "John";
-setUser(user);
+// ❌ Wrong way - Don't do this!
+person.firstName = "Alex";
+setPerson(person);
 ```
 
-### 3. Array State Updates
+### 3. Updating Array State
 
-Same thing with arrays - always make a new array:
+Same principle applies to arrays - always create a new array:
 
 ```jsx
-const [items, setItems] = useState([]);
+const [things, setThings] = useState([]);
 
 // ✅ Add item
-setItems([...items, newItem]);
+setThings([...things, newThing]);
 
 // ✅ Remove item
-setItems(items.filter((item) => item.id !== id));
+setThings(things.filter((thing) => thing.id !== id));
 
 // ✅ Update item
-setItems(
-  items.map((item) => (item.id === id ? { ...item, ...updates } : item))
+setThings(
+  things.map((thing) => (thing.id === id ? { ...thing, ...changes } : thing))
 );
 
-// ❌ Wrong - Don't do this!
-items.push(newItem);
-setItems(items);
+// ❌ Wrong way - Don't do this!
+things.push(newThing);
+setThings(things);
 ```
 
-### 4. Lazy Initial State
+### 4. Lazy Initialization
 
-If calculating the initial state is expensive, you can pass a function to `useState`:
+If computing the starting state is costly, pass a function to `useState`:
 
 ```jsx
-// Expensive computation
-function ExpensiveComponent() {
-  const [data, setData] = useState(() => {
+// Heavy calculation
+function HeavyComponent() {
+  const [result, setResult] = useState(() => {
     // This function runs only once
-    return computeExpensiveValue();
+    return performHeavyCalculation();
   });
 
   // Rest of component
@@ -498,73 +504,71 @@ function ExpensiveComponent() {
 
 ---
 
-## Common Mistakes to Avoid
+## Mistakes You Should Avoid
 
-### Mutating State Directly
+### Directly Modifying State
 
 ```jsx
 // ❌ Wrong
-const [user, setUser] = useState({ name: "John" });
-user.name = "Jane"; // Don't do this!
-setUser(user);
+const [person, setPerson] = useState({ firstName: "John" });
+person.firstName = "Jane"; // Don't do this!
+setPerson(person);
 
-// ✅ Correct
-setUser({ ...user, name: "Jane" });
+// ✅ Right
+setPerson({ ...person, firstName: "Jane" });
 ```
 
-### Not Using Functional Updates
+### Skipping Function Updates
 
 ```jsx
-// ❌ Wrong - Might not work right
-setCount(count + 1);
-setCount(count + 1); // Uses old count value
+// ❌ Wrong - May cause issues
+setNumber(number + 1);
+setNumber(number + 1); // Uses stale number value
 
-// ✅ Correct
-setCount((prev) => prev + 1);
-setCount((prev) => prev + 1); // Uses latest value
+// ✅ Right
+setNumber((previous) => previous + 1);
+setNumber((previous) => previous + 1); // Uses current value
 ```
 
-### Forgetting to Handle Input Types
+### Not Converting Input Types
 
 ```jsx
-// ❌ Wrong - Age becomes string
+// ❌ Wrong - Years becomes string
 <input
   type="number"
-  value={age}
-  onChange={(e) => setAge(e.target.value)}
+  value={years}
+  onChange={(e) => setYears(e.target.value)}
 />
 
-// ✅ Correct - Converts to number
+// ✅ Right - Converts to number
 <input
   type="number"
-  value={age}
-  onChange={(e) => setAge(parseInt(e.target.value) || 0)}
+  value={years}
+  onChange={(e) => setYears(parseInt(e.target.value) || 0)}
 />
 ```
-
----
 
 ---
 
 ## Conclusion
 
-State is what makes React components dynamic and interactive. It lets you handle user input, update data, and make your UI respond to changes. Once you get the hang of `useState` and understand the different types of state, you can build some really cool stuff.
+State is the engine that powers dynamic React components. It enables you to capture user input, modify data, and create UIs that respond to changes. Once you master `useState` and learn the different state types, you'll be able to build impressive interactive applications.
 
-Just remember:
+Keep these tips in mind:
 
-- Always create new objects/arrays when updating state
-- Use functional updates when new state depends on old state
-- Pick the right state structure for what you need
-- Keep it simple - don't make it more complicated than it needs to be
+- Always create fresh objects/arrays when updating state
+- Use function updates when new state depends on previous state
+- Choose the state structure that fits your needs
+- Keep things simple - avoid unnecessary complexity
 
 ---
 
 ## Next Steps
 
-Now that you understand state, here's what you should check out next:
+Now that you've learned about state, here's what to explore next:
 
-- Learn about [React Hooks](/react/react-hooks) - There are other hooks like useEffect, useContext, and more
+- Learn about [React Hooks](/react/react-hooks) - Discover other hooks like useEffect, useContext, and more
 - Understand [Props in React](/react/react-props) - See how props and state work together
-- Explore [Context API](/react/react-context-api) - Share state across components without passing it through every level
+- Explore [Context API](/react/react-context-api) - Share state across components without prop drilling
 - Read about [Event Handling](/react/react-events) - See how state changes when users interact with your app
 - Study [Component Lifecycle](/react/react-components) - Learn when components update and re-render
