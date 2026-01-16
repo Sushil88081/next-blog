@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function CategoryCard() {
- 
   const categories = [
     {
       name: `React`,
@@ -12,13 +11,13 @@ export default function CategoryCard() {
       image: "/assets/images/react.jpg",
       link: "/react",
     },
-    // {
-    //   name: "Go Lang",
-    //   description:
-    //     "Go Lang is a programming language developed by Google for building efficient and scalable applications.",
-    //   image: "/assets/images/golang.jpg",
-    //   link: "/go/golang",
-    // },
+    {
+      name: "Go Lang",
+      description:
+        "Go Lang is a programming language developed by Google for building efficient and scalable applications.",
+      image: "/assets/images/golang.jpg",
+      link: "/go/golang",
+    },
     // {
     //   name: "Python",
     //   description:
@@ -59,9 +58,9 @@ export default function CategoryCard() {
   return (
     <div className="mb-12">
       <div className="text-lg font-bold mb-6 text-gray-900 dark:text-gray-100">
-        Most Popular Languages 
+        Most Popular Languages
       </div>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {categories.map((category) => (
           <Link
