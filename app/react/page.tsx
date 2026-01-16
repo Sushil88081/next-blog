@@ -6,46 +6,55 @@ export default function ReactPage() {
   const reactPosts = [
     {
       title: "React Introduction",
-      description: "Reactjs is a javascript library for building user interfaces.",
+      description:
+        "Reactjs is a javascript library for building user interfaces.",
       image: "/assets/images/react.jpg",
       date: "2025-12-20",
-      slug: "react-introduction"
+      slug: "react-introduction",
     },
     {
-      title:"JSX in React",
-      description: "JSX is a syntax extension for JavaScript that allows  to write HTML-like code in your JavaScript files.",
+      title: "JSX in React",
+      description:
+        "JSX is a syntax extension for JavaScript that allows  to write HTML-like code in your JavaScript files.",
       image: "/assets/images/react.jpg",
       date: "2025-12-21",
-      slug: "jsx-in-react"
+      slug: "jsx-in-react",
     },
     {
       title: "components in react",
       description: "Components in react",
       image: "/assets/images/react.jpg",
       date: "2025-12-22",
-      slug: "react-components"
+      slug: "react-components",
     },
     {
       title: "Conditional Rendering in React",
       description: "Conditional rendering in react",
       image: "/assets/images/react.jpg",
       date: "2025-12-23",
-      slug: "react-conditional-rendering"
+      slug: "react-conditional-rendering",
     },
-   
+
     {
       title: "What is props in react",
       description: "how to use props in react, complete guide with examples",
       image: "/assets/images/react.jpg",
       date: "2025-01-30",
-      slug: "react-props"
+      slug: "react-props",
     },
     {
       title: "what is state in react",
       description: "how to use state in react, complete guide with examples",
       image: "/assets/images/react.jpg",
       date: "2025-12-20",
-      slug: "react-state"
+      slug: "react-state",
+    },
+    {
+      title: "State vs Props",
+      description: "difference between state and props",
+      image: "/assets/images/react.jpg",
+      date: "2025-12-20",
+      slug: "react-state-props",
     },
     // {
     //   title: "How to handle events in react",
@@ -75,7 +84,6 @@ export default function ReactPage() {
     //   date: "2025-02-10",
     //   slug: "react-forms"
     // },
-   
   ];
 
   return (
