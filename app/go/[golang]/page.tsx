@@ -7,47 +7,47 @@ export default function GoPage() {
     {
       title: "Go Language Beginner's Guide",
       description:
-        "Go programming language what is it and why should you learn it? Go basics, benefits and how to use it.",
+        "What is Go programming language and why should you learn it? Learn Go basics, benefits and how to use it.",
       image: "/assets/images/golang.jpg",
       date: "2025-12-20",
       slug: "go-introduction",
     },
     {
-      title: "Go में Variables और Data Types",
+      title: "Variables and Data Types in Go",
       description:
-        "Go में variables कैसे declare करें और different data types का उपयोग कैसे करें। Complete guide with examples।",
+        "Learn how to declare variables in Go and use different data types. Complete guide with examples.",
       image: "/assets/images/golang.jpg",
       date: "2025-02-12",
       slug: "go-variables",
     },
     {
-      title: "Go में Functions - Complete Guide",
+      title: "Functions in Go - Complete Guide",
       description:
-        "Go में functions कैसे बनाएं, multiple return values, variadic functions, और function types के बारे में जानें।",
+        "Learn how to create functions in Go, multiple return values, variadic functions, and function types.",
       image: "/assets/images/golang.jpg",
       date: "2025-02-15",
       slug: "go-functions",
     },
     {
-      title: "Go में Goroutines और Concurrency",
+      title: "Goroutines and Concurrency in Go",
       description:
-        "Go में goroutines क्या हैं और concurrency कैसे achieve करें? Channels, select statement, और concurrent programming patterns सीखें।",
+        "What are goroutines in Go and how to achieve concurrency? Learn about channels, select statement, and concurrent programming patterns.",
       image: "/assets/images/golang.jpg",
       date: "2025-02-18",
       slug: "go-goroutines",
     },
     {
-      title: "Go में Structs और Interfaces",
+      title: "Structs and Interfaces in Go",
       description:
-        "Structs और interfaces के बारे में सीखें, object-oriented programming concepts Go में कैसे implement करें।",
+        "Learn about structs and interfaces, and how to implement object-oriented programming concepts in Go.",
       image: "/assets/images/golang.jpg",
       date: "2025-02-20",
       slug: "go-structs",
     },
     {
-      title: "Go में Error Handling",
+      title: "Error Handling in Go",
       description:
-        "Go में errors कैसे handle करें, error types और best practices के बारे में जानें।",
+        "Learn how to handle errors in Go, error types and best practices.",
       image: "/assets/images/golang.jpg",
       date: "2025-02-22",
       slug: "go-errors",
