@@ -1,59 +1,8 @@
 import Image from "next/image";
-import PostCard from "@/components/PostCard";
 
+// Go Lang Coming Soon Page
+// This page displays a "Coming Soon" message for Go Lang content
 export default function GoPage() {
-  // Sample Go posts - you can replace this with your actual data
-  const goPosts = [
-    {
-      title: "Go Language Beginner's Guide",
-      description:
-        "What is Go programming language and why should you learn it? Learn Go basics, benefits and how to use it.",
-      image: "/assets/images/golang.jpg",
-      date: "2025-12-20",
-      slug: "go-introduction",
-    },
-    {
-      title: "Variables and Data Types in Go",
-      description:
-        "Learn how to declare variables in Go and use different data types. Complete guide with examples.",
-      image: "/assets/images/golang.jpg",
-      date: "2025-02-12",
-      slug: "go-variables",
-    },
-    {
-      title: "Functions in Go - Complete Guide",
-      description:
-        "Learn how to create functions in Go, multiple return values, variadic functions, and function types.",
-      image: "/assets/images/golang.jpg",
-      date: "2025-02-15",
-      slug: "go-functions",
-    },
-    {
-      title: "Goroutines and Concurrency in Go",
-      description:
-        "What are goroutines in Go and how to achieve concurrency? Learn about channels, select statement, and concurrent programming patterns.",
-      image: "/assets/images/golang.jpg",
-      date: "2025-02-18",
-      slug: "go-goroutines",
-    },
-    {
-      title: "Structs and Interfaces in Go",
-      description:
-        "Learn about structs and interfaces, and how to implement object-oriented programming concepts in Go.",
-      image: "/assets/images/golang.jpg",
-      date: "2025-02-20",
-      slug: "go-structs",
-    },
-    {
-      title: "Error Handling in Go",
-      description:
-        "Learn how to handle errors in Go, error types and best practices.",
-      image: "/assets/images/golang.jpg",
-      date: "2025-02-22",
-      slug: "go-errors",
-    },
-  ];
-
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Go Header with Image */}
@@ -66,29 +15,57 @@ export default function GoPage() {
           sizes="(max-width: 768px) 100vw, 1200px"
           priority
         />
+        {/* Gradient overlay for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
             Go Lang
           </h1>
-          <p className="text-lg text-white/90">
-            {goPosts.length} Posts Available
-          </p>
+          <p className="text-lg text-white/90">Coming Soon</p>
         </div>
       </div>
 
-      {/* Go Posts Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {goPosts.map((post) => (
-          <PostCard
-            key={post.slug}
-            title={post.title}
-            description={post.description}
-            image={post.image}
-            date={post.date}
-            slug={post.slug}
-          />
-        ))}
+      {/* Coming Soon Message Section */}
+      <div className="max-w-2xl mx-auto text-center py-12">
+        <div className="mb-6">
+          <svg
+            className="w-24 h-24 mx-auto text-primary-500 dark:text-primary-400 mb-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+        </div>
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+          Coming Soon!
+        </h2>
+        <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
+          We're working hard to bring you amazing Go Lang tutorials and guides.
+          Check back soon for exciting content about Go programming!
+        </p>
+        {/* Navigation buttons */}
+        <div className="flex justify-center gap-4">
+          {/* Home button */}
+          <a
+            href="/"
+            className="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-medium transition-colors duration-200"
+          >
+            Go to Home
+          </a>
+          {/* React posts button */}
+          <a
+            href="/react"
+            className="px-6 py-3 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100 rounded-lg font-medium transition-colors duration-200"
+          >
+            Explore React Posts
+          </a>
+        </div>
       </div>
     </div>
   );
