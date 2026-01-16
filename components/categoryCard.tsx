@@ -18,41 +18,27 @@ export default function CategoryCard() {
       image: "/assets/images/golang.jpg",
       link: "/go/golang",
     },
-    // {
-    //   name: "Python",
-    //   description:
-    //     "Python is a programming language for building efficient and scalable applications.",
-    //   image: "/assets/images/python.jpg",
-    //   link: "/python",
-    // },
-    // {
-    //   name: "Java",
-    //   description:
-    //     "Java is a programming language for building efficient and scalable applications.",
-    //   image: "/assets/images/java.jpg",
-    //   link: "/java",
-    // },
-    // {
-    //   name: "C#",
-    //   description:
-    //     "C# is a programming language for building efficient and scalable applications.",
-    //   image: "/assets/images/csharp.jpg",
-    //   link: "/csharp",
-    // },
-    // {
-    //   name: "JavaScript",
-    //   description:
-    //     "JavaScript is a programming language for building efficient and scalable applications.",
-    //   image: "/assets/images/javascript.jpg",
-    //   link: "/javascript",
-    // },
-    // {
-    //   name: "TypeScript",
-    //   description:
-    //     "TypeScript is a programming language for building efficient and scalable applications.",
-    //   image: "/assets/images/typescript.jpg",
-    //   link: "/typescript",
-    // },
+    {
+      name: "Python",
+      description:
+        "Python is a programming language for building efficient and scalable applications.",
+      image: "/assets/images/python.jpg",
+      link: "/python",
+    },
+    {
+      name: "JavaScript",
+      description:
+        "JavaScript is a programming language for building efficient and scalable applications.",
+      image: "/assets/images/javascript.jpg",
+      link: "/javascript",
+    },
+    {
+      name: "TypeScript",
+      description:
+        "TypeScript is a programming language for building efficient and scalable applications.",
+      image: "/assets/images/typescript.jpg",
+      link: "/typescript",
+    },
   ];
 
   return (
