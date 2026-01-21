@@ -167,12 +167,11 @@ So that's useEffect in a nutshell! It's React's way of handling side effects - t
 
 Remember: useEffect is your friend for doing things after render, but use it wisely. Don't overuse it, and always clean up when needed!
 
-## What's Next?
+## Next Steps
 
-Once you understand useEffect, check out:
+Once you understand useEffect, here's what to learn next:
 
-- useState for managing state
-- useContext for sharing data
-- Custom hooks to make your own reusable logic
-
-Happy coding! 🚀
+- Learn about [useState Hook](/react/react-usestate-basics) - Manage component state
+- Understand [Custom Hooks](/react/react-custom-hooks) - Create reusable hook logic
+- Explore [Context API](/react/react-context-api) - Share data across components
+- Master [React Hooks](/react/react-hooks) - Learn other important hooks

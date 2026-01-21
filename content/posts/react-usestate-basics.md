@@ -263,12 +263,11 @@ Remember: useState is your tool for storing data that can change. When it change
 
 Keep practicing and building things. That's the best way to learn!
 
-## What's Next?
+## Next Steps
 
-Now that you understand useState, you might want to learn:
+Now that you understand useState, here's what to learn next:
 
-- useEffect for side effects
-- Props for passing data between components
-- Context API for sharing state across components
-
-Happy coding! 🎉
+- Learn about [useEffect Hook](/react/react-useeffect-explained) - Handle side effects like API calls and data fetching
+- Understand [Props in React](/react/react-props) - Learn how to pass data between components
+- Explore [Context API](/react/react-context-api) - Share state across components without props drilling
+- Master [Custom Hooks](/react/react-custom-hooks) - Create your own reusable hooks

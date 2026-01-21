@@ -348,13 +348,11 @@ The key things to remember:
 
 Practice building a small app with multiple pages. That's the best way to learn!
 
-## What's Next?
+## Next Steps
 
-Now that you know routing basics, you might want to learn:
+Now that you know routing basics, here's what to learn next:
 
-- Route parameters and query strings
-- Route guards and protected routes
-- Code splitting with React.lazy
-- Handling route transitions
-
-Happy routing! 🚀
+- Learn about [React Components](/react/react-components) - Build reusable page components
+- Understand [State Management](/react/react-state) - Manage state across routes
+- Explore [Performance Tips](/react/react-performance-tips) - Optimize your React app
+- Master [Custom Hooks](/react/react-custom-hooks) - Create hooks for route logic

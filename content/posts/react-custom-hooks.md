@@ -21,6 +21,7 @@ The idea is simple: if you find yourself writing the same code in multiple compo
 ## Why Use Custom Hooks?
 
 Before custom hooks, you had to copy-paste the same code everywhere. Not fun! Custom hooks let you:
+
 - Reuse logic easily
 - Keep your components clean
 - Share logic between components
@@ -33,11 +34,11 @@ Let's start with something simple - a counter hook:
 ```jsx
 function useCounter(initialValue = 0) {
   const [count, setCount] = useState(initialValue);
-  
-  const increment = () => setCount(prev => prev + 1);
-  const decrement = () => setCount(prev => prev - 1);
+
+  const increment = () => setCount((prev) => prev + 1);
+  const decrement = () => setCount((prev) => prev - 1);
   const reset = () => setCount(initialValue);
-  
+
   return { count, increment, decrement, reset };
 }
 ```
@@ -47,7 +48,7 @@ Now you can use it in any component:
 ```jsx
 function Counter() {
   const { count, increment, decrement, reset } = useCounter(0);
-  
+
   return (
     <div>
       <p>Count: {count}</p>
@@ -70,21 +71,21 @@ function useFetch(url) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
+
   useEffect(() => {
     setLoading(true);
     fetch(url)
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         setData(data);
         setLoading(false);
       })
-      .catch(error => {
+      .catch((error) => {
         setError(error);
         setLoading(false);
       });
   }, [url]);
-  
+
   return { data, loading, error };
 }
 ```
@@ -94,10 +95,10 @@ Now using it is super simple:
 ```jsx
 function UserProfile({ userId }) {
   const { data, loading, error } = useFetch(`/api/user/${userId}`);
-  
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
-  
+
   return <div>Name: {data.name}</div>;
 }
 ```
@@ -118,7 +119,7 @@ function useLocalStorage(key, initialValue) {
       return initialValue;
     }
   });
-  
+
   const setValue = (value) => {
     try {
       setStoredValue(value);
@@ -127,7 +128,7 @@ function useLocalStorage(key, initialValue) {
       console.error(error);
     }
   };
-  
+
   return [storedValue, setValue];
 }
 ```
@@ -136,8 +137,8 @@ Usage:
 
 ```jsx
 function Settings() {
-  const [theme, setTheme] = useLocalStorage('theme', 'light');
-  
+  const [theme, setTheme] = useLocalStorage("theme", "light");
+
   return (
     <select value={theme} onChange={(e) => setTheme(e.target.value)}>
       <option value="light">Light</option>
@@ -156,11 +157,11 @@ This one is super simple but useful:
 ```jsx
 function useToggle(initialValue = false) {
   const [value, setValue] = useState(initialValue);
-  
-  const toggle = () => setValue(prev => !prev);
+
+  const toggle = () => setValue((prev) => !prev);
   const setTrue = () => setValue(true);
   const setFalse = () => setValue(false);
-  
+
   return [value, toggle, setTrue, setFalse];
 }
 ```
@@ -170,7 +171,7 @@ Use it like this:
 ```jsx
 function Modal() {
   const [isOpen, toggle, open, close] = useToggle(false);
-  
+
   return (
     <div>
       <button onClick={toggle}>Toggle Modal</button>
@@ -190,21 +191,21 @@ Want to know the window size? Here's a hook for that:
 function useWindowSize() {
   const [size, setSize] = useState({
     width: window.innerWidth,
-    height: window.innerHeight
+    height: window.innerHeight,
   });
-  
+
   useEffect(() => {
     const handleResize = () => {
       setSize({
         width: window.innerWidth,
-        height: window.innerHeight
+        height: window.innerHeight,
       });
     };
-    
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
-  
+
   return size;
 }
 ```
@@ -214,7 +215,7 @@ Usage:
 ```jsx
 function ResponsiveComponent() {
   const { width, height } = useWindowSize();
-  
+
   return (
     <div>
       Window size: {width} x {height}
@@ -231,15 +232,15 @@ This is useful for search inputs - wait until user stops typing:
 ```jsx
 function useDebounce(value, delay) {
   const [debouncedValue, setDebouncedValue] = useState(value);
-  
+
   useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedValue(value);
     }, delay);
-    
+
     return () => clearTimeout(handler);
   }, [value, delay]);
-  
+
   return debouncedValue;
 }
 ```
@@ -248,22 +249,19 @@ Use it:
 
 ```jsx
 function SearchInput() {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const debouncedSearch = useDebounce(searchTerm, 500);
-  
+
   useEffect(() => {
     // This only runs 500ms after user stops typing
     if (debouncedSearch) {
       // Make API call here
-      console.log('Searching for:', debouncedSearch);
+      console.log("Searching for:", debouncedSearch);
     }
   }, [debouncedSearch]);
-  
+
   return (
-    <input 
-      value={searchTerm}
-      onChange={(e) => setSearchTerm(e.target.value)}
-    />
+    <input value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
   );
 }
 ```
@@ -277,20 +275,20 @@ Check if user is online:
 ```jsx
 function useOnlineStatus() {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
-  
+
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
     const handleOffline = () => setIsOnline(false);
-    
-    window.addEventListener('online', handleOnline);
-    window.addEventListener('offline', handleOffline);
-    
+
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+
     return () => {
-      window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
     };
   }, []);
-  
+
   return isOnline;
 }
 ```
@@ -350,13 +348,11 @@ The key is: if you're repeating code, make it a hook. That's it!
 
 Practice by creating your own hooks for common patterns in your projects. Soon you'll have a library of useful hooks!
 
-## What's Next?
+## Next Steps
 
-Now that you understand custom hooks, try:
-- Creating hooks for your specific use cases
-- Sharing hooks with your team
-- Looking at popular hook libraries for inspiration
-- Building a collection of reusable hooks
+Now that you understand custom hooks, here's what to learn next:
 
-Happy hooking! 🎣
-
+- Learn about [React Hooks](/react/react-hooks) - Master all built-in hooks
+- Understand [useEffect Hook](/react/react-useeffect-explained) - Handle side effects in hooks
+- Explore [Context API](/react/react-context-api) - Combine Context with custom hooks
+- Master [Performance Tips](/react/react-performance-tips) - Optimize your hooks

@@ -15,6 +15,7 @@ Hey! Is your React app feeling slow? Don't worry, I'm here to help! Today I'll s
 ## Why Performance Matters
 
 Slow apps are frustrating. Users leave if your site takes too long to load. Good performance means:
+
 - Faster page loads
 - Smoother interactions
 - Better user experience
@@ -44,12 +45,12 @@ Don't recalculate expensive things on every render:
 function TodoList({ todos }) {
   // ❌ BAD - Calculates on every render
   const sortedTodos = todos.sort((a, b) => a.date - b.date);
-  
+
   // ✅ GOOD - Only calculates when todos change
   const sortedTodos = useMemo(() => {
     return todos.sort((a, b) => a.date - b.date);
   }, [todos]);
-  
+
   return <div>{/* render todos */}</div>;
 }
 ```
@@ -63,12 +64,12 @@ If you pass functions to child components, wrap them in useCallback:
 ```jsx
 function Parent() {
   const [count, setCount] = useState(0);
-  
+
   // ✅ GOOD - Function reference stays the same
   const handleClick = useCallback(() => {
-    setCount(c => c + 1);
+    setCount((c) => c + 1);
   }, []);
-  
+
   return <Child onClick={handleClick} />;
 }
 ```
@@ -82,10 +83,10 @@ Don't create new objects or functions in render:
 ```jsx
 function Component() {
   // ❌ BAD - Creates new object every render
-  return <Child style={{ color: 'red' }} />;
-  
+  return <Child style={{ color: "red" }} />;
+
   // ✅ GOOD - Defined outside or memoized
-  const style = { color: 'red' };
+  const style = { color: "red" };
   return <Child style={style} />;
 }
 ```
@@ -96,7 +97,7 @@ Same with functions:
 function Component() {
   // ❌ BAD - New function every render
   return <Child onClick={() => doSomething()} />;
-  
+
   // ✅ GOOD - Use useCallback or define outside
   const handleClick = useCallback(() => doSomething(), []);
   return <Child onClick={handleClick} />;
@@ -108,10 +109,10 @@ function Component() {
 Don't load everything at once. Split your code:
 
 ```jsx
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense } from "react";
 
 // Lazy load this component
-const HeavyComponent = lazy(() => import('./HeavyComponent'));
+const HeavyComponent = lazy(() => import("./HeavyComponent"));
 
 function App() {
   return (
@@ -129,7 +130,7 @@ This loads the component only when needed. Great for big components!
 If you have a really long list, use virtualization:
 
 ```jsx
-import { FixedSizeList } from 'react-window';
+import { FixedSizeList } from "react-window";
 
 function LongList({ items }) {
   return (
@@ -139,11 +140,7 @@ function LongList({ items }) {
       itemSize={50}
       width="100%"
     >
-      {({ index, style }) => (
-        <div style={style}>
-          {items[index]}
-        </div>
-      )}
+      {({ index, style }) => <div style={style}>{items[index]}</div>}
     </FixedSizeList>
   );
 }
@@ -157,13 +154,13 @@ Images can slow down your app. Optimize them:
 
 ```jsx
 // Use Next.js Image component if possible
-import Image from 'next/image';
+import Image from "next/image";
 
 function MyComponent() {
   return (
-    <Image 
-      src="/photo.jpg" 
-      width={500} 
+    <Image
+      src="/photo.jpg"
+      width={500}
       height={300}
       alt="Description"
       loading="lazy"
@@ -183,7 +180,7 @@ useEffect(() => {
   const timer = setInterval(() => {
     // Do something
   }, 1000);
-  
+
   // ✅ IMPORTANT - Clean up!
   return () => clearInterval(timer);
 }, []);
@@ -246,21 +243,18 @@ If you're making API calls on input, debounce them:
 
 ```jsx
 function SearchInput() {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const debouncedSearch = useDebounce(searchTerm, 500);
-  
+
   useEffect(() => {
     // Only runs 500ms after user stops typing
     if (debouncedSearch) {
       fetchResults(debouncedSearch);
     }
   }, [debouncedSearch]);
-  
+
   return (
-    <input 
-      value={searchTerm}
-      onChange={(e) => setSearchTerm(e.target.value)}
-    />
+    <input value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
   );
 }
 ```
@@ -273,14 +267,14 @@ Always use stable, unique keys in lists:
 
 ```jsx
 // ❌ BAD - Using index
-{todos.map((todo, index) => (
-  <TodoItem key={index} todo={todo} />
-))}
+{
+  todos.map((todo, index) => <TodoItem key={index} todo={todo} />);
+}
 
 // ✅ GOOD - Using unique ID
-{todos.map((todo) => (
-  <TodoItem key={todo.id} todo={todo} />
-))}
+{
+  todos.map((todo) => <TodoItem key={todo.id} todo={todo} />);
+}
 ```
 
 Proper keys help React update efficiently.
@@ -326,6 +320,7 @@ Small components are easier to memoize and optimize.
 ## When NOT to Optimize
 
 Don't optimize everything! Only optimize when:
+
 - You notice actual performance problems
 - Users complain about slowness
 - You've measured and found bottlenecks
@@ -335,6 +330,7 @@ Premature optimization wastes time and makes code more complex.
 ## Quick Checklist
 
 Before optimizing, check:
+
 - ✅ Are you using production build?
 - ✅ Are images optimized?
 - ✅ Are you cleaning up effects?
@@ -346,13 +342,11 @@ Performance is important, but don't obsess over it. Build your app first, then o
 
 Remember: premature optimization is the root of all evil! Build first, optimize later.
 
-## What's Next?
+## Next Steps
 
-Want to learn more about performance?
-- Learn about React's reconciliation algorithm
-- Study advanced optimization techniques
-- Use performance monitoring tools
-- Practice building fast apps
+Want to learn more about performance? Here's what to explore next:
 
-Keep it simple, measure often, and optimize what matters! 🚀
-
+- Learn about [React.memo and useMemo](/react/react-hooks) - Master memoization hooks
+- Understand [Custom Hooks](/react/react-custom-hooks) - Optimize hook performance
+- Explore [React Components](/react/react-components) - Build efficient components
+- Master [State Management](/react/react-state) - Optimize state updates
