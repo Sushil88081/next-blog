@@ -1,5 +1,59 @@
 import Image from "next/image";
 import PostCard from "@/components/PostCard";
+import type { Metadata } from "next";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://learn-code-easy.vercel.app";
+
+export const metadata: Metadata = {
+  title: "React Tutorials and Guides",
+  description:
+    "Learn React with comprehensive tutorials and guides. Master React hooks, components, state management, props, JSX, and more with detailed examples and best practices for building modern user interfaces.",
+  keywords: [
+    "react",
+    "reactjs",
+    "react tutorial",
+    "react guide",
+    "react hooks",
+    "react components",
+    "react state",
+    "react props",
+    "jsx",
+    "reactjs tutorial",
+    "learn react",
+    "react examples",
+    "react best practices",
+    "frontend development",
+    "javascript library",
+  ],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: `${siteUrl}/react`,
+    siteName: "Programming Blog",
+    title: "React Tutorials and Guides",
+    description:
+      "Learn React with comprehensive tutorials and guides. Master React hooks, components, state management, and more.",
+    images: [
+      {
+        url: `${siteUrl}/assets/images/react.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "React Tutorials and Guides",
+        type: "image/jpeg",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "React Tutorials and Guides",
+    description:
+      "Learn React with comprehensive tutorials and guides. Master React hooks, components, state management, and more.",
+    images: [`${siteUrl}/assets/images/react.jpg`],
+  },
+  alternates: {
+    canonical: `${siteUrl}/react`,
+  },
+};
 
 export default function ReactPage() {
   // Sample React posts - you can replace this with your actual data

@@ -8,34 +8,45 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://learn-code-easy.vercel.app";
+
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
-  ),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Programming Blog - Complete Guides and Tutorials",
     template: "%s | Programming Blog",
   },
   description:
-    "Learn about programming languages and technologies with comprehensive guides and tutorials. Master React, Go, Python, JavaScript and more with detailed examples and best practices.",
+    "Learn about programming languages and technologies with comprehensive guides and tutorials. Master React, Go, Python, JavaScript, TypeScript and more with detailed examples and best practices. Free coding tutorials for beginners and advanced developers.",
   keywords: [
     "programming",
+    "programming blog",
     "react",
+    "reactjs",
     "javascript",
+    "typescript",
     "go lang",
     "golang",
     "python",
     "web development",
     "tutorials",
-    "coding",
+    "coding tutorials",
     "software development",
-    "frontend",
-    "backend",
+    "frontend development",
+    "backend development",
     "programming guides",
+    "learn programming",
+    "coding examples",
+    "react tutorial",
+    "javascript tutorial",
+    "python tutorial",
+    "golang tutorial",
   ],
   authors: [{ name: "Programming Blog Team" }],
   creator: "Programming Blog",
   publisher: "Programming Blog",
+  applicationName: "Programming Blog",
+  referrer: "origin-when-cross-origin",
   formatDetection: {
     email: false,
     address: false,
@@ -44,17 +55,18 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "/",
+    url: siteUrl,
     siteName: "Programming Blog",
     title: "Programming Blog - Complete Guides and Tutorials",
     description:
-      "Learn about programming languages and technologies with comprehensive guides and tutorials.",
+      "Learn about programming languages and technologies with comprehensive guides and tutorials. Master React, Go, Python, JavaScript and more with detailed examples and best practices.",
     images: [
       {
-        url: "/assets/images/og-image.jpg",
+        url: `${siteUrl}/assets/images/react.jpg`,
         width: 1200,
         height: 630,
-        alt: "Programming Blog",
+        alt: "Programming Blog - Learn Programming Languages and Technologies",
+        type: "image/jpeg",
       },
     ],
   },
@@ -63,15 +75,18 @@ export const metadata: Metadata = {
     title: "Programming Blog - Complete Guides and Tutorials",
     description:
       "Learn about programming languages and technologies with comprehensive guides and tutorials.",
-    images: ["/assets/images/twitter-image.jpg"],
+    images: [`${siteUrl}/assets/images/react.jpg`],
     creator: "@programmingblog",
+    site: "@programmingblog",
   },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
+      noimageindex: false,
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
@@ -90,9 +105,10 @@ export const metadata: Metadata = {
     // yahoo: 'your-yahoo-verification-code',
   },
   alternates: {
-    canonical: "/",
+    canonical: siteUrl,
   },
   category: "technology",
+  classification: "Technology & Programming",
   viewport: {
     width: "device-width",
     initialScale: 1,
@@ -102,6 +118,9 @@ export const metadata: Metadata = {
     { media: "(prefers-color-scheme: light)", color: "#3b82f6" },
     { media: "(prefers-color-scheme: dark)", color: "#1e40af" },
   ],
+  other: {
+    "og:locale:alternate": "en_US",
+  },
 };
 
 export default function RootLayout({
@@ -109,9 +128,79 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://learn-code-easy.vercel.app";
+
+  // Structured Data for SEO
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Programming Blog",
+    url: siteUrl,
+    logo: `${siteUrl}/assets/images/react.jpg`,
+    description:
+      "Learn about programming languages and technologies with comprehensive guides and tutorials.",
+    sameAs: [
+      // Add your social media URLs here when available
+      // "https://twitter.com/programmingblog",
+      // "https://github.com/yourusername",
+    ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "Customer Service",
+      availableLanguage: "English",
+    },
+  };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Programming Blog",
+    url: siteUrl,
+    description:
+      "Learn about programming languages and technologies with comprehensive guides and tutorials. Master React, Go, Python, JavaScript and more.",
+    publisher: {
+      "@type": "Organization",
+      name: "Programming Blog",
+    },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${siteUrl}/?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: siteUrl,
+      },
+    ],
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
+        {/* Structured Data for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        />
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2036622719481563"

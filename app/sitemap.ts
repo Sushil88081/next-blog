@@ -2,7 +2,8 @@ import { MetadataRoute } from "next";
 import { getPostSlugs } from "@/lib/markdown";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://learn-code-easy.vercel.app";
 
   // Get all post slugs
   const postSlugs = getPostSlugs();

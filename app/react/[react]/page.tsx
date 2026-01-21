@@ -11,6 +11,8 @@ interface PageProps {
   }
 }
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://learn-code-easy.vercel.app";
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const post = await getPostBySlug(params.react)
   
@@ -20,10 +22,57 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
   }
 
+  const postUrl = `${siteUrl}/react/${post.slug}`;
+  const postImage = post.image 
+    ? `${siteUrl}${post.image}` 
+    : `${siteUrl}/assets/images/react.jpg`;
+
   return {
-    title: `${post.title} | Programming Blog`,
+    title: post.title,
     description: post.description,
     keywords: post.tags,
+    authors: [{ name: post.author || "Programming Blog Team" }],
+    creator: post.author || "Programming Blog Team",
+    publisher: "Programming Blog",
+    openGraph: {
+      type: "article",
+      locale: "en_US",
+      url: postUrl,
+      siteName: "Programming Blog",
+      title: post.title,
+      description: post.description,
+      publishedTime: post.date,
+      modifiedTime: post.date,
+      authors: [post.author || "Programming Blog Team"],
+      section: post.category,
+      tags: post.tags,
+      images: [
+        {
+          url: postImage,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+          type: "image/jpeg",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: [postImage],
+      creator: "@programmingblog",
+      site: "@programmingblog",
+    },
+    alternates: {
+      canonical: postUrl,
+    },
+    other: {
+      "article:published_time": post.date,
+      "article:modified_time": post.date,
+      "article:author": post.author || "Programming Blog Team",
+      "article:section": post.category,
+    },
   }
 }
 
@@ -34,9 +83,80 @@ export default async function ReactPostPage({ params }: PageProps) {
     notFound()
   }
 
+  const postUrl = `${siteUrl}/react/${post.slug}`;
+  const postImage = post.image 
+    ? `${siteUrl}${post.image}` 
+    : `${siteUrl}/assets/images/react.jpg`;
+
+  // Article structured data for SEO
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    image: postImage,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: {
+      "@type": "Person",
+      name: post.author || "Programming Blog Team",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Programming Blog",
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteUrl}/assets/images/react.jpg`,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": postUrl,
+    },
+    keywords: post.tags.join(", "),
+    articleSection: post.category,
+    inLanguage: "en-US",
+  };
+
+  // Breadcrumb structured data
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: siteUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "React",
+        item: `${siteUrl}/react`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.title,
+        item: postUrl,
+      },
+    ],
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto">
+        {/* Structured Data for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        />
+        
         {/* Header */}
         <header className="mb-8">
           <div className="flex items-center space-x-4 mb-4">
@@ -87,6 +207,7 @@ export default async function ReactPostPage({ params }: PageProps) {
         {/* Content */}
         <article
           className="prose prose-lg dark:prose-invert max-w-none mb-8"
+          itemProp="articleBody"
           dangerouslySetInnerHTML={{ __html: post.contentHtml || '' }}
         />
         <CodeBlockInjector />
