@@ -120,7 +120,7 @@ function Test() {
       {students.map(student => (
                                //  always use unique key to avoid warnings in reactjs.
         <li key={student.id}>          
-          {student.name} - ग्रेड: {student.grade}
+          {student.name} - Grade: {student.grade}
         </li>
       ))}
     </ul>

@@ -1,20 +1,22 @@
 ---
-title: "React में Event Handling"
+title: "Event Handling in React - Complete Guide"
 date: "2025-02-10"
-description: "React में events कैसे handle करें? onClick, onChange, onSubmit और अन्य events के बारे में जानें।"
+description: "Learn how to handle events in React. Understand onClick, onChange, onSubmit and other common events with examples."
 category: "React Basics"
-tags: ["react", "events", "onClick", "onChange", "हिंदी"]
+tags: ["react", "events", "onClick", "onChange", "event-handling"]
 image: "/images/react-events.jpg"
 author: "Sushil Kumar"
 ---
 
-# React में Event Handling
+# Event Handling in React - Complete Guide
 
-Event handling React में user interactions handle करने का तरीका है। React में events HTML events के similar हैं, लेकिन कुछ differences हैं।
+Event handling is how React responds to user interactions. When someone clicks a button, types in an input, or submits a form, you need to handle those events. React's event system is similar to HTML events, but there are some important differences you should know about.
 
 ## Basic Event Handling
 
 ### onClick Event
+
+The most common event is probably `onClick`. Here's how it works:
 
 ```jsx
 function Button() {
@@ -26,7 +28,7 @@ function Button() {
 }
 ```
 
-Inline function के साथ:
+You can also use inline functions:
 
 ```jsx
 function Button() {
@@ -38,9 +40,13 @@ function Button() {
 }
 ```
 
+Both ways work! Use named functions for complex logic, and inline functions for simple stuff.
+
 ## Common Events
 
 ### onChange Event
+
+This fires when an input's value changes:
 
 ```jsx
 function Input() {
@@ -55,13 +61,17 @@ function Input() {
       type="text"
       value={value}
       onChange={handleChange}
-      placeholder="टाइप करें..."
+      placeholder="Type something..."
     />
   );
 }
 ```
 
+This is how you make controlled inputs in React. The input's value is controlled by state!
+
 ### onSubmit Event
+
+Handle form submissions:
 
 ```jsx
 function Form() {
@@ -85,7 +95,11 @@ function Form() {
 }
 ```
 
-### onMouseOver और onMouseOut
+Notice `e.preventDefault()` - this stops the form from refreshing the page, which is usually what you want in React apps.
+
+### onMouseOver and onMouseOut
+
+These fire when the mouse enters or leaves an element:
 
 ```jsx
 function HoverButton() {
@@ -105,9 +119,11 @@ function HoverButton() {
 }
 ```
 
+Great for hover effects and tooltips!
+
 ## Event Object
 
-Event handler function को automatically event object मिलता है:
+Event handler functions automatically receive an event object:
 
 ```jsx
 function Input() {
@@ -121,9 +137,11 @@ function Input() {
 }
 ```
 
+The `e.target` gives you access to the element that triggered the event. Super useful!
+
 ## Synthetic Events
 
-React Synthetic Events use करता है, जो native events को wrap करते हैं:
+React uses Synthetic Events, which wrap native browser events. This gives React more control and better performance:
 
 ```jsx
 function Button() {
@@ -137,9 +155,11 @@ function Button() {
 }
 ```
 
+Synthetic events work the same as native events, but React optimizes them under the hood.
+
 ## Passing Arguments
 
-Event handlers में arguments pass करना:
+Sometimes you need to pass extra data to your event handler:
 
 ```jsx
 function TodoList({ todos }) {
@@ -162,24 +182,36 @@ function TodoList({ todos }) {
 }
 ```
 
+The arrow function `() => handleDelete(todo.id)` lets you pass the `todo.id` to the handler. This is super common!
+
 ## Event Handler Best Practices
 
-### 1. Named Functions Use करें
+### 1. Use Named Functions
+
+For complex logic, use named functions:
 
 ```jsx
-// Good
+// Good - Easy to read and test
 function Component() {
-  const handleClick = () => { /* ... */ };
+  const handleClick = () => { 
+    // Complex logic here
+  };
   return <button onClick={handleClick}>Click</button>;
 }
 
-// Avoid (for complex logic)
+// Avoid for complex logic
 function Component() {
-  return <button onClick={() => { /* complex logic */ }}>Click</button>;
+  return <button onClick={() => { 
+    // Too much logic inline
+  }}>Click</button>;
 }
 ```
 
+Named functions are easier to read, test, and debug.
+
 ### 2. useCallback for Performance
+
+If you're passing handlers to child components, use useCallback:
 
 ```jsx
 import { useCallback } from 'react';
@@ -193,20 +225,28 @@ function Component() {
 }
 ```
 
+This prevents unnecessary re-renders of child components.
+
 ### 3. Prevent Default Behavior
+
+Always prevent default when needed:
 
 ```jsx
 function Form() {
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent form submission
-    // Form handling logic
+    // Your form handling logic
   };
 
   return <form onSubmit={handleSubmit}>...</form>;
 }
 ```
 
+Without `preventDefault()`, the form would submit normally and refresh the page.
+
 ## Multiple Event Handlers
+
+You can attach multiple handlers to one element:
 
 ```jsx
 function Input() {
@@ -235,9 +275,11 @@ function Input() {
 }
 ```
 
+Each event type can have its own handler. Pretty flexible!
+
 ## Event Bubbling
 
-React में events bubble होते हैं:
+Events bubble up through the component tree in React:
 
 ```jsx
 function Parent() {
@@ -262,7 +304,11 @@ function Child() {
 }
 ```
 
+If you click the button, both handlers fire unless you call `stopPropagation()`. This is useful sometimes, annoying other times!
+
 ## Common Event Types
+
+Here's a quick reference of common events:
 
 | Event | Description |
 |-------|-------------|
@@ -275,14 +321,111 @@ function Child() {
 | `onMouseOut` | Mouse leaves element |
 | `onKeyDown` | Key pressed |
 | `onKeyUp` | Key released |
+| `onDoubleClick` | Double click |
+| `onMouseEnter` | Mouse enters (doesn't bubble) |
+| `onMouseLeave` | Mouse leaves (doesn't bubble) |
 
-## निष्कर्ष
+## Real-World Example
 
-Event handling React में user interactions handle करने का मुख्य तरीका है। Proper event handling से interactive और responsive applications बनते हैं।
+Here's a complete example combining multiple events:
 
-## अगले कदम
+```jsx
+function SearchBox() {
+  const [query, setQuery] = useState('');
+  const [isFocused, setIsFocused] = useState(false);
 
-- Form handling सीखें
-- Advanced event patterns explore करें
-- Performance optimization के लिए events optimize करें
+  const handleChange = (e) => {
+    setQuery(e.target.value);
+  };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (query.trim()) {
+      console.log('Searching for:', query);
+      // Perform search
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSubmit(e);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        value={query}
+        onChange={handleChange}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
+        onKeyDown={handleKeyDown}
+        placeholder="Search..."
+        className={isFocused ? 'focused' : ''}
+      />
+      <button type="submit">Search</button>
+    </form>
+  );
+}
+```
+
+This shows how multiple events work together in a real component.
+
+## Tips and Tricks
+
+1. **Always use camelCase** - `onClick`, not `onclick`
+2. **Pass functions, not calls** - `onClick={handleClick}`, not `onClick={handleClick()}`
+3. **Use preventDefault** when needed - Especially for forms
+4. **Stop propagation** when needed - To prevent unwanted bubbling
+5. **Name handlers clearly** - `handleClick`, `handleSubmit`, etc.
+
+## Common Mistakes
+
+Here's what to avoid:
+
+1. **Calling the function instead of passing it**
+   ```jsx
+   // Wrong
+   <button onClick={handleClick()}>
+   
+   // Right
+   <button onClick={handleClick}>
+   ```
+
+2. **Forgetting preventDefault on forms**
+   ```jsx
+   // Wrong - Page refreshes
+   <form onSubmit={handleSubmit}>
+   
+   // Right
+   <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
+   ```
+
+3. **Not using camelCase**
+   ```jsx
+   // Wrong
+   <button onclick={handleClick}>
+   
+   // Right
+   <button onClick={handleClick}>
+   ```
+
+## Conclusion
+
+Event handling is essential in React. It's how your app responds to users. Once you understand the basics, you'll be building interactive apps in no time!
+
+Remember:
+- Use camelCase for event names
+- Pass functions, don't call them
+- Use preventDefault for forms
+- Handle events to make your app interactive
+
+## Next Steps
+
+Now that you understand events, check out:
+- Learn about [Forms in React](/react/react-forms) - Handle form inputs and validation
+- Explore [Advanced Event Patterns](/react/react-performance-tips) - Optimize event handlers
+- Study [State Management](/react/react-state) - Combine events with state for powerful interactions
+
+Happy coding! 🎉
