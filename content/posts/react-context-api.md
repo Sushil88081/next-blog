@@ -5,7 +5,7 @@ description: "React Context API क्या है और इसे कैस�
 category: "React Advanced"
 tags: ["react", "context", "state-management", "हिंदी"]
 image: "/images/react-context.jpg"
-author: "आपका नाम"
+author: "Sushil Kumar"
 ---
 
 # React Context API - State Management का आसान तरीका

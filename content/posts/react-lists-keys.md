@@ -5,7 +5,7 @@ description: "React में lists कैसे render करें? Keys क�
 category: "React Basics"
 tags: ["react", "lists", "keys", "map", "हिंदी"]
 image: "/images/react-lists.jpg"
-author: "आपका नाम"
+author: "Sushil Kumar"
 ---
 
 # React में Lists और Keys

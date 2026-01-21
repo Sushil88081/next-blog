@@ -5,7 +5,7 @@ description: "React में events कैसे handle करें? onClick, 
 category: "React Basics"
 tags: ["react", "events", "onClick", "onChange", "हिंदी"]
 image: "/images/react-events.jpg"
-author: "आपका नाम"
+author: "Sushil Kumar"
 ---
 
 # React में Event Handling

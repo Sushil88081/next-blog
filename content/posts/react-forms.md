@@ -5,7 +5,7 @@ description: "React में forms कैसे handle करें? Controlled
 category: "React Basics"
 tags: ["react", "forms", "validation", "हिंदी"]
 image: "/images/react-forms.jpg"
-author: "आपका नाम"
+author: "Sushil Kumar"
 ---
 
 # React में Forms Handling

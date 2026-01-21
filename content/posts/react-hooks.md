@@ -5,7 +5,7 @@ description: "What are React Hooks? Detailed information about useState, useEffe
 category: "React Advanced"
 tags: ["react", "hooks", "useState", "useEffect"]
 image: "/images/react-hooks.jpg"
-author: "Your Name"
+author: "Sushil Kumar"
 ---
 
 # React Hooks - Complete Guide
