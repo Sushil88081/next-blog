@@ -1,6 +1,6 @@
 ---
 title: "What is React.js?"
-date: "2025-12-20"
+date: "2025-01-01"
 description: "Discover what React.js is and why it is worth learning. Explore React basics, features, and its advantages in frontend development."
 category: "React Basics"
 tags: ["react", "introduction", "basics"]
@@ -120,8 +120,7 @@ The best way to learn React is by building projects. Start small, experiment wit
 
 Now that you understand what React is, here's what to learn next:
 
-- Learn about [JSX in React](/react/jsx-in-react) - Understand the syntax that makes React components work
+- **Next:** Learn about [JSX in React](/react/jsx-in-react) - Understand the syntax that makes React components work
 - Explore [React Components](/react/react-components) - Learn how to create and use components
 - Understand [Props in React](/react/react-props) - Learn how to pass data between components
 - Master [State Management](/react/react-state) - Learn how to manage dynamic data in your components
-- Read about [React Hooks](/react/react-hooks) - Modern way to use state and lifecycle features

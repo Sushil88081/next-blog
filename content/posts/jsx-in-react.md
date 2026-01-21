@@ -1,6 +1,6 @@
 ---
 title: "Jsx"
-date: "2025-12-22"
+date: "2025-01-02"
 description: "What is JSX,Learn about the JSX."
 category: "React Basics"
 tags: ["react", "jsx"]
@@ -139,7 +139,8 @@ JSX is a fundamental part of React development. It acts as a bridge between HTML
 
 ## Next Steps
 
-- Learn about [React Components](/react/react-components)
-- Understand [Props in React](/react/react-props)
-- Explore [State Management](/react/react-state)
-- Read about [React Hooks](/react/react-hooks)
+Now that you understand JSX, here's what to learn next:
+
+- **Next:** Learn about [React Components](/react/react-components) - Start building reusable UI components
+- Understand [Props in React](/react/react-props) - Learn how to pass data between components
+- Explore [State Management](/react/react-state) - Learn how to manage dynamic data

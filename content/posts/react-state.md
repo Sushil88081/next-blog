@@ -1,6 +1,6 @@
 ---
 title: "What is State in React?"
-date: "2025-01-20"
+date: "2025-01-05"
 description: "Learn how to use State in React with the useState hook. Complete guide covering primitive state, object state, array state, and best practices for state management."
 category: "React Basics"
 tags: ["react", "state", "hooks", "useState"]
@@ -567,8 +567,7 @@ Keep these tips in mind:
 
 Now that you've learned about state, here's what to explore next:
 
-- Learn about [React Hooks](/react/react-hooks) - Discover other hooks like useEffect, useContext, and more
-- Understand [Props in React](/react/react-props) - See how props and state work together
-- Explore [Context API](/react/react-context-api) - Share state across components without prop drilling
-- Read about [Event Handling](/react/react-events) - See how state changes when users interact with your app
-- Study [Component Lifecycle](/react/react-components) - Learn when components update and re-render
+- **Next:** Learn about [useState Hook](/react/react-usestate-basics) - Deep dive into the useState hook with examples
+- Understand [State vs Props](/react/react-state-props) - See how props and state work together
+- Explore [Event Handling](/react/react-events) - See how state changes when users interact with your app
+- Read about [React Hooks](/react/react-hooks) - Discover other hooks like useEffect, useContext, and more

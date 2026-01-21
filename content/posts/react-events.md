@@ -1,6 +1,6 @@
 ---
 title: "Event Handling in React - Complete Guide"
-date: "2025-02-10"
+date: "2025-01-08"
 description: "Learn how to handle events in React. Understand onClick, onChange, onSubmit and other common events with examples."
 category: "React Basics"
 tags: ["react", "events", "onClick", "onChange", "event-handling"]
@@ -423,9 +423,10 @@ Remember:
 
 ## Next Steps
 
-Now that you understand events, check out:
-- Learn about [Forms in React](/react/react-forms) - Handle form inputs and validation
-- Explore [Advanced Event Patterns](/react/react-performance-tips) - Optimize event handlers
-- Study [State Management](/react/react-state) - Combine events with state for powerful interactions
+Now that you understand events, here's what to learn next:
+
+- **Next:** Learn about [Conditional Rendering](/react/react-conditional-rendering) - Show different content based on conditions
+- Explore [Lists and Keys](/react/react-lists-keys) - Render dynamic lists with event handlers
+- Study [Forms in React](/react/react-forms) - Handle form inputs and validation
 
 Happy coding! 🎉

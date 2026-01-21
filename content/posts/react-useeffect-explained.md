@@ -1,6 +1,6 @@
 ---
 title: "useEffect Hook Explained Simply"
-date: "2025-01-18"
+date: "2025-01-12"
 description: "Learn useEffect hook in React with simple examples. Understand how to use useEffect for side effects like API calls and data fetching."
 category: "React Hooks"
 tags: ["react", "hooks", "useEffect", "side effects"]
@@ -171,7 +171,7 @@ Remember: useEffect is your friend for doing things after render, but use it wis
 
 Once you understand useEffect, here's what to learn next:
 
-- Learn about [useState Hook](/react/react-usestate-basics) - Manage component state
+- **Next:** Learn about [React Hooks](/react/react-hooks) - Discover all built-in hooks
 - Understand [Custom Hooks](/react/react-custom-hooks) - Create reusable hook logic
 - Explore [Context API](/react/react-context-api) - Share data across components
-- Master [React Hooks](/react/react-hooks) - Learn other important hooks
+- Master [Performance Tips](/react/react-performance-tips) - Optimize your effects

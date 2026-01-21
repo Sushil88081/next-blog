@@ -1,6 +1,6 @@
 ---
 title: "Conditional Rendering in React"
-date: "2025-02-15"
+date: "2025-01-09"
 description: "Learn how to conditionally render content in React using if/else, ternary operator, logical operators, and switch statements. Master dynamic UI rendering techniques."
 category: "React Basics"
 tags: ["react", "conditional", "rendering", "jsx"]
@@ -372,8 +372,6 @@ Just remember, there's no one right way to do it. Pick the approach that makes s
 
 Now that you know about conditional rendering, here's what to check out next:
 
-- Learn about [Lists and Keys in React](/react/react-lists-keys) - Find out how to render dynamic lists the right way
-- Explore [State Management](/react/react-state) - Learn how to manage component state for dynamic rendering
-- Understand [React Hooks](/react/react-hooks) - Get good at hooks like useState and useEffect for conditional logic
-- Read about [Event Handling](/react/react-events) - Learn how user actions trigger conditional rendering
-- Study [Component Composition](/react/react-components) - See how conditional rendering works in bigger component structures
+- **Next:** Learn about [Lists and Keys in React](/react/react-lists-keys) - Find out how to render dynamic lists the right way
+- Explore [Forms in React](/react/react-forms) - Build interactive forms with conditional validation
+- Understand [useEffect Hook](/react/react-useeffect-explained) - Handle side effects based on conditions

@@ -56,13 +56,15 @@ export const metadata: Metadata = {
 };
 
 export default function ReactPage() {
+  // Posts arranged in logical learning sequence - from basics to advanced
   const reactPosts = [
+    // === BASICS - Start Here ===
     {
       title: "React Introduction",
       description:
         "Discover what React.js is and why it is worth learning. Explore React basics, features, and its advantages in frontend development.",
       image: "/assets/images/react.jpg",
-      date: "2025-12-20",
+      date: "2025-01-01",
       slug: "react-introduction",
     },
     {
@@ -70,112 +72,116 @@ export default function ReactPage() {
       description:
         "JSX is a syntax extension for JavaScript that allows to write HTML-like code in your JavaScript files.",
       image: "/assets/images/react.jpg",
-      date: "2025-12-21",
+      date: "2025-01-02",
       slug: "jsx-in-react",
     },
     {
       title: "Components in React",
       description: "Learn how to create and use React components. Understand component-based architecture and reusable UI elements.",
       image: "/assets/images/react.jpg",
-      date: "2025-12-22",
+      date: "2025-01-03",
       slug: "react-components",
-    },
-    {
-      title: "Conditional Rendering in React",
-      description: "Master conditional rendering in React. Learn different ways to show or hide elements based on conditions.",
-      image: "/assets/images/react.jpg",
-      date: "2025-12-23",
-      slug: "react-conditional-rendering",
     },
     {
       title: "What is Props in React",
       description: "How to use props in React, complete guide with examples. Learn how to pass data between components.",
       image: "/assets/images/react.jpg",
-      date: "2025-01-30",
+      date: "2025-01-04",
       slug: "react-props",
     },
     {
       title: "What is State in React",
       description: "How to use state in React, complete guide with examples. Understand React state management.",
       image: "/assets/images/react.jpg",
-      date: "2025-12-20",
+      date: "2025-01-05",
       slug: "react-state",
     },
     {
       title: "useState Hook - The Beginner's Guide",
       description: "Learn useState hook step by step. Perfect guide for beginners to understand React state management with simple examples.",
       image: "/assets/images/react.jpg",
-      date: "2025-01-19",
+      date: "2025-01-06",
       slug: "react-usestate-basics",
     },
+    {
+      title: "State vs Props",
+      description: "Understand the difference between state and props in React. Learn when to use each one.",
+      image: "/assets/images/react.jpg",
+      date: "2025-01-07",
+      slug: "react-state-props",
+    },
+    // === INTERACTIVE FEATURES ===
+    {
+      title: "React Events - Event Handling",
+      description: "Learn how to handle events in React. Complete guide with examples for click, change, and other events.",
+      image: "/assets/images/react.jpg",
+      date: "2025-01-08",
+      slug: "react-events",
+    },
+    {
+      title: "Conditional Rendering in React",
+      description: "Master conditional rendering in React. Learn different ways to show or hide elements based on conditions.",
+      image: "/assets/images/react.jpg",
+      date: "2025-01-09",
+      slug: "react-conditional-rendering",
+    },
+    {
+      title: "Lists and Keys in React",
+      description: "Learn how to render lists in React and why keys are important. Complete guide with examples.",
+      image: "/assets/images/react.jpg",
+      date: "2025-01-10",
+      slug: "react-lists-keys",
+    },
+    {
+      title: "React Forms - Form Handling",
+      description: "Learn how to handle forms in React. Understand controlled components, form validation, and form submission.",
+      image: "/assets/images/react.jpg",
+      date: "2025-01-11",
+      slug: "react-forms",
+    },
+    // === ADVANCED HOOKS ===
     {
       title: "useEffect Hook Explained Simply",
       description: "Learn useEffect hook in React with simple examples. Understand how to use useEffect for side effects like API calls and data fetching.",
       image: "/assets/images/react.jpg",
-      date: "2025-01-18",
+      date: "2025-01-12",
       slug: "react-useeffect-explained",
     },
     {
       title: "React Hooks - Complete Guide",
       description: "What are React Hooks? Detailed information about useState, useEffect, useContext and other hooks.",
       image: "/assets/images/react.jpg",
-      date: "2025-01-25",
+      date: "2025-01-13",
       slug: "react-hooks",
     },
     {
       title: "Creating Custom Hooks in React",
       description: "Learn how to create your own custom React hooks. Reuse logic across components with simple examples and best practices.",
       image: "/assets/images/react.jpg",
-      date: "2025-01-21",
+      date: "2025-01-14",
       slug: "react-custom-hooks",
     },
-    {
-      title: "State vs Props",
-      description: "Understand the difference between state and props in React. Learn when to use each one.",
-      image: "/assets/images/react.jpg",
-      date: "2025-12-20",
-      slug: "react-state-props",
-    },
-    {
-      title: "React Events - Event Handling",
-      description: "Learn how to handle events in React. Complete guide with examples for click, change, and other events.",
-      image: "/assets/images/react.jpg",
-      date: "2025-01-15",
-      slug: "react-events",
-    },
-    {
-      title: "React Forms - Form Handling",
-      description: "Learn how to handle forms in React. Understand controlled components, form validation, and form submission.",
-      image: "/assets/images/react.jpg",
-      date: "2025-01-16",
-      slug: "react-forms",
-    },
+    // === STATE MANAGEMENT & NAVIGATION ===
     {
       title: "React Context API",
       description: "Learn React Context API for sharing data across components without prop drilling. Simple examples included.",
       image: "/assets/images/react.jpg",
-      date: "2025-01-17",
+      date: "2025-01-15",
       slug: "react-context-api",
-    },
-    {
-      title: "Lists and Keys in React",
-      description: "Learn how to render lists in React and why keys are important. Complete guide with examples.",
-      image: "/assets/images/react.jpg",
-      date: "2025-01-14",
-      slug: "react-lists-keys",
     },
     {
       title: "React Router - Navigation Made Easy",
       description: "Learn React Router to add navigation to your React app. Step by step guide with examples for routing between pages.",
       image: "/assets/images/react.jpg",
-      date: "2025-01-20",
+      date: "2025-01-16",
       slug: "react-router-basics",
     },
+    // === OPTIMIZATION ===
     {
       title: "React Performance Tips for Beginners",
       description: "Learn simple ways to make your React app faster. Easy performance optimization tips for React beginners.",
       image: "/assets/images/react.jpg",
-      date: "2025-01-22",
+      date: "2025-01-17",
       slug: "react-performance-tips",
     },
   ];

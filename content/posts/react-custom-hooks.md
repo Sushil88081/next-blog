@@ -1,6 +1,6 @@
 ---
 title: "Creating Custom Hooks in React"
-date: "2025-01-21"
+date: "2025-01-14"
 description: "Learn how to create your own custom React hooks. Reuse logic across components with simple examples and best practices."
 category: "React Advanced"
 tags: ["react", "hooks", "custom hooks", "reusable logic", "react hooks"]
@@ -352,7 +352,6 @@ Practice by creating your own hooks for common patterns in your projects. Soon y
 
 Now that you understand custom hooks, here's what to learn next:
 
-- Learn about [React Hooks](/react/react-hooks) - Master all built-in hooks
-- Understand [useEffect Hook](/react/react-useeffect-explained) - Handle side effects in hooks
-- Explore [Context API](/react/react-context-api) - Combine Context with custom hooks
+- **Next:** Learn about [Context API](/react/react-context-api) - Combine Context with custom hooks
+- Explore [React Router](/react/react-router-basics) - Add navigation to your React app
 - Master [Performance Tips](/react/react-performance-tips) - Optimize your hooks

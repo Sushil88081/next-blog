@@ -1,6 +1,6 @@
 ---
 title: "React Router - Navigation Made Easy"
-date: "2025-01-20"
+date: "2025-01-16"
 description: "Learn React Router to add navigation to your React app. Step by step guide with examples for routing between pages."
 category: "React Advanced"
 tags: ["react", "router", "navigation", "routing", "react-router"]
@@ -352,7 +352,6 @@ Practice building a small app with multiple pages. That's the best way to learn!
 
 Now that you know routing basics, here's what to learn next:
 
-- Learn about [React Components](/react/react-components) - Build reusable page components
-- Understand [State Management](/react/react-state) - Manage state across routes
-- Explore [Performance Tips](/react/react-performance-tips) - Optimize your React app
-- Master [Custom Hooks](/react/react-custom-hooks) - Create hooks for route logic
+- **Next:** Learn about [Performance Tips](/react/react-performance-tips) - Optimize your React app
+- Explore [Custom Hooks](/react/react-custom-hooks) - Create hooks for route logic
+- Master [React Hooks](/react/react-hooks) - Deep dive into all hooks

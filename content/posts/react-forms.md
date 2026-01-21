@@ -1,6 +1,6 @@
 ---
 title: "Form Handling in React - Complete Guide"
-date: "2025-02-25"
+date: "2025-01-11"
 description: "Learn how to handle forms in React. Understand controlled components, form validation, and best practices for building forms."
 category: "React Basics"
 tags: ["react", "forms", "validation", "controlled-components"]
@@ -499,10 +499,11 @@ Key takeaways:
 
 ## Next Steps
 
-Now that you understand forms, check out:
-- Explore advanced form libraries like Formik or React Hook Form
-- Learn about form validation libraries
-- Study file upload handling
-- Understand form accessibility best practices
+Now that you understand forms, here's what to learn next:
+
+- **Next:** Learn about [useEffect Hook](/react/react-useeffect-explained) - Submit forms and handle API calls
+- Explore [React Hooks](/react/react-hooks) - Master all built-in hooks
+- Study [Custom Hooks](/react/react-custom-hooks) - Create hooks for form logic
+- Understand [Performance Tips](/react/react-performance-tips) - Optimize form performance
 
 Happy coding! 🚀

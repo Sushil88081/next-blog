@@ -1,6 +1,6 @@
 ---
 title: "React Hooks - Complete Guide"
-date: "2025-01-25"
+date: "2025-01-13"
 description: "What are React Hooks? Detailed information about useState, useEffect, useContext and other hooks."
 category: "React Advanced"
 tags: ["react", "hooks", "useState", "useEffect"]
@@ -209,7 +209,6 @@ React Hooks make functional components powerful. They make code simpler and more
 
 Now that you understand React Hooks, here's what to learn next:
 
-- Learn about [useState Hook](/react/react-usestate-basics) - Deep dive into state management
-- Understand [useEffect Hook](/react/react-useeffect-explained) - Master side effects
-- Explore [Custom Hooks](/react/react-custom-hooks) - Create your own reusable hooks
+- **Next:** Learn about [Custom Hooks](/react/react-custom-hooks) - Create your own reusable hooks
+- Explore [Context API](/react/react-context-api) - Use Context with hooks
 - Master [Performance Tips](/react/react-performance-tips) - Optimize hooks performance

@@ -1,6 +1,6 @@
 ---
 title: "Components , Learn about the components "
-date: "2025-12-22"
+date: "2025-01-03"
 description: "What are React Components? Learn about Functional and Class components, component composition and best practices."
 category: "React Basics"
 tags: ["react", "components", "jsx"]
@@ -279,8 +279,7 @@ Remember, start simple and gradually build more complex components. Practice cre
 
 Now that you understand React components, here's what to learn next:
 
-- Learn about [Props in React](/react/react-props) - Deep dive into how to pass and use props effectively
+- **Next:** Learn about [Props in React](/react/react-props) - Deep dive into how to pass and use props effectively
 - Explore [State Management](/react/react-state) - Learn how to manage dynamic data in your components
 - Understand [React Hooks](/react/react-hooks) - Modern way to add state and lifecycle features to functional components
-- Read about [JSX in React](/react/jsx-in-react) - Master the syntax that makes React components work
 - Learn about [Event Handling](/react/react-events) - Discover how to handle user interactions in your components

@@ -1,6 +1,6 @@
 ---
 title: "State vs Props"
-date: "2026-01-17"
+date: "2025-01-07"
 description: "Learn difference between state and props(properties)."
 category: "React Basics"
 tags: ["react", "state", "hooks", "useState"]
@@ -101,7 +101,9 @@ State is changeable data. Props are read-only data. Both are important in React.
 
 Now that you understand the difference between state and props, here's what to explore next:
 
-- Learn about [State Management in React](/react/react-state) - Deep dive into managing state with useState hook
+- **Next:** Learn about [Event Handling in React](/react/react-events) - Make your components interactive
+- Explore [Conditional Rendering](/react/react-conditional-rendering) - Show different content based on state
+- Master [useEffect Hook](/react/react-useeffect-explained) - Handle side effects in your components
 - Understand [Props in React](/react/react-props) - Learn more about passing data through props
 - Explore [React Hooks](/react/react-hooks) - Discover other hooks that work with state and props
 - Read about [Context API](/react/react-context-api) - Share state across components without prop drilling

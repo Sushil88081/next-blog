@@ -1,6 +1,6 @@
 ---
 title: "React Props - Complete Guide"
-date: "2025-02-05"
+date: "2025-01-04"
 description: "Learn what React Props are and how to use them effectively. Understand prop types, default props, prop validation, and best practices for passing data between components."
 category: "React Basics"
 tags: ["react", "props", "components", "data-flow"]
@@ -415,8 +415,7 @@ Remember, props flow downward from parent to child, they're read-only, and they'
 
 Now that you understand props, here's what to explore next:
 
-- Learn about [State Management in React](/react/react-state) - Discover how to manage dynamic data within components
-- Understand [React Hooks](/react/react-hooks) - Learn how hooks like useState work with props
-- Explore [Component Composition](/react/react-components) - See how props enable powerful component patterns
-- Read about [Context API](/react/react-context-api) - Learn an alternative to prop drilling for deeply nested data
+- **Next:** Learn about [State Management in React](/react/react-state) - Discover how to manage dynamic data within components
+- Understand [useState Hook](/react/react-usestate-basics) - Learn the hook for managing state
+- Explore [State vs Props](/react/react-state-props) - Understand when to use each one
 - Study [Event Handling](/react/react-events) - See how function props enable user interactions

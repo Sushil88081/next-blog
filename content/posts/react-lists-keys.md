@@ -1,6 +1,6 @@
 ---
 title: "Lists and Keys in React - Complete Guide"
-date: "2025-02-20"
+date: "2025-01-10"
 description: "Learn how to render lists in React. Understand why keys are important and best practices for working with lists and keys."
 category: "React Basics"
 tags: ["react", "lists", "keys", "map", "rendering"]
@@ -406,10 +406,10 @@ The key points:
 
 ## Next Steps
 
-Now that you understand lists and keys, check out:
+Now that you understand lists and keys, here's what to learn next:
 
-- Learn about [Forms in React](/react/react-forms) - Handle form inputs and submissions
-- Explore [List Optimization](/react/react-performance-tips) - Make your lists faster
-- Study [Virtual Scrolling](/react/react-performance-tips) - Handle very long lists efficiently
+- **Next:** Learn about [Forms in React](/react/react-forms) - Handle form inputs and submissions
+- Explore [useEffect Hook](/react/react-useeffect-explained) - Fetch and display lists from APIs
+- Study [Performance Tips](/react/react-performance-tips) - Optimize list rendering
 
 Happy coding! 🚀
