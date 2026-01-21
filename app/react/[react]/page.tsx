@@ -1,30 +1,33 @@
-import { notFound } from 'next/navigation'
-import Image from 'next/image'
-import { getPostBySlug } from '@/lib/markdown'
-import { format } from 'date-fns'
-import CodeBlockInjector from '@/components/CodeBlockInjector'
-import type { Metadata } from 'next'
+import { notFound } from "next/navigation";
+import Image from "next/image";
+import { getPostBySlug } from "@/lib/markdown";
+import { format } from "date-fns";
+import CodeBlockInjector from "@/components/CodeBlockInjector";
+import type { Metadata } from "next";
 
 interface PageProps {
   params: {
-    react: string
-  }
+    react: string;
+  };
 }
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://learn-code-easy.vercel.app";
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://learn-code-easy.vercel.app";
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const post = await getPostBySlug(params.react)
-  
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const post = await getPostBySlug(params.react);
+
   if (!post) {
     return {
-      title: 'Post Not Found',
-    }
+      title: "Post Not Found",
+    };
   }
 
   const postUrl = `${siteUrl}/react/${post.slug}`;
-  const postImage = post.image 
-    ? `${siteUrl}${post.image}` 
+  const postImage = post.image
+    ? `${siteUrl}${post.image}`
     : `${siteUrl}/assets/images/react.jpg`;
 
   return {
@@ -73,19 +76,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       "article:author": post.author || "Programming Blog Team",
       "article:section": post.category,
     },
-  }
+  };
 }
 
 export default async function ReactPostPage({ params }: PageProps) {
-  const post = await getPostBySlug(params.react)
+  const post = await getPostBySlug(params.react);
 
   if (!post) {
-    notFound()
+    notFound();
   }
 
   const postUrl = `${siteUrl}/react/${post.slug}`;
-  const postImage = post.image 
-    ? `${siteUrl}${post.image}` 
+  const postImage = post.image
+    ? `${siteUrl}${post.image}`
     : `${siteUrl}/assets/images/react.jpg`;
 
   // Article structured data for SEO
@@ -156,7 +159,7 @@ export default async function ReactPostPage({ params }: PageProps) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
         />
-        
+
         {/* Header */}
         <header className="mb-8">
           <div className="flex items-center space-x-4 mb-4">
@@ -164,7 +167,7 @@ export default async function ReactPostPage({ params }: PageProps) {
               {post.category}
             </span>
             <span className="text-gray-500 dark:text-gray-400 text-sm">
-              {format(new Date(post.date), 'MMMM dd, yyyy')}
+              {format(new Date(post.date), "MMMM dd, yyyy")}
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-100">
@@ -208,10 +211,10 @@ export default async function ReactPostPage({ params }: PageProps) {
         <article
           className="prose prose-lg dark:prose-invert max-w-none mb-8"
           itemProp="articleBody"
-          dangerouslySetInnerHTML={{ __html: post.contentHtml || '' }}
+          dangerouslySetInnerHTML={{ __html: post.contentHtml || "" }}
         />
         <CodeBlockInjector />
       </div>
     </div>
-  )
+  );
 }
