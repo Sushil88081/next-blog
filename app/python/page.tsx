@@ -67,6 +67,46 @@ export default function PythonPage() {
       date: "2025-01-30",
       slug: "python-basics",
     },
+    {
+      title: "How to Install Python - Step by Step Guide",
+      description:
+        "Complete guide on installing Python on Windows, macOS, and Linux. Learn how to set up your Python development environment and verify installation.",
+      image: "/assets/images/python.jpg",
+      date: "2025-02-14",
+      slug: "python-installation",
+    },
+    {
+      title: "Python Functions - Complete Guide",
+      description:
+        "Learn how to create and use functions in Python. Understand function syntax, parameters, return values, lambda functions, and best practices.",
+      image: "/assets/images/python.jpg",
+      date: "2025-02-15",
+      slug: "python-functions",
+    },
+    {
+      title: "Python Data Structures - Lists, Dictionaries, Tuples, Sets",
+      description:
+        "Learn about Python data structures including lists, dictionaries, tuples, and sets. Understand when to use each and how to work with them effectively.",
+      image: "/assets/images/python.jpg",
+      date: "2025-02-16",
+      slug: "python-data-structures",
+    },
+    {
+      title: "Python Control Flow - If Statements, Loops, and More",
+      description:
+        "Learn about Python control flow including if statements, for loops, while loops, break, continue, and how to control program execution.",
+      image: "/assets/images/python.jpg",
+      date: "2025-02-17",
+      slug: "python-control-flow",
+    },
+    {
+      title: "Python Classes and Objects - Complete Guide",
+      description:
+        "Learn about Python classes and object-oriented programming. Understand how to create classes, objects, methods, inheritance, and more.",
+      image: "/assets/images/python.jpg",
+      date: "2025-02-18",
+      slug: "python-classes",
+    },
   ];
 
   return (

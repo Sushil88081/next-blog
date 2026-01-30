@@ -66,6 +66,38 @@ export default function TypeScriptPage() {
       date: "2025-01-31",
       slug: "typescript-basics",
     },
+    {
+      title: "How to Install TypeScript - Step by Step Guide",
+      description:
+        "Complete guide on installing TypeScript. Learn how to set up TypeScript in your project, configure it, and start writing type-safe code.",
+      image: "/assets/images/typescript.png",
+      date: "2025-02-19",
+      slug: "typescript-installation",
+    },
+    {
+      title: "TypeScript Interfaces - Complete Guide",
+      description:
+        "Learn about TypeScript interfaces, how to define them, and how to use them effectively. Understand interface inheritance, optional properties, and more.",
+      image: "/assets/images/typescript.png",
+      date: "2025-02-19",
+      slug: "typescript-interfaces",
+    },
+    {
+      title: "TypeScript with React - Complete Guide",
+      description:
+        "Learn how to use TypeScript with React. Understand how to type components, props, state, hooks, and build type-safe React applications.",
+      image: "/assets/images/typescript.png",
+      date: "2025-02-20",
+      slug: "typescript-react",
+    },
+    {
+      title: "TypeScript Types - Advanced Type Features",
+      description:
+        "Learn about advanced TypeScript types including union types, intersection types, generics, conditional types, and more advanced type features.",
+      image: "/assets/images/typescript.png",
+      date: "2025-02-21",
+      slug: "typescript-types",
+    },
   ];
 
   return (

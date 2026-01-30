@@ -31,7 +31,7 @@ export default function CategoryCard() {
       image: "/assets/images/python.jpg",
       link: "/python",
       color: "from-yellow-500 to-orange-500",
-      count: "2 Posts",
+      count: "7 Posts",
     },
     {
       name: "JavaScript",
@@ -49,7 +49,7 @@ export default function CategoryCard() {
       image: "/assets/images/typescript.png",
       link: "/typescript",
       color: "from-blue-600 to-indigo-600",
-      count: "2 Posts",
+      count: "6 Posts",
     },
   ];
 
