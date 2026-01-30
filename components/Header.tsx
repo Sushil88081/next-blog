@@ -2,51 +2,91 @@
 
 import Link from "next/link";
 import { useTheme } from "./ThemeProvider";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const { theme, toggleTheme } = useTheme();
+  const pathname = usePathname();
+
+  const isActive = (path: string) => pathname === path;
 
   return (
-    <header className="sticky top-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-md">
+    <header className="sticky top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-md">
       <div className="container mx-auto px-3 md:px-4 py-5 md:py-6">
         <div className="flex items-center justify-between gap-4">
           <Link
             href="/"
-            className="text-2xl md:text-3xl font-bold text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors duration-200"
+            className="text-2xl md:text-3xl font-bold text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-all duration-300 hover:scale-105"
           >
-            Programming Blog
+            <span className="bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent">
+              Programming Blog
+            </span>
           </Link>
 
           <nav className="hidden md:flex items-center space-x-1 lg:space-x-2 flex-1 justify-center">
             <Link
               href="/"
-              className="px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 font-medium"
+              className={`px-4 py-2 rounded-lg transition-all duration-300 font-medium relative group ${
+                isActive("/")
+                  ? "text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30"
+                  : "text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+              }`}
             >
               Home
+              {isActive("/") && (
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-600 dark:bg-primary-400 rounded-full" />
+              )}
             </Link>
             <Link
               href="/about"
-              className="px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 font-medium"
+              className={`px-4 py-2 rounded-lg transition-all duration-300 font-medium relative group ${
+                isActive("/about")
+                  ? "text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30"
+                  : "text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+              }`}
             >
               About
+              {isActive("/about") && (
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-600 dark:bg-primary-400 rounded-full" />
+              )}
             </Link>
             <Link
               href="/contact"
-              className="px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 font-medium"
+              className={`px-4 py-2 rounded-lg transition-all duration-300 font-medium relative group ${
+                isActive("/contact")
+                  ? "text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30"
+                  : "text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+              }`}
             >
               Contact
+              {isActive("/contact") && (
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-600 dark:bg-primary-400 rounded-full" />
+              )}
+            </Link>
+            <Link
+              href="/faq"
+              className={`px-4 py-2 rounded-lg transition-all duration-300 font-medium relative group ${
+                isActive("/faq")
+                  ? "text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30"
+                  : "text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+              }`}
+            >
+              FAQ
+              {isActive("/faq") && (
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-600 dark:bg-primary-400 rounded-full" />
+              )}
             </Link>
           </nav>
 
           <div className="flex items-center">
             <button
               onClick={toggleTheme}
-              className="p-2.5 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 hover:scale-105 active:scale-95"
+              className="p-2.5 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-110 active:scale-95 shadow-sm hover:shadow-md"
               aria-label="Theme toggle"
             >
               {theme === "light" ? (
                 <svg
-                  className="w-5 h-5 text-gray-700 dark:text-gray-300"
+                  className="w-5 h-5 text-gray-700 dark:text-gray-300 transition-transform duration-300"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -60,7 +100,7 @@ export default function Header() {
                 </svg>
               ) : (
                 <svg
-                  className="w-5 h-5 text-gray-700 dark:text-gray-300"
+                  className="w-5 h-5 text-gray-700 dark:text-gray-300 transition-transform duration-300"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"

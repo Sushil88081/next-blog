@@ -17,7 +17,7 @@ const siteUrl =
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const post = await getPostBySlug(params.react);
+  const post = await getPostBySlug(params.react, "react");
 
   if (!post) {
     return {
@@ -80,7 +80,7 @@ export async function generateMetadata({
 }
 
 export default async function ReactPostPage({ params }: PageProps) {
-  const post = await getPostBySlug(params.react);
+  const post = await getPostBySlug(params.react, "react");
 
   if (!post) {
     notFound();

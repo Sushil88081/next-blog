@@ -19,21 +19,70 @@ export interface Post {
   contentHtml?: string
 }
 
-export function getPostSlugs(): string[] {
+// Get all post slugs from all category folders
+export function getPostSlugs(category?: string): string[] {
   if (!fs.existsSync(postsDirectory)) {
     return []
   }
-  return fs.readdirSync(postsDirectory)
-    .filter(file => file.endsWith('.md'))
-    .map(file => file.replace(/\.md$/, ''))
+
+  const slugs: string[] = []
+  
+  if (category) {
+    // Get posts from specific category folder
+    const categoryDir = path.join(postsDirectory, category)
+    if (fs.existsSync(categoryDir)) {
+      const files = fs.readdirSync(categoryDir)
+        .filter(file => file.endsWith('.md'))
+        .map(file => file.replace(/\.md$/, ''))
+      slugs.push(...files)
+    }
+  } else {
+    // Get posts from all category folders
+    const categories = ['react', 'golang', 'python', 'typescript']
+    categories.forEach(cat => {
+      const categoryDir = path.join(postsDirectory, cat)
+      if (fs.existsSync(categoryDir)) {
+        const files = fs.readdirSync(categoryDir)
+          .filter(file => file.endsWith('.md'))
+          .map(file => file.replace(/\.md$/, ''))
+        slugs.push(...files)
+      }
+    })
+  }
+
+  return slugs
 }
 
-export async function getPostBySlug(slug: string): Promise<Post | null> {
+// Get post by slug and category
+export async function getPostBySlug(slug: string, category?: string): Promise<Post | null> {
   try {
-    const fullPath = path.join(postsDirectory, `${slug}.md`)
+    let fullPath: string
+    
+    if (category) {
+      // Look in specific category folder
+      fullPath = path.join(postsDirectory, category, `${slug}.md`)
+    } else {
+      // Search in all category folders
+      const categories = ['react', 'golang', 'python', 'typescript']
+      fullPath = ''
+      
+      for (const cat of categories) {
+        const testPath = path.join(postsDirectory, cat, `${slug}.md`)
+        if (fs.existsSync(testPath)) {
+          fullPath = testPath
+          break
+        }
+      }
+      
+      if (!fullPath) {
+        return null
+      }
+    }
+
     if (!fs.existsSync(fullPath)) {
       return null
     }
+
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const { data, content } = matter(fileContents)
 
@@ -60,3 +109,11 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   }
 }
 
+// Get all posts for a category
+export async function getCategoryPosts(category: string): Promise<Post[]> {
+  const slugs = getPostSlugs(category)
+  const posts = await Promise.all(
+    slugs.map(slug => getPostBySlug(slug, category))
+  )
+  return posts.filter((post): post is Post => post !== null)
+}

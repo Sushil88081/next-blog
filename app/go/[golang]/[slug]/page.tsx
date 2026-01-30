@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 
 interface PageProps {
   params: {
-    python: string;
+    slug: string;
   };
 }
 
@@ -17,7 +17,7 @@ const siteUrl =
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const post = await getPostBySlug(params.python, "python");
+  const post = await getPostBySlug(params.slug, "golang");
 
   if (!post) {
     return {
@@ -25,10 +25,10 @@ export async function generateMetadata({
     };
   }
 
-  const postUrl = `${siteUrl}/python/${post.slug}`;
+  const postUrl = `${siteUrl}/go/golang/${post.slug}`;
   const postImage = post.image
     ? `${siteUrl}${post.image}`
-    : `${siteUrl}/assets/images/python.jpg`;
+    : `${siteUrl}/assets/images/golang.jpg`;
 
   return {
     title: post.title,
@@ -69,17 +69,17 @@ export async function generateMetadata({
   };
 }
 
-export default async function PythonPostPage({ params }: PageProps) {
-  const post = await getPostBySlug(params.python, "python");
+export default async function GoPostPage({ params }: PageProps) {
+  const post = await getPostBySlug(params.slug, "golang");
 
   if (!post) {
     notFound();
   }
 
-  const postUrl = `${siteUrl}/python/${post.slug}`;
+  const postUrl = `${siteUrl}/go/golang/${post.slug}`;
   const postImage = post.image
     ? `${siteUrl}${post.image}`
-    : `${siteUrl}/assets/images/python.jpg`;
+    : `${siteUrl}/assets/images/golang.jpg`;
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -105,7 +105,7 @@ export default async function PythonPostPage({ params }: PageProps) {
       name: "Programming Blog",
       logo: {
         "@type": "ImageObject",
-        url: `${siteUrl}/assets/images/python.jpg`,
+        url: `${siteUrl}/assets/images/golang.jpg`,
       },
     },
     description: post.description,
@@ -126,8 +126,8 @@ export default async function PythonPostPage({ params }: PageProps) {
       {
         "@type": "ListItem",
         position: 2,
-        name: "Python",
-        item: `${siteUrl}/python`,
+        name: "Go",
+        item: `${siteUrl}/go/golang`,
       },
       {
         "@type": "ListItem",
@@ -190,3 +190,4 @@ export default async function PythonPostPage({ params }: PageProps) {
     </div>
   );
 }
+
