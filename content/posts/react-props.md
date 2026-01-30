@@ -1,6 +1,6 @@
 ---
 title: "React Props - Complete Guide"
-date: "2025-01-04"
+date: "2025-01-06"
 description: "Learn what React Props are and how to use them effectively. Understand prop types, default props, prop validation, and best practices for passing data between components."
 category: "React Basics"
 tags: ["react", "props", "components", "data-flow"]
@@ -408,6 +408,135 @@ For deeply nested prop drilling, consider using Context API or state management 
 Props are essential to React development. They enable component reusability, make your code more maintainable, and create a clear data flow in your application. By mastering props, you'll be able to build flexible, reusable components that can adapt to different situations.
 
 Remember, props flow downward from parent to child, they're read-only, and they're React's primary way of making components configurable and reusable.
+
+---
+
+## Visual Explanation: Props Flow
+
+Here's how props flow from parent to child:
+
+```
+Parent Component
+┌─────────────────────────────┐
+│ const user = {              │
+│   name: "John",             │
+│   age: 25                   │
+│ }                           │
+│                             │
+│ <UserCard                   │
+│   name={user.name}  ────────┼───┐
+│   age={user.age}    ────────┼───┼───┐
+│ />                          │   │   │
+└─────────────────────────────┘   │   │
+                                  │   │
+                                  ▼   ▼
+                         Child Component
+                         ┌─────────────────┐
+                         │ function UserCard│
+                         │ ({ name, age }) │
+                         │                 │
+                         │ name = "John"   │
+                         │ age = 25        │
+                         │                 │
+                         │ <h1>{name}</h1> │
+                         │ <p>{age}</p>    │
+                         └─────────────────┘
+```
+
+**Key Points:**
+- Props flow DOWN (parent → child)
+- Props are READ-ONLY (child can't change them)
+- Props are like function arguments
+
+## Props vs State Comparison
+
+```
+┌─────────────────┬─────────────────┐
+│      PROPS      │      STATE      │
+├─────────────────┼─────────────────┤
+│ From parent     │ Internal        │
+│ Read-only       │ Can change      │
+│ Immutable       │ Mutable         │
+│ Passed down     │ Managed locally │
+│ Like arguments  │ Like variables  │
+└─────────────────┴─────────────────┘
+```
+
+## Frequently Asked Questions (FAQ)
+
+### Q1: Can I change props in a child component?
+
+**A:** No! Props are read-only. If you need to change data, lift the state up to the parent component and pass down a function to update it.
+
+### Q2: What happens if I don't pass a required prop?
+
+**A:** The prop will be `undefined`. Use default values or PropTypes/TypeScript to handle this:
+
+```jsx
+function Component({ name = 'Guest' }) {
+  return <div>Hello {name}</div>;
+}
+```
+
+### Q3: Can I pass functions as props?
+
+**A:** Yes! Functions are commonly passed as props, especially for event handlers:
+
+```jsx
+function Parent() {
+  const handleClick = () => console.log('Clicked');
+  return <Child onClick={handleClick} />;
+}
+```
+
+### Q4: How many props is too many?
+
+**A:** If you're passing more than 5-7 props, consider:
+- Grouping related props into an object
+- Breaking the component into smaller pieces
+- Using Context API for deeply nested props
+
+### Q5: Can I pass components as props?
+
+**A:** Yes! This is called "render props" pattern:
+
+```jsx
+<Container render={(data) => <Display data={data} />} />
+```
+
+### Q6: What's the difference between props and state?
+
+**A:** 
+- **Props** - Data from parent, read-only, can't change
+- **State** - Data managed by component, can change, triggers re-renders
+
+### Q7: Can I use props in the dependency array of useEffect?
+
+**A:** Yes! If your effect uses props, include them:
+
+```jsx
+useEffect(() => {
+  fetchUser(userId); // userId is a prop
+}, [userId]); // Include prop in dependencies
+```
+
+### Q8: How do I pass props to multiple levels?
+
+**A:** You can pass through intermediate components (prop drilling), or use Context API for deeply nested data. For 2-3 levels, prop drilling is fine. For more, consider Context.
+
+### Q9: Can props be optional?
+
+**A:** Yes! Use default parameters:
+
+```jsx
+function Component({ name, age = 0 }) {
+  // age is optional, defaults to 0
+}
+```
+
+### Q10: What happens to props when parent re-renders?
+
+**A:** Child components re-render when props change. React compares old and new props - if they're different, the child re-renders. If props are the same, React skips re-rendering (with React.memo).
 
 ---
 

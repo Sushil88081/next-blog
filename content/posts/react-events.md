@@ -1,6 +1,6 @@
 ---
 title: "Event Handling in React - Complete Guide"
-date: "2025-01-08"
+date: "2025-01-10"
 description: "Learn how to handle events in React. Understand onClick, onChange, onSubmit and other common events with examples."
 category: "React Basics"
 tags: ["react", "events", "onClick", "onChange", "event-handling"]
@@ -420,6 +420,168 @@ Remember:
 - Pass functions, don't call them
 - Use preventDefault for forms
 - Handle events to make your app interactive
+
+## Visual Explanation: Event Flow
+
+Here's how events work in React:
+
+```
+User Action (Click Button)
+       │
+       ▼
+┌──────────────┐
+│ Browser      │
+│ Detects      │
+│ Event        │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│ React        │
+│ Handles      │
+│ Event        │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│ Your Handler │
+│ Function     │
+│ Executes     │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│ State Updates│
+│ UI Updates   │
+└──────────────┘
+```
+
+## Event Propagation Flow
+
+```
+┌─────────────────────────────┐
+│ Parent Element              │
+│ onClick (capture phase)     │
+│   ┌─────────────────────┐  │
+│   │ Child Element        │  │
+│   │ onClick (target)     │  │
+│   └─────────────────────┘  │
+│ onClick (bubble phase)      │
+└─────────────────────────────┘
+
+Event flows: Capture → Target → Bubble
+```
+
+## Frequently Asked Questions (FAQ)
+
+### Q1: What's the difference between onClick and addEventListener?
+
+**A:** 
+- **onClick** - React's way (recommended)
+- **addEventListener** - Vanilla JS way
+
+Use React's onClick - it's cleaner and handles cleanup automatically.
+
+### Q2: Can I pass parameters to event handlers?
+
+**A:** Yes! Use arrow functions:
+
+```jsx
+<button onClick={() => handleClick(id)}>Click</button>
+```
+
+Or bind:
+
+```jsx
+<button onClick={handleClick.bind(null, id)}>Click</button>
+```
+
+### Q3: What is event.preventDefault()?
+
+**A:** It prevents the default browser behavior:
+
+```jsx
+const handleSubmit = (e) => {
+  e.preventDefault(); // Prevents form submission
+  // Your code
+};
+```
+
+### Q4: What is event.stopPropagation()?
+
+**A:** It stops the event from bubbling up to parent elements:
+
+```jsx
+const handleClick = (e) => {
+  e.stopPropagation(); // Stops parent from receiving event
+};
+```
+
+### Q5: Can I use multiple event handlers?
+
+**A:** Yes! You can have multiple handlers, but React's onClick only takes one function. Chain them if needed:
+
+```jsx
+<button onClick={(e) => {
+  handleClick1(e);
+  handleClick2(e);
+}}>Click</button>
+```
+
+### Q6: How do I get the event object?
+
+**A:** It's automatically passed as the first parameter:
+
+```jsx
+const handleClick = (e) => {
+  console.log(e); // Event object
+  console.log(e.target); // Element that was clicked
+};
+```
+
+### Q7: Can I use events on custom components?
+
+**A:** Yes, but you need to pass them through:
+
+```jsx
+function CustomButton({ onClick }) {
+  return <button onClick={onClick}>Click</button>;
+}
+```
+
+### Q8: What's the difference between onChange and onInput?
+
+**A:** 
+- **onChange** - Fires when value changes AND element loses focus
+- **onInput** - Fires on every keystroke (not commonly used in React)
+
+Use onChange for most cases.
+
+### Q9: How do I handle keyboard events?
+
+**A:** Use onKeyDown, onKeyUp, or onKeyPress:
+
+```jsx
+<input onKeyDown={(e) => {
+  if (e.key === 'Enter') {
+    handleSubmit();
+  }
+}} />
+```
+
+### Q10: Can I prevent default behavior conditionally?
+
+**A:** Yes! Check condition first:
+
+```jsx
+const handleSubmit = (e) => {
+  if (!isValid) {
+    e.preventDefault();
+  }
+};
+```
+
+---
 
 ## Next Steps
 

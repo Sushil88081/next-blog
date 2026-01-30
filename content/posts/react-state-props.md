@@ -1,6 +1,6 @@
 ---
 title: "State vs Props"
-date: "2025-01-07"
+date: "2025-01-09"
 description: "Learn difference between state and props(properties)."
 category: "React Basics"
 tags: ["react", "state", "hooks", "useState"]
@@ -91,9 +91,162 @@ Use props when:
 
 ---
 
+## Visual Explanation: State vs Props Flow
+
+Here's how data flows with state and props:
+
+```
+Props Flow (Parent → Child):
+┌─────────────────────────────┐
+│ Parent Component            │
+│ const name = "John"         │
+│                             │
+│ <Child name={name} /> ────┼───┐
+└─────────────────────────────┘   │
+                                  │
+                                  ▼
+                         ┌─────────────────┐
+                         │ Child Component  │
+                         │ ({ name })       │
+                         │                 │
+                         │ name = "John"   │
+                         │ (read-only)     │
+                         └─────────────────┘
+
+State Flow (Inside Component):
+┌─────────────────────────────┐
+│ Component                   │
+│ const [count, setCount] =   │
+│   useState(0)               │
+│                             │
+│ count = 0 (can change)     │
+│                             │
+│ User clicks button          │
+│ setCount(1)                 │
+│                             │
+│ count = 1 (updated!)       │
+│ Component re-renders        │
+└─────────────────────────────┘
+```
+
+## State vs Props Comparison Chart
+
+```
+┌─────────────────┬─────────────────┐
+│      STATE      │      PROPS      │
+├─────────────────┼─────────────────┤
+│ Managed inside  │ Passed from     │
+│ component       │ parent          │
+│                 │                 │
+│ Can change      │ Read-only       │
+│ (mutable)       │ (immutable)     │
+│                 │                 │
+│ useState()      │ Function        │
+│                 │ parameters      │
+│                 │                 │
+│ Triggers        │ Causes          │
+│ re-render       │ re-render       │
+│                 │                 │
+│ Use for:        │ Use for:        │
+│ - User input    │ - Configuration │
+│ - Dynamic data  │ - Static data   │
+│ - Component     │ - Reusability   │
+│   behavior      │                 │
+└─────────────────┴─────────────────┘
+```
+
+## Frequently Asked Questions (FAQ)
+
+### Q1: Can I change props in a child component?
+
+**A:** No! Props are read-only. If you need to change data, lift the state up to the parent component and pass down a function to update it.
+
+### Q2: What happens if I try to modify props?
+
+**A:** React will warn you, and the change won't work. Props are immutable - you can't change them directly.
+
+### Q3: Can state be passed as props?
+
+**A:** Yes! State from parent can be passed as props to child:
+
+```jsx
+function Parent() {
+  const [count, setCount] = useState(0);
+  return <Child count={count} />; // State becomes prop
+}
+```
+
+### Q4: What's the difference between state and props?
+
+**A:** 
+- **State** - Owned by component, can change, triggers re-render
+- **Props** - Owned by parent, read-only, causes re-render when changed
+
+### Q5: Can I use both state and props in one component?
+
+**A:** Yes! Most components use both:
+
+```jsx
+function Component({ initialCount }) { // Props
+  const [count, setCount] = useState(initialCount); // State
+  return <div>{count}</div>;
+}
+```
+
+### Q6: When should I use state vs props?
+
+**A:** 
+- **State** - For data that changes within component
+- **Props** - For data passed from parent or configuration
+
+### Q7: Can props trigger state updates?
+
+**A:** Yes! Use useEffect to sync props to state:
+
+```jsx
+useEffect(() => {
+  setCount(props.initialCount);
+}, [props.initialCount]);
+```
+
+### Q8: What if I need to update parent's state from child?
+
+**A:** Pass a function as prop:
+
+```jsx
+function Parent() {
+  const [count, setCount] = useState(0);
+  return <Child onUpdate={setCount} />;
+}
+
+function Child({ onUpdate }) {
+  return <button onClick={() => onUpdate(5)}>Update</button>;
+}
+```
+
+### Q9: Can I have default props?
+
+**A:** Yes! Use default parameters:
+
+```jsx
+function Component({ name = 'Guest' }) {
+  return <div>Hello {name}</div>;
+}
+```
+
+### Q10: Do state and props both cause re-renders?
+
+**A:** Yes! Both trigger re-renders:
+- **State change** - Component re-renders
+- **Props change** - Component re-renders
+
+React is smart and only re-renders when necessary!
+
+---
+
 ## Conclusion
 
-State is changeable data. Props are read-only data. Both are important in React.
+State is changeable data. Props are read-only data. Both are important in React. Understanding when to use each is key to writing good React code!
 
 ---
 

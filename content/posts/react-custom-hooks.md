@@ -1,6 +1,6 @@
 ---
 title: "Creating Custom Hooks in React"
-date: "2025-01-14"
+date: "2025-01-18"
 description: "Learn how to create your own custom React hooks. Reuse logic across components with simple examples and best practices."
 category: "React Advanced"
 tags: ["react", "hooks", "custom hooks", "reusable logic", "react hooks"]
@@ -347,6 +347,159 @@ Custom hooks are awesome! They help you write cleaner code and reuse logic easil
 The key is: if you're repeating code, make it a hook. That's it!
 
 Practice by creating your own hooks for common patterns in your projects. Soon you'll have a library of useful hooks!
+
+## Visual Explanation: Custom Hook Reusability
+
+Here's how custom hooks enable code reuse:
+
+```
+Without Custom Hook:
+┌─────────────────────────────┐
+│ Component A                 │
+│ - useState logic            │
+│ - useEffect logic           │
+│ - Event handlers            │
+└─────────────────────────────┘
+
+┌─────────────────────────────┐
+│ Component B                 │
+│ - Same useState logic       │ ← Duplicated!
+│ - Same useEffect logic      │ ← Duplicated!
+│ - Same event handlers       │ ← Duplicated!
+└─────────────────────────────┘
+
+With Custom Hook:
+┌─────────────────────────────┐
+│ useCustomHook()            │
+│ - useState logic            │
+│ - useEffect logic           │
+│ - Returns values/functions  │
+└───────────┬─────────────────┘
+            │
+    ┌───────┴───────┐
+    │               │
+    ▼               ▼
+Component A    Component B
+Uses hook      Uses hook
+(No duplication!)
+```
+
+## Custom Hook Structure
+
+```
+┌─────────────────────────────┐
+│ function useCustomHook() {  │
+│   // 1. Use other hooks     │
+│   const [state] = useState()│
+│   useEffect(() => {})       │
+│                             │
+│   // 2. Custom logic        │
+│   // ...                    │
+│                             │
+│   // 3. Return values       │
+│   return { state, handler } │
+│ }                           │
+└─────────────────────────────┘
+```
+
+## Frequently Asked Questions (FAQ)
+
+### Q1: What makes a custom hook?
+
+**A:** A function that:
+- Starts with "use" (required!)
+- Can call other hooks
+- Returns values/functions
+
+That's it! It's just a regular function following these rules.
+
+### Q2: Can I use hooks inside custom hooks?
+
+**A:** Yes! That's the whole point. Custom hooks can use useState, useEffect, and any other hooks.
+
+### Q3: Do custom hooks need to return something?
+
+**A:** Not always! Some hooks just set up side effects:
+
+```jsx
+function useDocumentTitle(title) {
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
+  // No return needed
+}
+```
+
+### Q4: Can I have multiple custom hooks in one component?
+
+**A:** Yes! Use as many as you need:
+
+```jsx
+function Component() {
+  const data = useFetch('/api/data');
+  const windowSize = useWindowSize();
+  const theme = useTheme();
+  // Multiple custom hooks!
+}
+```
+
+### Q5: Should I put custom hooks in separate files?
+
+**A:** Yes! Put them in a `hooks` folder:
+
+```
+src/
+  hooks/
+    useFetch.js
+    useWindowSize.js
+    useTheme.js
+```
+
+### Q6: Can custom hooks accept parameters?
+
+**A:** Yes! They're just functions:
+
+```jsx
+function useFetch(url) {
+  // Use url parameter
+}
+```
+
+### Q7: What's the difference between custom hook and regular function?
+
+**A:** 
+- **Custom Hook** - Can use hooks, starts with "use"
+- **Regular Function** - Can't use hooks
+
+If it uses hooks, it's a custom hook!
+
+### Q8: Can I share custom hooks between projects?
+
+**A:** Yes! Many developers publish custom hooks as npm packages. You can too!
+
+### Q9: How do I test custom hooks?
+
+**A:** Use `@testing-library/react-hooks`:
+
+```jsx
+import { renderHook } from '@testing-library/react-hooks';
+
+test('useCounter works', () => {
+  const { result } = renderHook(() => useCounter());
+  expect(result.current.count).toBe(0);
+});
+```
+
+### Q10: When should I create a custom hook?
+
+**A:** When you:
+- Use the same hook logic in multiple components
+- Want to separate logic from UI
+- Need to test logic independently
+
+Don't create hooks for one-time use!
+
+---
 
 ## Next Steps
 

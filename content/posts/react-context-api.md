@@ -1,6 +1,6 @@
 ---
 title: "React Context API - Easy State Management"
-date: "2025-01-15"
+date: "2025-01-20"
 description: "What is React Context API and how to use it? Learn how to use Context API to avoid props drilling and share data across components."
 category: "React Advanced"
 tags: ["react", "context", "state-management", "props-drilling"]
@@ -329,15 +329,167 @@ Here's what to avoid:
 3. **Forgetting error handling** - Always check if context exists
 4. **Creating contexts in components** - Create them outside!
 
-## Conclusion
+## Visual Explanation: Props Drilling vs Context
 
-Context API is a powerful tool for managing global state in React. It solves the props drilling problem and makes your code cleaner. Just remember to use it wisely - not everything needs to be in Context!
+**Without Context (Props Drilling):**
+```
+App (has user data)
+  │
+  ├─► Layout (passes user)
+  │     │
+  │     ├─► Header (passes user)
+  │     │     │
+  │     │     └─► UserMenu (needs user) ← Finally!
+  │     │
+  │     └─► Main (passes user)
+  │           │
+  │           └─► Content (passes user)
+  │                 │
+  │                 └─► UserProfile (needs user) ← Finally!
+```
 
-Key points:
-- Use Context for global state
-- Create custom hooks for better DX
+**With Context:**
+```
+App (provides user via Context)
+  │
+  ├─► Layout
+  │     │
+  │     ├─► Header
+  │     │     │
+  │     │     └─► UserMenu (gets user directly) ✅
+  │     │
+  │     └─► Main
+  │           │
+  │           └─► Content
+  │                 │
+  │                 └─► UserProfile (gets user directly) ✅
+```
+
+Much cleaner! No prop drilling needed.
+
+## Context Provider Flow
+
+```
+┌─────────────────────────────┐
+│   Context.Provider           │
+│   value={contextValue}       │
+│   ┌───────────────────────┐  │
+│   │  All Child Components │  │
+│   │  Can Access Context   │  │
+│   │                       │  │
+│   │  useContext(Context) │  │
+│   │  Gets the value       │  │
+│   └───────────────────────┘  │
+└─────────────────────────────┘
+```
+
+## Frequently Asked Questions (FAQ)
+
+### Q1: When should I use Context vs Props?
+
+**A:** 
+- **Use Props** - For 1-2 levels, simple data
+- **Use Context** - For deeply nested data, global state (theme, user, language)
+
+Don't use Context for everything - props are simpler for local data!
+
+### Q2: Does Context cause performance issues?
+
+**A:** It can! When context value changes, ALL consumers re-render. To fix this:
+- Split contexts (don't put everything in one)
 - Memoize context values
-- Don't overuse it
+- Use React.memo for consumers
+
+### Q3: Can I have multiple Contexts?
+
+**A:** Yes! In fact, it's recommended:
+
+```jsx
+<ThemeProvider>
+  <UserProvider>
+    <LanguageProvider>
+      <App />
+    </LanguageProvider>
+  </UserProvider>
+</ThemeProvider>
+```
+
+Separate contexts for separate concerns!
+
+### Q4: How do I update Context value?
+
+**A:** Provide a function in context:
+
+```jsx
+const ThemeContext = createContext();
+
+function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState('light');
+  
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+}
+```
+
+### Q5: Can I use Context with useState?
+
+**A:** Yes! That's the most common pattern:
+
+```jsx
+function MyProvider({ children }) {
+  const [value, setValue] = useState(initialValue);
+  
+  return (
+    <MyContext.Provider value={{ value, setValue }}>
+      {children}
+    </MyContext.Provider>
+  );
+}
+```
+
+### Q6: What happens if I use useContext outside Provider?
+
+**A:** You'll get the default value (or undefined). Always wrap components in the Provider, or use a custom hook that throws an error if context is missing.
+
+### Q7: Should I use Context or Redux?
+
+**A:** 
+- **Context** - Built-in, simpler, good for small-medium apps
+- **Redux** - More powerful, better for large apps, more setup
+
+Start with Context, use Redux if you need it later.
+
+### Q8: Can I use Context for all state?
+
+**A:** No! Only use Context for:
+- Global state (theme, user, language)
+- Data needed by many components
+- Data that's expensive to pass down
+
+Local component state should still use useState.
+
+### Q9: How do I test components using Context?
+
+**A:** Wrap them in a test Provider:
+
+```jsx
+test('Component works', () => {
+  render(
+    <MyContext.Provider value={testValue}>
+      <MyComponent />
+    </MyContext.Provider>
+  );
+});
+```
+
+### Q10: Can Context replace Redux?
+
+**A:** For many apps, yes! Context + useReducer can replace Redux for simpler state management. But Redux has better dev tools and middleware for complex apps.
+
+---
 
 ## Next Steps
 

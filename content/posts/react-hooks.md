@@ -1,6 +1,6 @@
 ---
 title: "React Hooks - Complete Guide"
-date: "2025-01-13"
+date: "2025-01-17"
 description: "What are React Hooks? Detailed information about useState, useEffect, useContext and other hooks."
 category: "React Advanced"
 tags: ["react", "hooks", "useState", "useEffect"]
@@ -201,9 +201,129 @@ function Counter() {
 | `useCallback` | To memoize functions |
 | `useRef` | To store DOM elements or values |
 
-## Conclusion
+## Visual Explanation: Hooks Flow
 
-React Hooks make functional components powerful. They make code simpler and more reusable.
+Here's how hooks work in a component:
+
+```
+Component Function
+┌─────────────────────────────────┐
+│ function MyComponent() {        │
+│                                 │
+│   useState() ───────────────┐  │
+│   useEffect() ──────────────┼──┼──┐
+│   useContext() ─────────────┼──┼──┼──┐
+│                             │  │  │  │
+│   return JSX               │  │  │  │
+│ }                           │  │  │  │
+└─────────────────────────────┼──┼──┼──┘
+                              │  │  │
+                              ▼  ▼  ▼
+                    React Hooks System
+                    ┌──────────────┐
+                    │ Manages State │
+                    │ & Side Effects│
+                    └──────────────┘
+```
+
+## Hooks Rules Visualization
+
+```
+✅ CORRECT:
+┌─────────────────────────────┐
+│ function Component() {      │
+│   const [state] = useState()│ ← Top level
+│   useEffect(() => {})       │ ← Top level
+│                             │
+│   if (condition) {          │
+│     return <div>...</div>   │
+│   }                         │
+│                             │
+│   return <div>...</div>     │
+│ }                           │
+└─────────────────────────────┘
+
+❌ WRONG:
+┌─────────────────────────────┐
+│ function Component() {      │
+│   if (condition) {          │
+│     useState() ← Can't do!  │
+│   }                         │
+│                             │
+│   for (let i = 0; i < 5; i++)│
+│     useEffect() ← Can't do! │
+│ }                           │
+└─────────────────────────────┘
+```
+
+## Frequently Asked Questions (FAQ)
+
+### Q1: Can I use hooks conditionally?
+
+**A:** No! Hooks must always be called in the same order. Don't put them in if statements, loops, or nested functions. Always call them at the top level of your component.
+
+### Q2: What happens if I break the rules of hooks?
+
+**A:** React will show an error. The most common error is "React Hook useEffect is called conditionally." Always call hooks unconditionally at the top level.
+
+### Q3: Can I create my own hooks?
+
+**A:** Yes! Custom hooks are just functions that start with "use" and can call other hooks. They're a great way to reuse logic.
+
+### Q4: Do hooks work in class components?
+
+**A:** No! Hooks only work in functional components. If you need hooks, convert your class component to a functional component.
+
+### Q5: What's the difference between useState and useReducer?
+
+**A:** 
+- **useState** - Simple state (single value or object)
+- **useReducer** - Complex state (multiple actions, complex logic)
+
+Use useState for simple cases, useReducer when state logic gets complex.
+
+### Q6: Can I use multiple hooks of the same type?
+
+**A:** Yes! You can have multiple useState, useEffect, etc.:
+
+```jsx
+function Component() {
+  const [name, setName] = useState('');
+  const [age, setAge] = useState(0);
+  const [email, setEmail] = useState('');
+  // Multiple useState hooks are fine!
+}
+```
+
+### Q7: Do hooks replace class components completely?
+
+**A:** Almost! Hooks can do everything class components can do. Class components are still supported but not recommended for new code. Use functional components with hooks.
+
+### Q8: What's the purpose of useMemo and useCallback?
+
+**A:** They optimize performance by memoizing values and functions. Use them when you have expensive calculations or want to prevent unnecessary re-renders.
+
+### Q9: Can I use hooks in regular JavaScript functions?
+
+**A:** No! Hooks only work in:
+- React functional components
+- Custom hooks (functions starting with "use")
+
+Regular functions can't use hooks.
+
+### Q10: How do I know which hook to use?
+
+**A:** 
+- **useState** - For state
+- **useEffect** - For side effects
+- **useContext** - For context values
+- **useRef** - For DOM refs or values that don't trigger re-renders
+- **useMemo** - For expensive calculations
+- **useCallback** - For memoizing functions
+
+Start with useState and useEffect - they cover 90% of use cases!
+
+---
 
 ## Next Steps
 

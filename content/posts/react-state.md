@@ -1,6 +1,6 @@
 ---
 title: "What is State in React?"
-date: "2025-01-05"
+date: "2025-01-07"
 description: "Learn how to use State in React with the useState hook. Complete guide covering primitive state, object state, array state, and best practices for state management."
 category: "React Basics"
 tags: ["react", "state", "hooks", "useState"]
@@ -560,6 +560,134 @@ Keep these tips in mind:
 - Use function updates when new state depends on previous state
 - Choose the state structure that fits your needs
 - Keep things simple - avoid unnecessary complexity
+
+---
+
+## Visual Explanation: State Updates
+
+Here's how state changes trigger re-renders:
+
+```
+Initial State:
+┌─────────────────────────────┐
+│ count = 0                   │
+│ Component renders           │
+│ Shows: "Count: 0"          │
+└──────────────┬──────────────┘
+               │
+               │ User clicks button
+               ▼
+State Update:
+┌─────────────────────────────┐
+│ setCount(1) called          │
+│                             │
+│ React updates state:        │
+│ count = 1                   │
+│                             │
+│ Component re-renders        │
+│ Shows: "Count: 1"          │
+└─────────────────────────────┘
+```
+
+## State vs Props Visualization
+
+```
+┌─────────────────┬─────────────────┐
+│      STATE      │      PROPS      │
+├─────────────────┼─────────────────┤
+│ Managed inside  │ Passed from     │
+│ component       │ parent          │
+│                 │                 │
+│ Can change      │ Read-only       │
+│                 │                 │
+│ Triggers        │ Causes          │
+│ re-render       │ re-render      │
+│                 │                 │
+│ useState()      │ Function        │
+│                 │ parameters      │
+└─────────────────┴─────────────────┘
+```
+
+## Frequently Asked Questions (FAQ)
+
+### Q1: What's the difference between state and props?
+
+**A:** 
+- **State** - Data managed inside component, can change
+- **Props** - Data passed from parent, read-only
+
+State is for component's own data, props are for data from parent.
+
+### Q2: Can I use state without useState hook?
+
+**A:** In functional components, no! useState is the only way. In class components, you'd use `this.state`, but functional components are recommended.
+
+### Q3: How many useState hooks can I use?
+
+**A:** As many as you need! Each useState manages one piece of state. It's common to have multiple useState hooks in one component.
+
+### Q4: What happens if I update state directly?
+
+**A:** It won't work! You must use the setter function:
+
+```jsx
+// Wrong - won't trigger re-render
+count = count + 1;
+
+// Right - triggers re-render
+setCount(count + 1);
+```
+
+### Q5: Can I store functions in state?
+
+**A:** Yes, but use a function initializer:
+
+```jsx
+const [fn, setFn] = useState(() => () => console.log('Hello'));
+```
+
+### Q6: How do I update nested state?
+
+**A:** Use spread operator to create new objects:
+
+```jsx
+setUser({ ...user, name: 'New Name' });
+```
+
+### Q7: What's the initial value in useState?
+
+**A:** The first argument you pass:
+
+```jsx
+useState(0);        // Initial is 0
+useState('');       // Initial is empty string
+useState([]);       // Initial is empty array
+```
+
+### Q8: Can I use state in the dependency array?
+
+**A:** Yes! If your effect uses state, include it:
+
+```jsx
+useEffect(() => {
+  // Uses count
+}, [count]); // Include state in dependencies
+```
+
+### Q9: How do I reset state to initial value?
+
+**A:** Store initial value and reset:
+
+```jsx
+const initialValue = 0;
+const [count, setCount] = useState(initialValue);
+
+const reset = () => setCount(initialValue);
+```
+
+### Q10: Does state persist across re-renders?
+
+**A:** Yes! State persists as long as the component exists. When component unmounts, state is lost. When component remounts, state resets to initial value.
 
 ---
 
