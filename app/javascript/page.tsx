@@ -57,7 +57,7 @@ export default function JavaScriptPage() {
       description:
         "Learn what JavaScript is, why it's essential for web development, and what you can build with it. Perfect guide for beginners starting their JavaScript journey.",
       image: "/assets/images/javascript.jpg",
-      date: "2025-02-01",
+      date: "2025-11-01",
       slug: "javascript-introduction",
     },
     {
@@ -65,7 +65,7 @@ export default function JavaScriptPage() {
       description:
         "Learn JavaScript fundamentals including variables, data types, operators, and basic syntax. Perfect for beginners starting their JavaScript journey.",
       image: "/assets/images/javascript.jpg",
-      date: "2025-02-02",
+      date: "2025-11-02",
       slug: "javascript-basics",
     },
     {
@@ -73,7 +73,7 @@ export default function JavaScriptPage() {
       description:
         "Learn how to create and use functions in JavaScript. Understand function syntax, parameters, return values, arrow functions, and best practices.",
       image: "/assets/images/javascript.jpg",
-      date: "2025-02-03",
+      date: "2025-11-03",
       slug: "javascript-functions",
     },
     {
@@ -81,7 +81,7 @@ export default function JavaScriptPage() {
       description:
         "Learn how to work with arrays in JavaScript. Understand array methods, manipulation, iteration, and best practices for working with lists of data.",
       image: "/assets/images/javascript.jpg",
-      date: "2025-02-04",
+      date: "2025-11-04",
       slug: "javascript-arrays",
     },
     {
@@ -89,7 +89,7 @@ export default function JavaScriptPage() {
       description:
         "Learn how to work with objects in JavaScript. Understand object creation, properties, methods, and how to manipulate object data effectively.",
       image: "/assets/images/javascript.jpg",
-      date: "2025-02-05",
+      date: "2025-11-05",
       slug: "javascript-objects",
     },
     {
@@ -97,7 +97,7 @@ export default function JavaScriptPage() {
       description:
         "Learn how to manipulate the DOM (Document Object Model) with JavaScript. Understand how to select elements, modify content, and create interactive web pages.",
       image: "/assets/images/javascript.jpg",
-      date: "2025-02-06",
+      date: "2025-11-06",
       slug: "javascript-dom",
     },
   ];

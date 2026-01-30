@@ -57,7 +57,7 @@ export default function GoPage() {
       description:
         "Learn what Go programming language is, why it was created, and why it's worth learning. Discover Go's features, advantages, and use cases.",
       image: "/assets/images/golang.jpg",
-      date: "2025-01-24",
+      date: "2025-12-01",
       slug: "golang-introduction",
     },
     {
@@ -65,7 +65,7 @@ export default function GoPage() {
       description:
         "Complete guide on installing Go programming language on Windows, macOS, and Linux. Learn how to set up your Go development environment.",
       image: "/assets/images/golang.jpg",
-      date: "2025-01-25",
+      date: "2025-12-02",
       slug: "golang-installation",
     },
     {
@@ -73,7 +73,7 @@ export default function GoPage() {
       description:
         "Learn the fundamentals of Go programming. Understand variables, data types, constants, and basic syntax with practical examples.",
       image: "/assets/images/golang.jpg",
-      date: "2025-01-26",
+      date: "2025-12-03",
       slug: "golang-basics",
     },
     {
@@ -81,7 +81,7 @@ export default function GoPage() {
       description:
         "Learn how to create and use functions in Go. Understand function syntax, parameters, return values, and best practices.",
       image: "/assets/images/golang.jpg",
-      date: "2025-01-29",
+      date: "2025-12-04",
       slug: "golang-functions",
     },
     {
@@ -89,7 +89,7 @@ export default function GoPage() {
       description:
         "Learn about Go structs, how to create and use them. Understand struct fields, methods, embedding, and best practices for working with custom types.",
       image: "/assets/images/golang.jpg",
-      date: "2025-02-09",
+      date: "2025-12-05",
       slug: "golang-structs",
     },
     {
@@ -97,7 +97,7 @@ export default function GoPage() {
       description:
         "Learn about Go interfaces, how they work, and how to use them effectively. Understand interface implementation and polymorphism in Go.",
       image: "/assets/images/golang.jpg",
-      date: "2025-02-07",
+      date: "2025-12-06",
       slug: "golang-interfaces",
     },
     {
@@ -105,7 +105,7 @@ export default function GoPage() {
       description:
         "Learn how to build REST APIs in Go using the net/http package and popular frameworks. Create endpoints, handle requests, and build production-ready APIs.",
       image: "/assets/images/golang.jpg",
-      date: "2025-02-08",
+      date: "2025-12-07",
       slug: "golang-rest-api",
     },
     {
@@ -113,7 +113,7 @@ export default function GoPage() {
       description:
         "Learn about Go's powerful concurrency features. Understand goroutines, channels, and how to write concurrent programs in Go.",
       image: "/assets/images/golang.jpg",
-      date: "2025-02-10",
+      date: "2025-12-08",
       slug: "golang-concurrency",
     },
     {
@@ -121,7 +121,7 @@ export default function GoPage() {
       description:
         "Learn how to handle errors in Go. Understand Go's error handling philosophy, error types, and best practices for writing robust Go code.",
       image: "/assets/images/golang.jpg",
-      date: "2025-02-11",
+      date: "2025-12-09",
       slug: "golang-error-handling",
     },
     {
@@ -129,7 +129,7 @@ export default function GoPage() {
       description:
         "Learn about Go packages, how to create and use them. Understand package structure, imports, and how to organize your Go code effectively.",
       image: "/assets/images/golang.jpg",
-      date: "2025-02-12",
+      date: "2025-12-10",
       slug: "golang-packages",
     },
   ];
