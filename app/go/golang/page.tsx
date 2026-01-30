@@ -84,6 +84,54 @@ export default function GoPage() {
       date: "2025-01-29",
       slug: "golang-functions",
     },
+    {
+      title: "Go Structs - Complete Guide",
+      description:
+        "Learn about Go structs, how to create and use them. Understand struct fields, methods, embedding, and best practices for working with custom types.",
+      image: "/assets/images/golang.jpg",
+      date: "2025-02-09",
+      slug: "golang-structs",
+    },
+    {
+      title: "Go Interfaces - Complete Guide",
+      description:
+        "Learn about Go interfaces, how they work, and how to use them effectively. Understand interface implementation and polymorphism in Go.",
+      image: "/assets/images/golang.jpg",
+      date: "2025-02-07",
+      slug: "golang-interfaces",
+    },
+    {
+      title: "Building REST API with Go - Complete Guide",
+      description:
+        "Learn how to build REST APIs in Go using the net/http package and popular frameworks. Create endpoints, handle requests, and build production-ready APIs.",
+      image: "/assets/images/golang.jpg",
+      date: "2025-02-08",
+      slug: "golang-rest-api",
+    },
+    {
+      title: "Go Concurrency - Goroutines and Channels",
+      description:
+        "Learn about Go's powerful concurrency features. Understand goroutines, channels, and how to write concurrent programs in Go.",
+      image: "/assets/images/golang.jpg",
+      date: "2025-02-10",
+      slug: "golang-concurrency",
+    },
+    {
+      title: "Go Error Handling - Complete Guide",
+      description:
+        "Learn how to handle errors in Go. Understand Go's error handling philosophy, error types, and best practices for writing robust Go code.",
+      image: "/assets/images/golang.jpg",
+      date: "2025-02-11",
+      slug: "golang-error-handling",
+    },
+    {
+      title: "Go Packages - Organizing Your Code",
+      description:
+        "Learn about Go packages, how to create and use them. Understand package structure, imports, and how to organize your Go code effectively.",
+      image: "/assets/images/golang.jpg",
+      date: "2025-02-12",
+      slug: "golang-packages",
+    },
   ];
 
   return (

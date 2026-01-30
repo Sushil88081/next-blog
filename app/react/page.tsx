@@ -228,6 +228,14 @@ export default function ReactPage() {
       date: "2025-01-23",
       slug: "react-performance-tips",
     },
+    // === PROJECTS ===
+    {
+      title: "Build a Todo App in React - Complete Project Tutorial",
+      description: "Learn React by building a complete Todo application. This hands-on tutorial covers useState, components, props, events, and more React concepts.",
+      image: "/assets/images/react.jpg",
+      date: "2025-02-13",
+      slug: "react-todo-project",
+    },
   ];
 
   return (

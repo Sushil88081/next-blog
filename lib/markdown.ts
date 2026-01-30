@@ -38,7 +38,7 @@ export function getPostSlugs(category?: string): string[] {
     }
   } else {
     // Get posts from all category folders
-    const categories = ['react', 'golang', 'python', 'typescript']
+    const categories = ['react', 'golang', 'python', 'typescript', 'javascript']
     categories.forEach(cat => {
       const categoryDir = path.join(postsDirectory, cat)
       if (fs.existsSync(categoryDir)) {
@@ -63,7 +63,7 @@ export async function getPostBySlug(slug: string, category?: string): Promise<Po
       fullPath = path.join(postsDirectory, category, `${slug}.md`)
     } else {
       // Search in all category folders
-      const categories = ['react', 'golang', 'python', 'typescript']
+      const categories = ['react', 'golang', 'python', 'typescript', 'javascript']
       fullPath = ''
       
       for (const cat of categories) {

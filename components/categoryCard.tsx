@@ -22,7 +22,7 @@ export default function CategoryCard() {
       image: "/assets/images/golang.jpg",
       link: "/go/golang",
       color: "from-cyan-500 to-blue-600",
-      count: "4 Posts",
+      count: "10 Posts",
     },
     {
       name: "Python",
@@ -40,7 +40,7 @@ export default function CategoryCard() {
       image: "/assets/images/javascript.jpg",
       link: "/javascript",
       color: "from-yellow-400 to-yellow-600",
-      count: "Coming Soon",
+      count: "6 Posts",
     },
     {
       name: "TypeScript",

@@ -53,6 +53,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/javascript`,
+      lastModified: new Date(),
+      changeFrequency: "daily" as const,
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/faq`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
@@ -66,6 +72,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { name: "golang", path: "/go/golang" },
     { name: "python", path: "/python" },
     { name: "typescript", path: "/typescript" },
+    { name: "javascript", path: "/javascript" },
   ];
 
   const postPages: MetadataRoute.Sitemap = [];
