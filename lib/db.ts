@@ -52,25 +52,45 @@ function getPool(): Pool {
   // Extract and validate connection string
   const connectionString = process.env.DATABASE_URL;
   
+  if (!connectionString) {
+    throw new Error("DATABASE_URL environment variable is not set");
+  }
+  
   // Parse connection string to extract hostname for better error messages
   let hostname = 'unknown';
+  let port = 'unknown';
+  let isPooler = false;
   try {
     const url = new URL(connectionString);
     hostname = url.hostname;
+    port = url.port || '5432';
+    isPooler = hostname.includes('pooler.supabase.com');
+    
     console.log("🔌 Initializing database pool");
     console.log("   Host:", hostname);
-    console.log("   Port:", url.port || '5432');
+    console.log("   Port:", port);
     console.log("   Database:", url.pathname.replace('/', '') || 'postgres');
+    console.log("   Using Pooler:", isPooler ? 'Yes ✅' : 'No ❌');
+    
+    // Warn if using direct connection (not pooler) in production
+    if (!isPooler && hostname.includes('supabase.co') && process.env.NODE_ENV === 'production') {
+      console.warn("⚠️  WARNING: Using direct connection instead of pooler!");
+      console.warn("   Direct connections are NOT IPv4 compatible on Vercel.");
+      console.warn("   Use Connection Pooler: Change 'Source' to 'Connection Pooler' in Supabase dashboard");
+    }
   } catch (e) {
     console.log("🔌 Initializing database pool with:", 
       connectionString.replace(/:[^:@]+@/, ':****@'));
+    console.error("⚠️  Could not parse connection string URL");
   }
 
   // Determine SSL requirement based on connection string
   // Cloud databases (Supabase, Neon, etc.) require SSL
+  // Note: Supabase pooler (pooler.supabase.com) also requires SSL
   const requiresSSL = 
     process.env.NODE_ENV === "production" || 
     connectionString.includes('supabase.co') ||
+    connectionString.includes('pooler.supabase.com') ||
     connectionString.includes('neon.tech') ||
     connectionString.includes('railway.app') ||
     connectionString.includes('render.com');
@@ -109,13 +129,28 @@ function getPool(): Pool {
       // Provide specific help for common errors
       if (err.code === 'ENOTFOUND') {
         console.error('   ⚠️  DNS lookup failed - the hostname cannot be resolved.');
+        console.error('   Hostname attempted:', hostname);
+        console.error('   Using Pooler:', isPooler ? 'Yes' : 'No');
+        console.error('');
         console.error('   Possible causes:');
-        console.error('   1. Supabase project might be paused or deleted');
-        console.error('   2. Incorrect hostname in connection string');
-        console.error('   3. Network/DNS issues');
-        console.error('   Solution: Check your Supabase project status and verify the connection string');
+        if (!isPooler && hostname.includes('supabase.co')) {
+          console.error('   ❌ You are using DIRECT connection (NOT pooler)');
+          console.error('   ❌ Direct connections are NOT IPv4 compatible on Vercel');
+          console.error('   ✅ SOLUTION: Use Connection Pooler instead');
+          console.error('      - Go to Supabase Dashboard → Settings → Database');
+          console.error('      - Change "Source" from "Primary Database" to "Connection Pooler"');
+          console.error('      - Copy the pooler connection string (hostname contains "pooler.supabase.com")');
+          console.error('      - Update DATABASE_URL in Vercel with the pooler string');
+        } else {
+          console.error('   1. Supabase project might be paused or deleted');
+          console.error('   2. Incorrect hostname in connection string');
+          console.error('   3. Network/DNS issues');
+          console.error('   Solution: Check your Supabase project status and verify the connection string');
+        }
       } else if (err.code === 'ETIMEDOUT' || err.code === 'ECONNREFUSED') {
         console.error('   ⚠️  Connection timeout or refused');
+        console.error('   Hostname:', hostname);
+        console.error('   Port:', port);
         console.error('   Possible causes:');
         console.error('   1. Firewall blocking the connection');
         console.error('   2. Incorrect port number');
