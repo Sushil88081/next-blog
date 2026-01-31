@@ -1,5 +1,7 @@
 import { Pool } from "pg";
 
+// This module is server-only and should never be imported in client components
+
 if (!process.env.DATABASE_URL) {
   console.error("❌ DATABASE_URL is not set in environment variables!");
   throw new Error("DATABASE_URL environment variable is required");
