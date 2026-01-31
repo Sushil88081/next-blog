@@ -182,7 +182,7 @@ export async function GET(req: NextRequest) {
       let query: string;
       let params: any[];
 
-      // If status is specified, filter by it; otherwise show all comments
+      // If status is specified, filter by it; otherwise show only approved comments
       if (status && ['pending', 'approved', 'rejected', 'spam'].includes(status)) {
         query = `SELECT id, post_slug, name, comment, status, created_at, updated_at
                  FROM comments
@@ -190,10 +190,10 @@ export async function GET(req: NextRequest) {
                  ORDER BY created_at DESC`;
         params = [slug, status];
       } else {
-        // Show all comments (pending and approved) - exclude rejected and spam
+        // Only show approved comments - exclude pending, rejected, and spam
         query = `SELECT id, post_slug, name, comment, status, created_at, updated_at
                  FROM comments
-                 WHERE post_slug=$1 AND status IN ('pending', 'approved')
+                 WHERE post_slug=$1 AND status = 'approved'
                  ORDER BY created_at DESC`;
         params = [slug];
       }
