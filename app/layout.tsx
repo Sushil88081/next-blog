@@ -109,18 +109,19 @@ export const metadata: Metadata = {
   },
   category: "technology",
   classification: "Technology & Programming",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
+  other: {
+    "og:locale:alternate": "en_US",
   },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#3b82f6" },
     { media: "(prefers-color-scheme: dark)", color: "#1e40af" },
   ],
-  other: {
-    "og:locale:alternate": "en_US",
-  },
 };
 
 export default function RootLayout({
