@@ -135,16 +135,26 @@ export async function POST(req: NextRequest) {
       });
       
       // Return more specific error message for debugging
-      // In production, still show some details to help debug connection issues
-      const errorMessage = process.env.NODE_ENV === 'development' 
-        ? `Database error: ${dbError.message || 'Unknown error'}`
-        : `Database error: ${dbError.message || 'Connection failed. Please check your DATABASE_URL environment variable.'}`;
+      let errorMessage = dbError.message || 'Connection failed. Please check your DATABASE_URL environment variable.';
+      let hint = dbError.hint;
+      
+      // Provide specific guidance for common errors
+      if (dbError.code === 'ENOTFOUND') {
+        errorMessage = 'Database hostname cannot be resolved. Your Supabase project might be paused or the connection string is incorrect.';
+        hint = 'Go to Supabase Dashboard → Check if project is active → Get the correct connection string from Settings → Database';
+      } else if (dbError.code === 'ECONNREFUSED') {
+        errorMessage = 'Database connection refused. Check if DATABASE_URL is correct and the database is accessible.';
+        hint = 'Verify your connection string and ensure the database server is running';
+      } else if (dbError.code === 'ETIMEDOUT') {
+        errorMessage = 'Database connection timeout. The server might be unreachable.';
+        hint = 'Check your network connection and firewall settings';
+      }
       
       return NextResponse.json(
         { 
           error: errorMessage,
           code: dbError.code,
-          hint: dbError.hint || (dbError.code === 'ECONNREFUSED' ? 'Check if DATABASE_URL is correct and the database is accessible' : undefined)
+          hint: hint
         },
         { status: 500 }
       );

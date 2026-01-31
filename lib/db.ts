@@ -49,26 +49,40 @@ function getPool(): Pool {
     );
   }
 
-  console.log("🔌 Initializing database pool with:", 
-    process.env.DATABASE_URL.replace(/:[^:@]+@/, ':****@'));
+  // Extract and validate connection string
+  const connectionString = process.env.DATABASE_URL;
+  
+  // Parse connection string to extract hostname for better error messages
+  let hostname = 'unknown';
+  try {
+    const url = new URL(connectionString);
+    hostname = url.hostname;
+    console.log("🔌 Initializing database pool");
+    console.log("   Host:", hostname);
+    console.log("   Port:", url.port || '5432');
+    console.log("   Database:", url.pathname.replace('/', '') || 'postgres');
+  } catch (e) {
+    console.log("🔌 Initializing database pool with:", 
+      connectionString.replace(/:[^:@]+@/, ':****@'));
+  }
 
   // Determine SSL requirement based on connection string
   // Cloud databases (Supabase, Neon, etc.) require SSL
   const requiresSSL = 
     process.env.NODE_ENV === "production" || 
-    process.env.DATABASE_URL.includes('supabase.co') ||
-    process.env.DATABASE_URL.includes('neon.tech') ||
-    process.env.DATABASE_URL.includes('railway.app') ||
-    process.env.DATABASE_URL.includes('render.com');
+    connectionString.includes('supabase.co') ||
+    connectionString.includes('neon.tech') ||
+    connectionString.includes('railway.app') ||
+    connectionString.includes('render.com');
 
   pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
+    connectionString: connectionString,
     ssl: requiresSSL
       ? { rejectUnauthorized: false }
       : false,
     max: 20,
     idleTimeoutMillis: 30000,
-    connectionTimeoutMillis: 10000, // Increased timeout for Supabase
+    connectionTimeoutMillis: 15000, // Increased timeout for Supabase
   });
 
   // Test connection on startup (only at runtime, not during build)
@@ -90,7 +104,23 @@ function getPool(): Pool {
     .catch((err) => {
       console.error('❌ Database connection test failed:', err.message);
       console.error('   Error code:', err.code);
-      console.error('   Connection string format:', process.env.DATABASE_URL?.substring(0, 30) + '...');
+      console.error('   Hostname:', hostname);
+      
+      // Provide specific help for common errors
+      if (err.code === 'ENOTFOUND') {
+        console.error('   ⚠️  DNS lookup failed - the hostname cannot be resolved.');
+        console.error('   Possible causes:');
+        console.error('   1. Supabase project might be paused or deleted');
+        console.error('   2. Incorrect hostname in connection string');
+        console.error('   3. Network/DNS issues');
+        console.error('   Solution: Check your Supabase project status and verify the connection string');
+      } else if (err.code === 'ETIMEDOUT' || err.code === 'ECONNREFUSED') {
+        console.error('   ⚠️  Connection timeout or refused');
+        console.error('   Possible causes:');
+        console.error('   1. Firewall blocking the connection');
+        console.error('   2. Incorrect port number');
+        console.error('   3. Database server is down');
+      }
     });
 
   return pool;
