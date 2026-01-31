@@ -13,15 +13,18 @@ function getPool(): Pool {
   // Check if DATABASE_URL is available
   // This will only be checked when the pool is actually used (at runtime)
   if (!process.env.DATABASE_URL) {
-    // Check if we're in build phase - if so, return a dummy pool
-    // This allows the module to be imported during build without errors
+    // Check if we're in build phase or development mode
+    // Return a dummy pool that won't cause errors until actually used
     const isBuildPhase = 
       process.env.NEXT_PHASE === 'phase-production-build' ||
       process.env.NEXT_PHASE === 'phase-development-build' ||
       process.env.NEXT_PHASE === 'phase-export';
     
-    if (isBuildPhase) {
-      // During build, return a dummy pool that won't cause errors
+    const isDevelopment = process.env.NODE_ENV === 'development';
+    
+    if (isBuildPhase || isDevelopment) {
+      // During build or development, return a dummy pool that won't cause errors
+      // It will only throw when database methods are actually called
       return new Proxy({} as Pool, {
         get(_target, prop) {
           // Only throw when methods are actually called
@@ -30,8 +33,9 @@ function getPool(): Pool {
             if (methodNames.includes(prop)) {
               return () => {
                 throw new Error(
-                  `Database connection is not available during build. ` +
-                  `DATABASE_URL is only needed at runtime for API routes.`
+                  `Database connection is not available. ` +
+                  `DATABASE_URL environment variable is required. ` +
+                  `Please set it in your environment variables or .env.local file.`
                 );
               };
             }
@@ -41,7 +45,7 @@ function getPool(): Pool {
       }) as Pool;
     }
     
-    // At runtime, DATABASE_URL is required
+    // At runtime in production, DATABASE_URL is required
     throw new Error(
       "DATABASE_URL environment variable is required. " +
       "Please set it in your Vercel environment variables. " +

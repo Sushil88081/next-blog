@@ -293,6 +293,31 @@ export default function ContactPage() {
           </ul>
         </section>
 
+        {/* Blog Information Section */}
+        <section className="mb-12">
+          <h2 className="text-3xl font-semibold mb-6 text-gray-900 dark:text-gray-100">
+            About This Blog
+          </h2>
+          <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+            <p className="text-lg text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+              Programming Blog is a comprehensive resource for developers of all skill levels. We publish 
+              detailed tutorials, guides, and articles covering a wide range of programming topics including 
+              React, JavaScript, TypeScript, Go (Golang), Python, and more.
+            </p>
+            <p className="text-lg text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+              Our mission is to make programming education accessible and practical. We believe that everyone 
+              should have the opportunity to learn coding, regardless of their background or experience level. 
+              That's why all our content is free and designed to be beginner-friendly while still providing 
+              value to experienced developers.
+            </p>
+            <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+              We regularly publish new tutorials and update existing content to ensure it remains current with 
+              the latest industry standards and best practices. Our content is written by experienced developers 
+              who understand the challenges of learning to code and the importance of clear, practical examples.
+            </p>
+          </div>
+        </section>
+
         {/* Thank You Section */}
         <section className="mb-8">
           <div className="bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 p-8 rounded-lg text-center">
