@@ -45,7 +45,7 @@ function getPool(): Pool {
       : false,
     max: 20,
     idleTimeoutMillis: 30000,
-    connectionTimeoutMillis: 2000,
+    connectionTimeoutMillis: 10000, // Increased timeout for Supabase
   });
 
   // Test connection on startup (only at runtime, not during build)
@@ -58,15 +58,20 @@ function getPool(): Pool {
   });
 
   // Test connection asynchronously (don't block module load)
-  pool.query('SELECT current_database(), current_user')
-    .then((result) => {
-      console.log('✅ Database connection test successful');
-      console.log('   Database:', result.rows[0].current_database);
-      console.log('   User:', result.rows[0].current_user);
-    })
-    .catch((err) => {
-      console.error('❌ Database connection test failed:', err.message);
-    });
+  // Only test if we have a valid connection string
+  if (process.env.DATABASE_URL) {
+    pool.query('SELECT current_database(), current_user')
+      .then((result) => {
+        console.log('✅ Database connection test successful');
+        console.log('   Database:', result.rows[0].current_database);
+        console.log('   User:', result.rows[0].current_user);
+      })
+      .catch((err) => {
+        console.error('❌ Database connection test failed:', err.message);
+        console.error('   Error code:', err.code);
+        console.error('   Connection string format:', process.env.DATABASE_URL?.substring(0, 30) + '...');
+      });
+  }
 
   return pool;
 }

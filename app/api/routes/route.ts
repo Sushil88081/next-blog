@@ -131,15 +131,21 @@ export async function POST(req: NextRequest) {
         code: dbError.code,
         detail: dbError.detail,
         hint: dbError.hint,
+        stack: dbError.stack,
       });
       
-      // Return more specific error message in development
+      // Return more specific error message for debugging
+      // In production, still show some details to help debug connection issues
       const errorMessage = process.env.NODE_ENV === 'development' 
         ? `Database error: ${dbError.message || 'Unknown error'}`
-        : "Failed to save comment. Please try again later.";
+        : `Database error: ${dbError.message || 'Connection failed. Please check your DATABASE_URL environment variable.'}`;
       
       return NextResponse.json(
-        { error: errorMessage },
+        { 
+          error: errorMessage,
+          code: dbError.code,
+          hint: dbError.hint || (dbError.code === 'ECONNREFUSED' ? 'Check if DATABASE_URL is correct and the database is accessible' : undefined)
+        },
         { status: 500 }
       );
     }
