@@ -10,19 +10,42 @@ function getPool(): Pool {
     return pool;
   }
 
-  // Check if we're in build phase or DATABASE_URL is not available
-  const isBuildPhase = 
-    process.env.NEXT_PHASE === 'phase-production-build' ||
-    process.env.NEXT_PHASE === 'phase-development-build';
-
-  if (isBuildPhase || !process.env.DATABASE_URL) {
-    // During build, we can't connect to the database
-    // This should only happen if API routes are being analyzed during build
-    // In that case, we'll create a pool that will fail gracefully when used
-    // But actually, API routes shouldn't execute during build, so this is a safety measure
+  // Check if DATABASE_URL is available
+  // This will only be checked when the pool is actually used (at runtime)
+  if (!process.env.DATABASE_URL) {
+    // Check if we're in build phase - if so, return a dummy pool
+    // This allows the module to be imported during build without errors
+    const isBuildPhase = 
+      process.env.NEXT_PHASE === 'phase-production-build' ||
+      process.env.NEXT_PHASE === 'phase-development-build' ||
+      process.env.NEXT_PHASE === 'phase-export';
+    
+    if (isBuildPhase) {
+      // During build, return a dummy pool that won't cause errors
+      return new Proxy({} as Pool, {
+        get(_target, prop) {
+          // Only throw when methods are actually called
+          if (typeof prop === 'string') {
+            const methodNames = ['query', 'connect', 'end', 'on', 'once', 'removeListener'];
+            if (methodNames.includes(prop)) {
+              return () => {
+                throw new Error(
+                  `Database connection is not available during build. ` +
+                  `DATABASE_URL is only needed at runtime for API routes.`
+                );
+              };
+            }
+          }
+          return undefined;
+        }
+      }) as Pool;
+    }
+    
+    // At runtime, DATABASE_URL is required
     throw new Error(
-      "Database connection is not available during build. " +
-      "DATABASE_URL is only needed at runtime for API routes."
+      "DATABASE_URL environment variable is required. " +
+      "Please set it in your Vercel environment variables. " +
+      "Go to Settings → Environment Variables and add DATABASE_URL."
     );
   }
 
@@ -58,31 +81,39 @@ function getPool(): Pool {
   });
 
   // Test connection asynchronously (don't block module load)
-  // Only test if we have a valid connection string
-  if (process.env.DATABASE_URL) {
-    pool.query('SELECT current_database(), current_user')
-      .then((result) => {
-        console.log('✅ Database connection test successful');
-        console.log('   Database:', result.rows[0].current_database);
-        console.log('   User:', result.rows[0].current_user);
-      })
-      .catch((err) => {
-        console.error('❌ Database connection test failed:', err.message);
-        console.error('   Error code:', err.code);
-        console.error('   Connection string format:', process.env.DATABASE_URL?.substring(0, 30) + '...');
-      });
-  }
+  pool.query('SELECT current_database(), current_user')
+    .then((result) => {
+      console.log('✅ Database connection test successful');
+      console.log('   Database:', result.rows[0].current_database);
+      console.log('   User:', result.rows[0].current_user);
+    })
+    .catch((err) => {
+      console.error('❌ Database connection test failed:', err.message);
+      console.error('   Error code:', err.code);
+      console.error('   Connection string format:', process.env.DATABASE_URL?.substring(0, 30) + '...');
+    });
 
   return pool;
 }
 
 // Use a Proxy to make the pool lazy - it's only initialized when actually accessed
 // This prevents initialization during build time
+// The Proxy will only call getPool() when a property is accessed
 const poolProxy = new Proxy({} as Pool, {
   get(_target, prop) {
-    const actualPool = getPool();
-    const value = (actualPool as any)[prop];
-    return typeof value === 'function' ? value.bind(actualPool) : value;
+    try {
+      // Only initialize pool when actually accessed (not during build analysis)
+      const actualPool = getPool();
+      const value = (actualPool as any)[prop];
+      return typeof value === 'function' ? value.bind(actualPool) : value;
+    } catch (error: any) {
+      // If there's an error getting the pool, provide helpful context
+      console.error('Error accessing database pool:', error.message);
+      console.error('NEXT_PHASE:', process.env.NEXT_PHASE);
+      console.error('NODE_ENV:', process.env.NODE_ENV);
+      console.error('DATABASE_URL set:', !!process.env.DATABASE_URL);
+      throw error;
+    }
   }
 });
 
