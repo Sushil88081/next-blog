@@ -131,7 +131,7 @@ export default function ContactPage() {
 
             {/* Facebook */}
             <a
-              href="https://www.facebook.com/sushil.kumar.603891/"
+              href="https://www.facebook.com/profile.php?id=61587129599762"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg border border-blue-200 dark:border-blue-800 hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-all duration-200 group"
