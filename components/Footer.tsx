@@ -40,6 +40,14 @@ export default function Footer() {
                   Contact
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/privacy"
+                  className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -123,7 +131,13 @@ export default function Footer() {
         <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-600 dark:text-gray-400">
           <p>
             &copy; {new Date().getFullYear()} Programming Blog. All rights
-            reserved.
+            reserved. |{" "}
+            <Link
+              href="/privacy"
+              className="hover:text-primary-600 dark:hover:text-primary-400"
+            >
+              Privacy Policy
+            </Link>
           </p>
         </div>
       </div>

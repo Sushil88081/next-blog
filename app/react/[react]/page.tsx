@@ -3,6 +3,7 @@ import Image from "next/image";
 import { getPostBySlug } from "@/lib/markdown";
 import { format } from "date-fns";
 import CodeBlockInjector from "@/components/CodeBlockInjector";
+import CommentSection from "@/components/CommentSection";
 import type { Metadata } from "next";
 
 interface PageProps {
@@ -214,6 +215,9 @@ export default async function ReactPostPage({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: post.contentHtml || "" }}
         />
         <CodeBlockInjector />
+
+        {/* Comment Section */}
+        <CommentSection postSlug={post.slug} postCategory="react" />
       </div>
     </div>
   );
