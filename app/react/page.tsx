@@ -155,10 +155,17 @@ export default function ReactPage() {
       slug: "react-forms",
     },
     {
+      title: "React Hook Form - Complete Guide with Examples",
+      description: "Master React Hook Form library for building performant forms with minimal re-renders. Learn validation, error handling, and real-world examples with diagrams.",
+      image: "/assets/images/react.jpg",
+      date: "2026-02-02",
+      slug: "react-hook-form",
+    },
+    {
       title: "Styling React Components - Complete Guide",
       description: "Learn different ways to style React components. Understand inline styles, CSS modules, styled-components, and Tailwind CSS.",
       image: "/assets/images/react.jpg",
-      date: "2026-01-22",
+      date: "2026-01-23",
       slug: "react-styling-guide",
     },
     // === ADVANCED HOOKS ===
@@ -166,35 +173,35 @@ export default function ReactPage() {
       title: "React Component Lifecycle - Understanding Component Phases",
       description: "Learn about React component lifecycle. Understand mounting, updating, and unmounting phases in functional components with hooks.",
       image: "/assets/images/react.jpg",
-      date: "2026-01-23",
+      date: "2026-01-24",
       slug: "react-lifecycle-explained",
     },
     {
       title: "useEffect Hook Explained Simply",
       description: "Learn useEffect hook in React with simple examples. Understand how to use useEffect for side effects like API calls and data fetching.",
       image: "/assets/images/react.jpg",
-      date: "2026-01-24",
+      date: "2026-01-25",
       slug: "react-useeffect-explained",
     },
     {
       title: "React Hooks - Complete Guide",
       description: "What are React Hooks? Detailed information about useState, useEffect, useContext and other hooks.",
       image: "/assets/images/react.jpg",
-      date: "2026-01-25",
+      date: "2026-01-26",
       slug: "react-hooks",
     },
     {
       title: "Creating Custom Hooks in React",
       description: "Learn how to create your own custom React hooks. Reuse logic across components with simple examples and best practices.",
       image: "/assets/images/react.jpg",
-      date: "2026-01-26",
+      date: "2026-01-27",
       slug: "react-custom-hooks",
     },
     {
       title: "React Refs - Accessing DOM Elements Directly",
       description: "Learn about React refs to access DOM elements directly. Understand useRef hook and when to use refs in React components.",
       image: "/assets/images/react.jpg",
-      date: "2026-01-27",
+      date: "2026-01-28",
       slug: "react-refs-explained",
     },
     // === STATE MANAGEMENT & NAVIGATION ===
@@ -202,14 +209,14 @@ export default function ReactPage() {
       title: "React Context API",
       description: "Learn React Context API for sharing data across components without prop drilling. Simple examples included.",
       image: "/assets/images/react.jpg",
-      date: "2026-01-28",
+      date: "2026-01-29",
       slug: "react-context-api",
     },
     {
       title: "React Router - Navigation Made Easy",
       description: "Learn React Router to add navigation to your React app. Step by step guide with examples for routing between pages.",
       image: "/assets/images/react.jpg",
-      date: "2026-01-29",
+      date: "2026-01-30",
       slug: "react-router-basics",
     },
     // === ADVANCED TOPICS ===
@@ -217,7 +224,7 @@ export default function ReactPage() {
       title: "Error Handling in React - Complete Guide",
       description: "Learn how to handle errors in React applications. Understand Error Boundaries, try-catch, and best practices for error handling.",
       image: "/assets/images/react.jpg",
-      date: "2026-01-30",
+      date: "2026-01-31",
       slug: "react-error-handling",
     },
     // === OPTIMIZATION ===
@@ -225,7 +232,7 @@ export default function ReactPage() {
       title: "React Performance Tips for Beginners",
       description: "Learn simple ways to make your React app faster. Easy performance optimization tips for React beginners.",
       image: "/assets/images/react.jpg",
-      date: "2026-01-31",
+      date: "2026-02-01",
       slug: "react-performance-tips",
     },
     // === PROJECTS ===
@@ -233,7 +240,7 @@ export default function ReactPage() {
       title: "Build a Todo App in React - Complete Project Tutorial",
       description: "Learn React by building a complete Todo application. This hands-on tutorial covers useState, components, props, events, and more React concepts.",
       image: "/assets/images/react.jpg",
-      date: "2026-01-31",
+      date: "2026-02-02",
       slug: "react-todo-project",
     },
   ];
@@ -268,15 +275,15 @@ export default function ReactPage() {
             Learn React - The Most Popular JavaScript Library
           </h2>
           <p className="text-lg text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
-            React is a powerful JavaScript library for building user interfaces, developed by Facebook. 
-            It's the most popular frontend framework in the world, used by companies like Facebook, 
-            Netflix, Airbnb, and thousands of others. React makes it easy to build interactive, 
+            React is a powerful JavaScript library for building user interfaces, developed by Facebook.
+            It's the most popular frontend framework in the world, used by companies like Facebook,
+            Netflix, Airbnb, and thousands of others. React makes it easy to build interactive,
             component-based web applications.
           </p>
           <p className="text-lg text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
-            Our comprehensive React tutorials cover everything from the basics to advanced concepts. 
-            You'll learn about components, props, state management, hooks, routing, and much more. 
-            Each tutorial includes practical examples and real-world use cases to help you master React 
+            Our comprehensive React tutorials cover everything from the basics to advanced concepts.
+            You'll learn about components, props, state management, hooks, routing, and much more.
+            Each tutorial includes practical examples and real-world use cases to help you master React
             development.
           </p>
         </section>
@@ -291,7 +298,7 @@ export default function ReactPage() {
                 React Fundamentals
               </h3>
               <p className="text-gray-700 dark:text-gray-300 mb-3">
-                Start with React basics: components, JSX, props, and state. Learn how to build your 
+                Start with React basics: components, JSX, props, and state. Learn how to build your
                 first React application and understand the core concepts that make React powerful.
               </p>
             </div>
@@ -300,7 +307,7 @@ export default function ReactPage() {
                 React Hooks
               </h3>
               <p className="text-gray-700 dark:text-gray-300 mb-3">
-                Master modern React with hooks like useState, useEffect, useContext, and custom hooks. 
+                Master modern React with hooks like useState, useEffect, useContext, and custom hooks.
                 Learn how to manage state and side effects in functional components.
               </p>
             </div>
@@ -309,7 +316,7 @@ export default function ReactPage() {
                 Advanced Concepts
               </h3>
               <p className="text-gray-700 dark:text-gray-300 mb-3">
-                Dive into advanced topics like Context API, error boundaries, performance optimization, 
+                Dive into advanced topics like Context API, error boundaries, performance optimization,
                 and building production-ready React applications.
               </p>
             </div>
@@ -318,7 +325,7 @@ export default function ReactPage() {
                 Real Projects
               </h3>
               <p className="text-gray-700 dark:text-gray-300 mb-3">
-                Build complete projects like Todo apps to apply everything you've learned. Practice 
+                Build complete projects like Todo apps to apply everything you've learned. Practice
                 makes perfect, and our project tutorials give you hands-on experience.
               </p>
             </div>
