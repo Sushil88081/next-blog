@@ -2,21 +2,46 @@
 
 import Link from "next/link";
 import { useTheme } from "./ThemeProvider";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Header() {
   const { theme, toggleTheme } = useTheme();
   const pathname = usePathname();
+  const router = useRouter();
 
   const isActive = (path: string) => pathname === path;
+  const showBackButton = pathname !== "/" && pathname.split("/").filter(Boolean).length > 0;
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-md">
       <div className="container mx-auto px-3 md:px-4 py-5 md:py-6">
         <div className="flex items-center justify-between gap-4">
+          {/* Mobile Back Button */}
+          {showBackButton && (
+            <button
+              onClick={() => router.back()}
+              className="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 active:scale-95"
+              aria-label="Go back"
+            >
+              <svg
+                className="w-6 h-6 text-gray-700 dark:text-gray-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                />
+              </svg>
+            </button>
+          )}
+
           <Link
             href="/"
-            className="text-2xl md:text-3xl font-bold text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-all duration-300 hover:scale-105"
+            className="text-2xl md:text-3xl font-bold text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-all duration-300 hover:scale-105 flex-1 md:flex-none"
           >
             <span className="bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent">
               Programming Blog
@@ -26,11 +51,10 @@ export default function Header() {
           <nav className="hidden md:flex items-center space-x-1 lg:space-x-2 flex-1 justify-center">
             <Link
               href="/"
-              className={`px-4 py-2 rounded-lg transition-all duration-300 font-medium relative group ${
-                isActive("/")
+              className={`px-4 py-2 rounded-lg transition-all duration-300 font-medium relative group ${isActive("/")
                   ? "text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30"
                   : "text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800"
-              }`}
+                }`}
             >
               Home
               {isActive("/") && (
@@ -39,11 +63,10 @@ export default function Header() {
             </Link>
             <Link
               href="/about"
-              className={`px-4 py-2 rounded-lg transition-all duration-300 font-medium relative group ${
-                isActive("/about")
+              className={`px-4 py-2 rounded-lg transition-all duration-300 font-medium relative group ${isActive("/about")
                   ? "text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30"
                   : "text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800"
-              }`}
+                }`}
             >
               About
               {isActive("/about") && (
@@ -52,11 +75,10 @@ export default function Header() {
             </Link>
             <Link
               href="/contact"
-              className={`px-4 py-2 rounded-lg transition-all duration-300 font-medium relative group ${
-                isActive("/contact")
+              className={`px-4 py-2 rounded-lg transition-all duration-300 font-medium relative group ${isActive("/contact")
                   ? "text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30"
                   : "text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800"
-              }`}
+                }`}
             >
               Contact
               {isActive("/contact") && (
@@ -65,11 +87,10 @@ export default function Header() {
             </Link>
             <Link
               href="/faq"
-              className={`px-4 py-2 rounded-lg transition-all duration-300 font-medium relative group ${
-                isActive("/faq")
+              className={`px-4 py-2 rounded-lg transition-all duration-300 font-medium relative group ${isActive("/faq")
                   ? "text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30"
                   : "text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800"
-              }`}
+                }`}
             >
               FAQ
               {isActive("/faq") && (
