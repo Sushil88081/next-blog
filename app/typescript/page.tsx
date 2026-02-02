@@ -1,5 +1,6 @@
 import Image from "next/image";
 import PostCard from "@/components/PostCard";
+import CategorySearch from "@/components/CategorySearch";
 import type { Metadata } from "next";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://learn-code-easy.vercel.app";
@@ -186,19 +187,12 @@ export default function TypeScriptPage() {
         </section>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {typescriptPosts.map((post) => (
-          <PostCard
-            key={post.slug}
-            title={post.title}
-            description={post.description}
-            image={post.image}
-            date={post.date}
-            slug={post.slug}
-            basePath="/typescript"
-          />
-        ))}
-      </div>
+      {/* Search and Posts */}
+      <CategorySearch 
+        posts={typescriptPosts} 
+        category="TypeScript" 
+        basePath="/typescript"
+      />
     </div>
   );
 }
