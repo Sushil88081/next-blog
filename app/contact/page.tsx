@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="container mx-auto px-4 py-8 max-w-4xl">
+    <div className="container mx-auto px-4 py-8 max-w-5xl">
       <h1 className="text-4xl font-bold mb-8 text-gray-900 dark:text-gray-100">
         Contact Us
       </h1>
@@ -300,19 +300,19 @@ export default function ContactPage() {
           </h2>
           <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
             <p className="text-lg text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
-              Programming Blog is a comprehensive resource for developers of all skill levels. We publish 
-              detailed tutorials, guides, and articles covering a wide range of programming topics including 
+              Programming Blog is a comprehensive resource for developers of all skill levels. We publish
+              detailed tutorials, guides, and articles covering a wide range of programming topics including
               React, JavaScript, TypeScript, Go (Golang), Python, and more.
             </p>
             <p className="text-lg text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
-              Our mission is to make programming education accessible and practical. We believe that everyone 
-              should have the opportunity to learn coding, regardless of their background or experience level. 
-              That's why all our content is free and designed to be beginner-friendly while still providing 
+              Our mission is to make programming education accessible and practical. We believe that everyone
+              should have the opportunity to learn coding, regardless of their background or experience level.
+              That's why all our content is free and designed to be beginner-friendly while still providing
               value to experienced developers.
             </p>
             <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-              We regularly publish new tutorials and update existing content to ensure it remains current with 
-              the latest industry standards and best practices. Our content is written by experienced developers 
+              We regularly publish new tutorials and update existing content to ensure it remains current with
+              the latest industry standards and best practices. Our content is written by experienced developers
               who understand the challenges of learning to code and the importance of clear, practical examples.
             </p>
           </div>

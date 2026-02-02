@@ -150,7 +150,7 @@ export default async function ReactPostPage({ params }: PageProps) {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         {/* Structured Data for SEO */}
         <script
           type="application/ld+json"
