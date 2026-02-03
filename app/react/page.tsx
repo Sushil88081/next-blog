@@ -244,6 +244,13 @@ export default function ReactPage() {
       date: "2026-02-02",
       slug: "react-todo-project",
     },
+    {
+      title: "React Redux and Redux Toolkit - Complete Guide",
+      description: "Learn React Redux and Redux Toolkit for state management in React applications. Complete guide with examples and best practices.",
+      image: "/assets/images/react.jpg",
+      date: "2026-02-03",
+      slug: "react-redux-redux-toolkit",
+    },
   ];
 
   return (
