@@ -251,6 +251,14 @@ export default function ReactPage() {
       date: "2026-02-03",
       slug: "react-redux-redux-toolkit",
     },
+
+    {
+      title: "React Redux and createEntityAdapter - Complete Guide",
+      description: "Learn React Redux and createEntityAdapter for state management in React applications. Complete guide with examples and best practices.",
+      image: "/assets/images/react.jpg",
+      date: "2026-02-03",
+      slug: "react-redux-entity-adapter",
+    }
   ];
 
   return (
