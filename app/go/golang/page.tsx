@@ -133,6 +133,14 @@ export default function GoPage() {
       date: "2025-12-10",
       slug: "golang-packages",
     },
+    {
+      title: "Go methods - Complete Guide",
+      description:
+        "Learn about Go methods, how to create and use them. Understand value vs pointer receivers, methods with interfaces, and build a beginner-friendly REST API using interfaces and methods.",
+      image: "/assets/images/golang.jpg",
+      date: "2026-03-31",
+      slug: "golang-methods",
+    },
   ];
 
   return (

@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Promises - Complete Visual Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(to bottom right, #eff6ff, #eef2ff, #faf5ff);
+            color: #1f2937;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #2563eb, #9333ea, #db2777);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.25rem;
+            color: #4b5563;
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            padding: 2rem;
+            margin-bottom: 3rem;
+            animation: scaleIn 0.5s ease-out;
+        }
+
+        .card h2 {
+            font-size: 1.875rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #1f2937;
+        }
+
+        .flowchart-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: auto;
+            padding: 2rem 0;
+        }
+
+        .flowchart-container svg {
+            width: 100%;
+            height: auto;
+        }
+
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .legend-item {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: 2px solid;
+        }
+
+        .legend-item.pending {
+            background: #fef3c7;
+            border-color: #fcd34d;
+        }
+
+        .legend-item.fulfilled {
+            background: #d1fae5;
+            border-color: #6ee7b7;
+        }
+
+        .legend-item.rejected {
+            background: #fee2e2;
+            border-color: #fca5a5;
+        }
+
+        .legend-item h3 {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .legend-item.pending h3 {
+            color: #92400e;
+        }
+
+        .legend-item.fulfilled h3 {
+            color: #065f46;
+        }
+
+        .legend-item.rejected h3 {
+            color: #991b1b;
+        }
+
+        .legend-item p {
+            font-size: 0.875rem;
+        }
+
+        .concepts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .concept-card {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .concept-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .concept-card .emoji {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .concept-card h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+        }
+
+        .concept-card p {
+            color: #4b5563;
+            font-size: 0.875rem;
+        }
+
+        .code-examples {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            padding: 2rem;
+        }
+
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            justify-content: center;
+        }
+
+        .tab-button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #e5e7eb;
+            color: #374151;
+        }
+
+        .tab-button:hover {
+            background: #d1d5db;
+        }
+
+        .tab-button.active {
+            background: linear-gradient(to right, #2563eb, #9333ea);
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transform: scale(1.05);
+        }
+
+        .code-display {
+            background: #111827;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            overflow-x: auto;
+        }
+
+        .code-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .code-header h3 {
+            color: white;
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+
+        .copy-button {
+            padding: 0.5rem 1rem;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .copy-button:hover {
+            background: #1d4ed8;
+        }
+
+        .code-content {
+            color: #4ade80;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            line-height: 1.75;
+            white-space: pre;
+        }
+
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .method-item {
+            border-left: 4px solid;
+            padding-left: 1.5rem;
+        }
+
+        .method-item.blue {
+            border-color: #3b82f6;
+        }
+
+        .method-item.red {
+            border-color: #ef4444;
+        }
+
+        .method-item.purple {
+            border-color: #8b5cf6;
+        }
+
+        .method-item.green {
+            border-color: #10b981;
+        }
+
+        .method-item h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+            color: #1f2937;
+        }
+
+        .method-item p {
+            color: #4b5563;
+            margin-bottom: 0.5rem;
+        }
+
+        .method-item code {
+            background: #f3f4f6;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        .footer-note {
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .footer-note p {
+            color: #4b5563;
+            font-size: 1.125rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>JavaScript Promises</h1>
+            <p>Master asynchronous programming with Promises - A complete visual guide</p>
+        </div>
+
+        <!-- Promise States Flowchart -->
+        <div class="card">
+            <h2>Promise Lifecycle Flowchart</h2>
+            
+            <!-- SVG Flowchart -->
+            <div class="flowchart-container">
+                <svg width="900" height="600" viewBox="0 0 900 600">
+                    <defs>
+                        <linearGradient id="pendingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="fulfilledGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="rejectedGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ef4444;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+                        </linearGradient>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#4b5563" />
+                        </marker>
+                    </defs>
+
+                    <!-- Pending State -->
+                    <rect x="350" y="50" width="200" height="100" rx="15" fill="url(#pendingGrad)" stroke="#92400e" stroke-width="3" />
+                    <text x="450" y="95" text-anchor="middle" fill="white" font-size="20" font-weight="bold">PENDING</text>
+                    <text x="450" y="120" text-anchor="middle" fill="white" font-size="14">Initial State</text>
+
+                    <!-- Fulfilled State -->
+                    <rect x="100" y="250" width="200" height="100" rx="15" fill="url(#fulfilledGrad)" stroke="#065f46" stroke-width="3" />
+                    <text x="200" y="295" text-anchor="middle" fill="white" font-size="20" font-weight="bold">FULFILLED</text>
+                    <text x="200" y="320" text-anchor="middle" fill="white" font-size="14">Success ✅</text>
+
+                    <!-- Rejected State -->
+                    <rect x="600" y="250" width="200" height="100" rx="15" fill="url(#rejectedGrad)" stroke="#991b1b" stroke-width="3" />
+                    <text x="700" y="295" text-anchor="middle" fill="white" font-size="20" font-weight="bold">REJECTED</text>
+                    <text x="700" y="320" text-anchor="middle" fill="white" font-size="14">Error ❌</text>
+
+                    <!-- .then() handler -->
+                    <rect x="50" y="450" width="150" height="80" rx="10" fill="#3b82f6" stroke="#1e40af" stroke-width="2" />
+                    <text x="125" y="485" text-anchor="middle" fill="white" font-size="16" font-weight="bold">.then()</text>
+                    <text x="125" y="510" text-anchor="middle" fill="white" font-size="12">Success Handler</text>
+
+                    <!-- .catch() handler -->
+                    <rect x="700" y="450" width="150" height="80" rx="10" fill="#ef4444" stroke="#dc2626" stroke-width="2" />
+                    <text x="775" y="485" text-anchor="middle" fill="white" font-size="16" font-weight="bold">.catch()</text>
+                    <text x="775" y="510" text-anchor="middle" fill="white" font-size="12">Error Handler</text>
+
+                    <!-- .finally() handler -->
+                    <rect x="375" y="450" width="150" height="80" rx="10" fill="#8b5cf6" stroke="#6d28d9" stroke-width="2" />
+                    <text x="450" y="485" text-anchor="middle" fill="white" font-size="16" font-weight="bold">.finally()</text>
+                    <text x="450" y="510" text-anchor="middle" fill="white" font-size="12">Always Runs</text>
+
+                    <!-- Arrows -->
+                    <!-- Pending to Fulfilled -->
+                    <line x1="400" y1="150" x2="200" y2="250" stroke="#4b5563" stroke-width="3" marker-end="url(#arrowhead)" />
+                    <text x="280" y="200" fill="#4b5563" font-size="14" font-weight="bold">resolve()</text>
+
+                    <!-- Pending to Rejected -->
+                    <line x1="500" y1="150" x2="700" y2="250" stroke="#4b5563" stroke-width="3" marker-end="url(#arrowhead)" />
+                    <text x="620" y="200" fill="#4b5563" font-size="14" font-weight="bold">reject()</text>
+
+                    <!-- Fulfilled to .then() -->
+                    <line x1="200" y1="350" x2="125" y2="450" stroke="#4b5563" stroke-width="3" marker-end="url(#arrowhead)" />
+
+                    <!-- Rejected to .catch() -->
+                    <line x1="700" y1="350" x2="775" y2="450" stroke="#4b5563" stroke-width="3" marker-end="url(#arrowhead)" />
+
+                    <!-- Both to .finally() -->
+                    <line x1="250" y1="350" x2="400" y2="450" stroke="#4b5563" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)" />
+                    <line x1="650" y1="350" x2="500" y2="450" stroke="#4b5563" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)" />
+                </svg>
+            </div>
+
+            <!-- Legend -->
+            <div class="legend">
+                <div class="legend-item pending">
+                    <h3>Pending</h3>
+                    <p>Promise is waiting for result</p>
+                </div>
+                <div class="legend-item fulfilled">
+                    <h3>Fulfilled</h3>
+                    <p>Promise resolved successfully</p>
+                </div>
+                <div class="legend-item rejected">
+                    <h3>Rejected</h3>
+                    <p>Promise failed with error</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Concepts -->
+        <div class="concepts-grid">
+            <div class="concept-card">
+                <div class="emoji">📦</div>
+                <h3>Promise Object</h3>
+                <p>Represents the eventual completion or failure of an async operation</p>
+            </div>
+            <div class="concept-card">
+                <div class="emoji">✅</div>
+                <h3>resolve()</h3>
+                <p>Marks promise as fulfilled with a value</p>
+            </div>
+            <div class="concept-card">
+                <div class="emoji">❌</div>
+                <h3>reject()</h3>
+                <p>Marks promise as rejected with an error</p>
+            </div>
+            <div class="concept-card">
+                <div class="emoji">🔗</div>
+                <h3>Chaining</h3>
+                <p>Chain multiple async operations together</p>
+            </div>
+        </div>
+
+        <!-- Code Examples -->
+        <div class="code-examples">
+            <h2>Code Examples</h2>
+            
+            <!-- Example Tabs -->
+            <div class="tabs" id="tabs">
+                <button class="tab-button active" data-index="0">Basic Promise</button>
+                <button class="tab-button" data-index="1">Promise with Async Operation</button>
+                <button class="tab-button" data-index="2">Promise Chaining</button>
+                <button class="tab-button" data-index="3">Promise.all() - Multiple Promises</button>
+            </div>
+
+            <!-- Code Display -->
+            <div class="code-display">
+                <div class="code-header">
+                    <h3 id="code-title">Basic Promise</h3>
+                    <button class="copy-button" id="copy-btn">📋 Copy Code</button>
+                </div>
+                <pre class="code-content" id="code-content">const promise = new Promise((resolve, reject) => {
+    const success = true;
+    
+    if (success) {
+        resolve("Operation successful! ✅");
+    } else {
+        reject("Operation failed! ❌");
+    }
+});
+
+promise
+    .then(result => console.log(result))
+    .catch(error => console.log(error));</pre>
+            </div>
+        </div>
+
+        <!-- Promise Methods -->
+        <div class="card">
+            <h2>Promise Methods</h2>
+            <div class="methods-grid">
+                <div class="method-item blue">
+                    <h3>.then()</h3>
+                    <p>Handles fulfilled promises. Returns a new promise for chaining.</p>
+                    <code>promise.then(value => console.log(value))</code>
+                </div>
+                <div class="method-item red">
+                    <h3>.catch()</h3>
+                    <p>Handles rejected promises. Catches errors in the chain.</p>
+                    <code>promise.catch(error => console.error(error))</code>
+                </div>
+                <div class="method-item purple">
+                    <h3>.finally()</h3>
+                    <p>Executes regardless of promise outcome. Used for cleanup.</p>
+                    <code>promise.finally(() => console.log("Done"))</code>
+                </div>
+                <div class="method-item green">
+                    <h3>Promise.all()</h3>
+                    <p>Waits for all promises to resolve. Fails if any promise rejects.</p>
+                    <code>Promise.all([p1, p2, p3])</code>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Note -->
+        <div class="footer-note">
+            <p>💡 <strong>Tip:</strong> Promises help you write cleaner async code compared to callbacks!</p>
+        </div>
+    </div>
+
+    <script>
+        // Code examples data
+        const examples = [
+            {
+                title: "Basic Promise",
+                code: `const promise = new Promise((resolve, reject) => {
+    const success = true;
+    
+    if (success) {
+        resolve("Operation successful! ✅");
+    } else {
+        reject("Operation failed! ❌");
+    }
+});
+
+promise
+    .then(result => console.log(result))
+    .catch(error => console.log(error));`
+            },
+            {
+                title: "Promise with Async Operation",
+                code: `function fetchUserData(userId) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (userId) {
+                resolve({ id: userId, name: "John Doe" });
+            } else {
+                reject("User ID is required");
+            }
+        }, 2000);
+    });
+}
+
+fetchUserData(123)
+    .then(user => console.log("User:", user))
+    .catch(error => console.error("Error:", error));`
+            },
+            {
+                title: "Promise Chaining",
+                code: `fetchUserData(123)
+    .then(user => {
+        console.log("Step 1:", user);
+        return user.name;
+    })
+    .then(name => {
+        console.log("Step 2:", name);
+        return name.toUpperCase();
+    })
+    .then(upperName => {
+        console.log("Step 3:", upperName);
+    })
+    .catch(error => console.error("Error:", error))
+    .finally(() => {
+        console.log("Process completed!");
+    });`
+            },
+            {
+                title: "Promise.all() - Multiple Promises",
+                code: `const promise1 = Promise.resolve("First");
+const promise2 = Promise.resolve("Second");
+const promise3 = Promise.resolve("Third");
+
+Promise.all([promise1, promise2, promise3])
+    .then(values => {
+        console.log("All resolved:", values);
+        // Output: ["First", "Second", "Third"]
+    })
+    .catch(error => {
+        console.error("One failed:", error);
+    });`
+            }
+        ];
+
+        // Get elements
+        const tabs = document.getElementById('tabs');
+        const codeTitle = document.getElementById('code-title');
+        const codeContent = document.getElementById('code-content');
+        const copyBtn = document.getElementById('copy-btn');
+        let activeIndex = 0;
+
+        // Tab switching functionality
+        tabs.addEventListener('click', (e) => {
+            if (e.target.classList.contains('tab-button')) {
+                const index = parseInt(e.target.getAttribute('data-index'));
+                
+                // Update active tab
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                e.target.classList.add('active');
+                
+                // Update code display
+                activeIndex = index;
+                codeTitle.textContent = examples[index].title;
+                codeContent.textContent = examples[index].code;
+            }
+        });
+
+        // Copy to clipboard functionality
+        copyBtn.addEventListener('click', () => {
+            const code = examples[activeIndex].code;
+            navigator.clipboard.writeText(code).then(() => {
+                const originalText = copyBtn.textContent;
+                copyBtn.textContent = '✅ Copied!';
+                setTimeout(() => {
+                    copyBtn.textContent = originalText;
+                }, 2000);
+            }).catch(() => {
+                alert('Failed to copy code. Please select and copy manually.');
+            });
+        });
+    </script>
+</body>
+</html>

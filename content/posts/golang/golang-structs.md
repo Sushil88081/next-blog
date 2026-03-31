@@ -170,7 +170,7 @@ func (r *Rectangle) Scale(factor float64) {
 func main() {
     rect := Rectangle{Width: 10, Height: 5}
     fmt.Println(rect.Area())  // 50
-    
+
     rect.Scale(2)
     fmt.Println(rect.Width)   // 20
 }
@@ -264,7 +264,8 @@ Struct Definition:
 
 ### Q1: What's the difference between struct and class?
 
-**A:** 
+**A:**
+
 - **Struct** - Go's way, simpler, no inheritance
 - **Class** - OOP concept, has inheritance
 
@@ -282,7 +283,8 @@ func (p Person) Greet() string {
 
 ### Q3: When should I use value vs pointer receiver?
 
-**A:** 
+**A:**
+
 - **Value receiver** - When method doesn't modify struct
 - **Pointer receiver** - When method modifies struct or struct is large
 
@@ -373,4 +375,3 @@ Now that you understand structs, here's what to learn next:
 - Master [Go REST API](/go/golang-rest-api) - Build web APIs with structs
 
 Structs are fundamental in Go. Practice creating and using structs to get comfortable!
-
