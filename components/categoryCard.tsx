@@ -51,6 +51,15 @@ export default function CategoryCard() {
       color: "from-blue-600 to-indigo-600",
       count: "6 Posts",
     },
+    {
+      name: "Java",
+      description:
+        "Java powers enterprise backends, Android, and cloud APIs. Follow a practical roadmap from core Java to Spring Boot and production best practices.",
+      image: "/assets/images/java.png",
+      link: "/java",
+      color: "from-orange-500 to-red-600",
+      count: "154 Posts",
+    },
   ];
 
   return (

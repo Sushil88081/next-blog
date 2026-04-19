@@ -17,6 +17,10 @@ export interface Post {
   author: string
   content: string
   contentHtml?: string
+  /** Optional: multi-post learning series id (e.g. java-complete-learning-guide) */
+  series?: string
+  /** Optional: order within series; lower sorts first */
+  chapter?: number
 }
 
 // Get all post slugs from all category folders
@@ -38,7 +42,7 @@ export function getPostSlugs(category?: string): string[] {
     }
   } else {
     // Get posts from all category folders
-    const categories = ['react', 'golang', 'python', 'typescript', 'javascript']
+    const categories = ['react', 'golang', 'python', 'typescript', 'javascript', 'java']
     categories.forEach(cat => {
       const categoryDir = path.join(postsDirectory, cat)
       if (fs.existsSync(categoryDir)) {
@@ -63,7 +67,7 @@ export async function getPostBySlug(slug: string, category?: string): Promise<Po
       fullPath = path.join(postsDirectory, category, `${slug}.md`)
     } else {
       // Search in all category folders
-      const categories = ['react', 'golang', 'python', 'typescript', 'javascript']
+      const categories = ['react', 'golang', 'python', 'typescript', 'javascript', 'java']
       fullPath = ''
       
       for (const cat of categories) {
@@ -102,6 +106,17 @@ export async function getPostBySlug(slug: string, category?: string): Promise<Po
       author: data.author || '',
       content,
       contentHtml,
+      series: typeof data.series === 'string' ? data.series : undefined,
+      chapter: (() => {
+        if (typeof data.chapter === 'number' && !Number.isNaN(data.chapter)) {
+          return data.chapter
+        }
+        if (typeof data.chapter === 'string' && data.chapter.trim() !== '') {
+          const n = parseInt(data.chapter, 10)
+          return Number.isNaN(n) ? undefined : n
+        }
+        return undefined
+      })(),
     }
   } catch (error) {
     console.error(`Error reading post ${slug}:`, error)

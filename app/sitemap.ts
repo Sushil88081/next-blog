@@ -59,6 +59,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/java`,
+      lastModified: new Date(),
+      changeFrequency: "daily" as const,
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/faq`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
@@ -73,6 +79,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { name: "python", path: "/python" },
     { name: "typescript", path: "/typescript" },
     { name: "javascript", path: "/javascript" },
+    { name: "java", path: "/java" },
   ];
 
   const postPages: MetadataRoute.Sitemap = [];
