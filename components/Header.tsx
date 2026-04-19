@@ -41,9 +41,12 @@ export default function Header() {
 
           <Link
             href="/"
-            className="text-2xl md:text-3xl font-bold text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-all duration-300 hover:scale-105 flex-1 md:flex-none"
+            className="group flex flex-col leading-tight transition-all duration-300 hover:scale-[1.02] flex-1 md:flex-none"
           >
-            <span className="bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent">
+            <span className="text-md md:text-2xl font-bold bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent">
+              CodePathIndia
+            </span>
+            <span className="text-xs md:text-sm font-medium text-gray-600 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
               Programming Blog
             </span>
           </Link>
@@ -52,8 +55,8 @@ export default function Header() {
             <Link
               href="/"
               className={`px-4 py-2 rounded-lg transition-all duration-300 font-medium relative group ${isActive("/")
-                  ? "text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30"
-                  : "text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+                ? "text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30"
+                : "text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800"
                 }`}
             >
               Home
@@ -64,8 +67,8 @@ export default function Header() {
             <Link
               href="/about"
               className={`px-4 py-2 rounded-lg transition-all duration-300 font-medium relative group ${isActive("/about")
-                  ? "text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30"
-                  : "text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+                ? "text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30"
+                : "text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800"
                 }`}
             >
               About
@@ -76,8 +79,8 @@ export default function Header() {
             <Link
               href="/contact"
               className={`px-4 py-2 rounded-lg transition-all duration-300 font-medium relative group ${isActive("/contact")
-                  ? "text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30"
-                  : "text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+                ? "text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30"
+                : "text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800"
                 }`}
             >
               Contact
@@ -88,8 +91,8 @@ export default function Header() {
             <Link
               href="/faq"
               className={`px-4 py-2 rounded-lg transition-all duration-300 font-medium relative group ${isActive("/faq")
-                  ? "text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30"
-                  : "text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+                ? "text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30"
+                : "text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800"
                 }`}
             >
               FAQ
