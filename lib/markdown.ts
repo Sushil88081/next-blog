@@ -2,7 +2,10 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { remark } from 'remark'
-import html from 'remark-html'
+import remarkGfm from 'remark-gfm'
+import remarkRehype from 'remark-rehype'
+import rehypePrettyCode from 'rehype-pretty-code'
+import rehypeStringify from 'rehype-stringify'
 
 const postsDirectory = path.join(process.cwd(), 'content/posts')
 
@@ -91,7 +94,16 @@ export async function getPostBySlug(slug: string, category?: string): Promise<Po
     const { data, content } = matter(fileContents)
 
     const processedContent = await remark()
-      .use(html)
+      .use(remarkGfm)
+      .use(remarkRehype)
+      .use(rehypePrettyCode, {
+        /* Shiki: VS Code "Dark+" built-in (keywords, types, strings, etc.) */
+        theme: 'dark-plus',
+        keepBackground: true,
+        defaultLang: 'text',
+        bypassInlineCode: true,
+      })
+      .use(rehypeStringify)
       .process(content)
     const contentHtml = processedContent.toString()
 

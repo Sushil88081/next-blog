@@ -8,7 +8,7 @@ tags:
   - Java ResponseEntity status
   - Spring Boot web layer
   - Java RequestBody PathVariable
-image: "/assets/images/java.png"
+image: "/assets/java/java.png"
 author: "Sushil Kumar"
 series: java-complete-learning-guide
 chapter: 120

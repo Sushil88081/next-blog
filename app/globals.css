@@ -46,6 +46,15 @@
     @apply bg-gray-900 dark:bg-gray-950 p-4 rounded-lg overflow-x-auto mb-4 relative border border-gray-800 dark:border-gray-700;
   }
 
+  /* Shiki / rehype-pretty-code: code blocks wrapped in <figure> */
+  .prose figure[data-rehype-pretty-code-figure] {
+    @apply my-4 max-w-full;
+  }
+
+  .prose figure[data-rehype-pretty-code-figure] pre {
+    @apply mb-0;
+  }
+
   .prose pre code {
     @apply bg-transparent p-0 text-gray-100 text-sm font-mono;
     background: transparent !important;
