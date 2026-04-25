@@ -60,6 +60,15 @@ export default function CategoryCard() {
       color: "from-orange-500 to-red-600",
       count: "154 Posts",
     },
+    {
+      name: "Spring Boot + PostgreSQL + AI",
+      description:
+        "A step-by-step series: REST APIs with Spring Boot, PostgreSQL, layered architecture, validation, and an AI chat feature—through Docker and deployment basics.",
+      image: "/assets/java/java.png",
+      link: "/spring-boot-postgres-ai",
+      color: "from-emerald-600 to-teal-500",
+      count: "29 Posts",
+    },
   ];
 
   return (

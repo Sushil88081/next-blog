@@ -65,6 +65,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/spring-boot-postgres-ai`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/faq`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
@@ -80,6 +86,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { name: "typescript", path: "/typescript" },
     { name: "javascript", path: "/javascript" },
     { name: "java", path: "/java" },
+    { name: "spring-boot-postgres-ai", path: "/spring-boot-postgres-ai" },
   ];
 
   const postPages: MetadataRoute.Sitemap = [];
