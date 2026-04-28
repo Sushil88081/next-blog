@@ -160,4 +160,6 @@ It does not replace solid engineering. It **raises** the importance of policy, o
 **More on this blog**
 
 - [Chapter 2: What is an AI Agent?](/agentic-ai/agentic-ai-02-what-is-an-ai-agent) — concepts plus a **plain Java** skeleton (`com.codepathindia.agenticai`) under _Simple Java implementation of an AI Agent_.
+- [Part 3: Agent architecture](/agentic-ai/agentic-ai-03-agentic-ai-architecture) — planner, executor, critic.
+- [Part 4: Important components](/agentic-ai/agentic-ai-04-important-components) — LLM, tools, memory, vectors, RAG.
 - [Agentic AI hub — overview and learning path](/agentic-ai)

@@ -483,4 +483,6 @@ Good engineering still wins: clear APIs, validation, observability, and storage 
 **Series navigation**
 
 - [← Chapter 1: What is Agentic AI?](/agentic-ai/agentic-ai-01-what-is-agentic-ai)
+- [Part 3: Agent architecture](/agentic-ai/agentic-ai-03-agentic-ai-architecture)
+- [Part 4: Important components](/agentic-ai/agentic-ai-04-important-components)
 - [Agentic AI hub](/agentic-ai)

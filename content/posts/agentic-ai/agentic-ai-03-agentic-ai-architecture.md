@@ -480,4 +480,5 @@ You do not need a cloud dashboard to learn this. A short **plain Java** sampleâ€
 
 - [â† Part 2: What is an AI Agent?](/agentic-ai/agentic-ai-02-what-is-an-ai-agent)
 - [Part 1: What is Agentic AI?](/agentic-ai/agentic-ai-01-what-is-agentic-ai)
+- [Part 4: Important components](/agentic-ai/agentic-ai-04-important-components)
 - [Agentic AI hub](/agentic-ai)
