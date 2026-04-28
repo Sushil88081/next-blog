@@ -95,6 +95,13 @@ export default async function AgenticAiPage() {
             >
               What is Agentic AI? A beginner-friendly guide
             </Link>
+            . For what actually sits inside that loop—the agent itself—continue with{" "}
+            <Link
+              href="/agentic-ai/agentic-ai-02-what-is-an-ai-agent"
+              className="text-primary-600 dark:text-primary-400 font-medium hover:underline"
+            >
+              What is an AI Agent?
+            </Link>
             .
           </p>
           <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
