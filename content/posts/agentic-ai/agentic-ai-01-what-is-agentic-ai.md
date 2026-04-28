@@ -34,7 +34,7 @@ That does not mean the AI should run unchecked in production. It means **your ap
 
 ![Diagram: user goal through planning, tools, and actions to a result](/assets/images/agentic-ai-01-flow-diagram.png)
 
-*A simple mental picture: user and goal on the left, planning and tools in the middle, actions and outcome on the right.*
+_A simple mental picture: user and goal on the left, planning and tools in the middle, actions and outcome on the right._
 
 ## Example: “Book me a flight from Delhi to Mumbai”
 
@@ -51,13 +51,13 @@ So it behaves more like a **task-oriented assistant** than a single-response bot
 
 ## AI agent vs normal chatbot
 
-| Feature | AI agent | Typical chatbot |
-|--------|----------|-------------------|
-| **Behavior** | Can drive **actions** (through tools you allow) | Mostly **replies** with text |
-| **Goal handling** | Oriented toward finishing a **task** | Oriented toward answering a **prompt** |
-| **Memory** | Can use **conversation + stored state** you design | Often **limited** to short context unless you build more |
-| **Tools** | May call **APIs, databases**, ticket systems—via your backend | Usually **no direct execution** unless specially wired |
-| **Example** | Flow that books or opens a ticket **after** checks | “Here are three flights you could consider” |
+| Feature           | AI agent                                                      | Typical chatbot                                          |
+| ----------------- | ------------------------------------------------------------- | -------------------------------------------------------- |
+| **Behavior**      | Can drive **actions** (through tools you allow)               | Mostly **replies** with text                             |
+| **Goal handling** | Oriented toward finishing a **task**                          | Oriented toward answering a **prompt**                   |
+| **Memory**        | Can use **conversation + stored state** you design            | Often **limited** to short context unless you build more |
+| **Tools**         | May call **APIs, databases**, ticket systems—via your backend | Usually **no direct execution** unless specially wired   |
+| **Example**       | Flow that books or opens a ticket **after** checks            | “Here are three flights you could consider”              |
 
 **Simple labels many teams use:**
 
@@ -77,11 +77,11 @@ So it behaves more like a **task-oriented assistant** than a single-response bot
 
 **Agentic AI** usually **combines** generative AI with **decisions** and **actions**: the model may draft a plan or tool call, but your system executes **only** what you permit.
 
-| Topic | Generative AI | Agentic AI |
-|-------|----------------|------------|
-| **Typical focus** | **Generates** output | **Completes** multi-step work |
-| **Execution** | Often **no live execution** in your stack | **Can execute** through tools you provide |
-| **Response style** | Often a **static answer** per turn | **Dynamic workflow** across turns |
+| Topic              | Generative AI                             | Agentic AI                                |
+| ------------------ | ----------------------------------------- | ----------------------------------------- |
+| **Typical focus**  | **Generates** output                      | **Completes** multi-step work             |
+| **Execution**      | Often **no live execution** in your stack | **Can execute** through tools you provide |
+| **Response style** | Often a **static answer** per turn        | **Dynamic workflow** across turns         |
 
 **One-line shorthand:**
 
@@ -159,5 +159,5 @@ It does not replace solid engineering. It **raises** the importance of policy, o
 
 **More on this blog**
 
-- [Chapter 2: What is an AI Agent?](/agentic-ai/agentic-ai-02-what-is-an-ai-agent) — concepts plus a **plain Java** skeleton (`com.codepathindia.agenticai`) under *Simple Java implementation of an AI Agent*.
+- [Chapter 2: What is an AI Agent?](/agentic-ai/agentic-ai-02-what-is-an-ai-agent) — concepts plus a **plain Java** skeleton (`com.codepathindia.agenticai`) under _Simple Java implementation of an AI Agent_.
 - [Agentic AI hub — overview and learning path](/agentic-ai)

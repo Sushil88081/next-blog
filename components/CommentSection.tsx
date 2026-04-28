@@ -19,6 +19,9 @@ interface CommentSectionProps {
   postCategory?: string;
 }
 
+/** Set to `true` to show post comments again site-wide. */
+const COMMENTS_ENABLED = false;
+
 export default function CommentSection({
   postSlug,
   postCategory = "react",
@@ -38,6 +41,10 @@ export default function CommentSection({
 
   // Load comments from API on mount - fetch all comments (pending and approved)
   useEffect(() => {
+    if (!COMMENTS_ENABLED) {
+      setLoading(false);
+      return;
+    }
     const fetchComments = async () => {
       try {
         setLoading(true);
@@ -185,6 +192,10 @@ export default function CommentSection({
       [e.target.name]: e.target.value,
     });
   };
+
+  if (!COMMENTS_ENABLED) {
+    return null;
+  }
 
   return (
     <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">

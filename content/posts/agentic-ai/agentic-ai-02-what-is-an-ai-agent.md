@@ -118,10 +118,10 @@ The **goal** steers priorities; individual steps still need **permissions** and 
 
 Not every workflow should run unsupervised. Teams often choose **how much independence** to grant.
 
-| Type | Who is in control? | Risk profile | Example pattern |
-|------|-------------------|--------------|-------------------|
-| **More autonomous** | Mostly automated decisions inside tight bounds | Higher if boundaries are wrong | Scheduled jobs with automated trading-style rules (heavy safeguards) |
-| **Semi-autonomous** | AI proposes; **humans approve** sensitive steps | Lower for money and privacy | “Review this email—send?” “Approve payment?” |
+| Type                | Who is in control?                              | Risk profile                   | Example pattern                                                      |
+| ------------------- | ----------------------------------------------- | ------------------------------ | -------------------------------------------------------------------- |
+| **More autonomous** | Mostly automated decisions inside tight bounds  | Higher if boundaries are wrong | Scheduled jobs with automated trading-style rules (heavy safeguards) |
+| **Semi-autonomous** | AI proposes; **humans approve** sensitive steps | Lower for money and privacy    | “Review this email—send?” “Approve payment?”                         |
 
 **Short mental labels:**
 
@@ -136,17 +136,17 @@ Most responsible products sit **between** the extremes: automate the boring part
 
 The ideas above are easier to trust after you see them as **classes**. This **Part 2 practical section** is a tiny **console Java** example—**no Spring Boot**, **no external API**, **no database**—that still mirrors how a real agent is structured. The **LLM** is **simulated** with plain `String` helpers so you can run everything offline.
 
-**What this is *not*:** production-ready AI. **What it is:** a **clear skeleton**: goal in → plan → think/tool steps → answer out.
+**What this is _not_:** production-ready AI. **What it is:** a **clear skeleton**: goal in → plan → think/tool steps → answer out.
 
 ### How each part maps to agentic concepts
 
-| Concept | In this code |
-|---------|----------------|
-| **Goal** | The `String` passed into `Main` / `AIAgent.handleGoal` (what the user wants). |
+| Concept                          | In this code                                                                                               |
+| -------------------------------- | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| **Goal**                         | The `String` passed into `Main` / `AIAgent.handleGoal` (what the user wants).                              |
 | **LLM (thinking + final reply)** | **Simulated** by `simulateLlmThought` and `simulateFinalAnswer`. Swap these later for a real model client. |
-| **Tools** | `SearchTool` implements `AgentTool`—fake search results you can replace with HTTP or DB calls. |
-| **Memory** | `AgentMemory` stores a short transcript as the run progresses. |
-| **Planning** | `Planner.plan` returns ordered steps (`THINK:...`, `TOOL:search|...`). A real system might ask an LLM for JSON; here rules stay obvious for learning. |
+| **Tools**                        | `SearchTool` implements `AgentTool`—fake search results you can replace with HTTP or DB calls.             |
+| **Memory**                       | `AgentMemory` stores a short transcript as the run progresses.                                             |
+| **Planning**                     | `Planner.plan` returns ordered steps (`THINK:...`, `TOOL:search                                            | ...`). A real system might ask an LLM for JSON; here rules stay obvious for learning. |
 
 ### Folder layout (`com.codepathindia.agenticai`)
 
