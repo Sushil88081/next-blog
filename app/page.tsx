@@ -1,7 +1,10 @@
 import CategoryCard from '@/components/categoryCard'
 import Link from 'next/link'
+import { getHomeCategoryCards } from '@/lib/homeCategories'
 
 export default async function Home() {
+  const categoryCards = getHomeCategoryCards()
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="text-center mb-12 animate-fade-in">
@@ -156,6 +159,13 @@ export default async function Home() {
             Looking to build fast, scalable backend services? Check out our <Link href="/go/golang" className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">Go (Golang) tutorials</Link> 
             to learn how to build high-performance APIs and microservices.
           </p>
+          <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mt-4">
+            Wondering how “AI that actually does things” fits next to a normal API? Our{" "}
+            <Link href="/agentic-ai" className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">
+              Agentic AI introduction
+            </Link>{" "}
+            walks through the idea in everyday words—what changes when a model is allowed to plan steps and use tools, and where your database still keeps the final say.
+          </p>
         </section>
 
         <section className="mb-12">
@@ -176,7 +186,7 @@ export default async function Home() {
         </section>
       </div>
 
-      <CategoryCard />
+      <CategoryCard categories={categoryCards} />
     </div>
   )
 }
