@@ -1,6 +1,6 @@
 ---
 title: "Important components in agentic AI — LLM, tools, memory, vectors, and RAG"
-description: "What really sits inside agentic AI: the LLM as reasoning layer, tools as actions, short and long memory, vector search, and RAG—with plain Java sketches and image prompts for visuals."
+description: "What really sits inside agentic AI: the LLM as reasoning layer, tools as actions, short and long memory, vector search, and RAG—with plain Java sketches and topic illustrations."
 category: "Java"
 date: "2026-05-02"
 tags:
@@ -9,7 +9,7 @@ tags:
   - RAG
   - Vector DB
   - Beginner
-image: "/assets/images/java.png"
+image: "/assets/images/agentic-ai-04-topic-01-llm.png"
 author: "Sushil Kumar"
 series: agentic-ai-spring-boot
 chapter: 4
@@ -92,9 +92,9 @@ public class LLMExample {
 }
 ```
 
-### Image Idea Prompt
+### Illustration
 
-"A clean professional diagram on a very light gray background: left side simple human silhouette labeled User Input, center large rounded rectangle labeled LLM with subtle neural-network motif, right side labeled Output; thin directional arrows; caption style text LLM as reasoning layer for an AI agent; minimal flat corporate illustration; include hashtag **#codepathindia** small in bottom-right."
+![LLM as the reasoning layer between user input and output](/assets/images/agentic-ai-04-topic-01-llm.png)
 
 ---
 
@@ -149,9 +149,9 @@ public class WeatherTool {
 }
 ```
 
-### Image Idea Prompt
+### Illustration
 
-"Minimal infographic on white background: horizontal flow User → Agent circle → stack of three small icons labeled API, Database, Payment → Response box; thin colored accent lines in teal and navy; modern SaaS blog style; caption Tools extend what the agent can do; hashtag **#codepathindia** discreet bottom edge."
+![Agent tools: APIs, databases, and integrations behind the agent](/assets/images/agentic-ai-04-topic-02-tools.png)
 
 ---
 
@@ -190,9 +190,9 @@ public class MemoryExample {
 }
 ```
 
-### Image Idea Prompt
+### Illustration
 
-"Soft pastel background diagram: User speech bubble → cylinder labeled Memory Store → later question arrow feeding back into assistant bubble; small disk or filing cabinet icon; friendly educational style; label Remember context across turns; include **#codepathindia** as small footer tag."
+![Memory lets the agent reuse facts across turns](/assets/images/agentic-ai-04-topic-03-memory.png)
 
 ---
 
@@ -227,9 +227,9 @@ public class MemoryTypes {
 }
 ```
 
-### Image Idea Prompt
+### Illustration
 
-"Split-panel comparison on light background: left panel Short-term with RAM chip icon and label Temporary session context; right panel Long-term with database cylinder icon and label Persistent user data; subtle divider; balanced typography; professional blog diagram; **#codepathindia** corner watermark."
+![Short-term vs long-term memory](/assets/images/agentic-ai-04-topic-04-short-long-memory.png)
 
 ---
 
@@ -262,9 +262,9 @@ public class VectorExample {
 
 In practice you call an **embedding model** or service to produce vectors; you rarely hand-type them.
 
-### Image Idea Prompt
+### Illustration
 
-"Educational diagram on white: left shows word Hello inside a box with arrow to bracket of floating-point numbers [0.12, 0.98, …]; right shows cloud labeled Vector DB with nearest-neighbor arrows to similar chunks; caption Semantic similarity search; minimal line art; **#codepathindia** small bottom-right."
+![Text as embeddings and similarity search in a vector store](/assets/images/agentic-ai-04-topic-05-vector-db.png)
 
 ---
 
@@ -311,11 +311,11 @@ public class RAGExample {
 }
 ```
 
+### Illustration
+
+![RAG: retrieve relevant chunks, then generate an answer with the LLM](/assets/images/agentic-ai-04-topic-06-rag.png)
+
 Wire **`retrieveData`** to **your** vector index and **`generateResponse`** to **your** LLM client when you move beyond the sketch.
-
-### Image Idea Prompt
-
-"Horizontal RAG pipeline infographic on pale background: User Question → Retrieve from Vector Store → Retrieved chunks box → LLM → Final Answer; arrows between stages; clean rounded rectangles; caption Retrieve then generate; blog-ready layout; include **#codepathindia** as subtle footer text."
 
 ---
 

@@ -9,7 +9,7 @@ tags:
   - Java
   - Multi-agent
   - Beginner
-image: "/assets/images/java.png"
+image: "/assets/images/agentic-ai-03-topic-01-architecture.png"
 author: "Sushil Kumar"
 series: agentic-ai-spring-boot
 chapter: 3
@@ -39,9 +39,10 @@ Architecture also helps **talk to teammates**. Instead of arguing about buzzword
 
 Imagine a **bank’s internal support bot**. The architecture might say: **input** is the employee’s question in chat; **reasoning** picks whether to search policy docs or open a ticket tool; **action** runs only tools the bank registered (read-only policy search vs. approved ticket creation); **output** is the reply—or a hold message if the critic detects missing customer consent. The architecture document might fit on **one page**, but it saves weeks of confusion later.
 
-### Image Idea Prompt
+### Illustration
 
-"A wide minimalist architecture diagram on a soft off-white background: five labeled zones arranged left to right—User Input, Reasoning Engine, Tool Actions, Safety Check, User Output—with thin navy arrows connecting them and subtle shadow cards; flat corporate illustration style, plenty of breathing room, no logos; include small hashtag text **#codepathindia** in the bottom-right corner in muted gray."
+![Agentic AI architecture: input, reasoning, tools, safety check, and output](/assets/images/agentic-ai-03-topic-01-architecture.png)
+
 
 ---
 
@@ -69,9 +70,10 @@ A user says: **“Find the best laptop under ₹50,000 for coding.”**
 - **Action:** call **your** product API or search index—not a random web scrape without rules.
 - **Output:** “Here are two strong picks under ₹50,000; here is why each fits coding workloads.” If payment were involved, **output** might instead be “pick one to continue to checkout,” with extra checks.
 
-### Image Idea Prompt
+### Illustration
 
-"A clean horizontal flowchart on a light gray-white canvas: four large rounded rectangles labeled INPUT, REASONING, ACTION, OUTPUT in dark teal sans-serif type, connected by simple arrows left-to-right; a faint circular arrow from OUTPUT curving back toward REASONING to suggest iteration; minimal icons only (small speech bubble, gear, wrench, chat bubble); professional blog infographic look; include **#codepathindia** as discrete small text along the bottom edge."
+![Input, reasoning, action, output—and looping back when needed](/assets/images/agentic-ai-03-topic-02-io-flow.png)
+
 
 ---
 
@@ -98,9 +100,10 @@ The planner might produce:
 
 If step 2 finds **no** slots, the planner might **revise** the plan: widen the date range or reduce duration. That revision loop is still **planning**, not random guessing.
 
-### Image Idea Prompt
+### Illustration
 
-"A light-background illustration of a clipboard or digital checklist in isometric style: five checklist lines with the first three checked; floating sticky note labeled ‘Goal’ at top-left; soft shadows; navy and soft orange accents; caption space optional; educational tech-blog aesthetic; include hashtag **#codepathindia** near lower-left in small caps."
+![Planner agent: turning a goal into an ordered checklist](/assets/images/agentic-ai-03-topic-03-planner.png)
+
 
 ---
 
@@ -126,9 +129,10 @@ The executor:
 
 The planner does **not** open JDBC connections. It might have said “get invoices,” but the executor knows **which** API and **which** credentials—never handed blindly to an LLM.
 
-### Image Idea Prompt
+### Illustration
 
-"Split-panel minimal diagram on white background: left panel titled PLAN with three bullet lines; right panel titled EXECUTE with a single pipeline icon leading into a cube labeled TOOL/API; thin connector arrow from left to right; subtle grid guidelines; corporate flat vector style; hashtag **#codepathindia** centered under the panels in light gray."
+![Executor agent: from plan to real tool and API calls](/assets/images/agentic-ai-03-topic-04-executor.png)
+
 
 ---
 
@@ -146,9 +150,10 @@ Skipping the critic in prototypes feels faster. In architecture diagrams, keep t
 
 The executor returned a **search snippet** that mentions a competitor’s product prominently. The critic’s policy might say: **“Do not recommend competitors by name without a disclaimer.”** The critic either **rewrites** the draft, **asks** the planner for a new angle, or **escalates** to a human editor. None of that requires new tools—just a **quality gate** with clear rules.
 
-### Image Idea Prompt
+### Illustration
 
-"A minimalist QA scene: magnifying glass over a document page, one green checkmark and one small yellow warning triangle; soft drop shadows; light cream background; balanced composition for blog header; professional editorial tech illustration; include **#codepathindia** as a small tag on the document corner."
+![Critic or evaluator: quality and safety before the user sees the answer](/assets/images/agentic-ai-03-topic-05-critic.png)
+
 
 ---
 
@@ -173,9 +178,10 @@ A company builds an **internal blog assistant**:
 
 Each step could be a separate service later; today they might be **Java packages** in one repo. Still **multi-agent** by responsibility.
 
-### Image Idea Prompt
+### Illustration
 
-"A horizontal swimlane diagram on a pale background: four lanes labeled Research, Writing, SEO, Review with simple icons (book, pen, magnifying glass, shield); arrows showing left-to-right handoff; subtle lane dividers; modern SaaS explainer style; plenty of whitespace; include **#codepathindia** as a watermark-style hashtag bottom-right at low opacity."
+![Multi-agent system: specialized lanes handing work along a pipeline](/assets/images/agentic-ai-03-topic-06-multi-agent.png)
+
 
 ---
 
