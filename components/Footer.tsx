@@ -110,7 +110,7 @@ export default function Footer() {
 
               {/* Facebook */}
               <a
-                href="https://www.facebook.com/sushil.kumar.603891/"
+                href="https://www.facebook.com/profile.php?id=61587129599762"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center hover:bg-blue-700 dark:hover:bg-blue-800 transition-all duration-200 hover:scale-110"

@@ -338,6 +338,7 @@ Together they support systems that feel **smarter** and more **autonomous**—wh
 **Series navigation**
 
 - [← Part 3: Agent architecture](/agentic-ai/agentic-ai-03-agentic-ai-architecture)
+- [Part 5: Tools & function calling](/agentic-ai/agentic-ai-05-tools-and-function-calling)
 - [Part 1: What is Agentic AI?](/agentic-ai/agentic-ai-01-what-is-agentic-ai)
 - [Part 2: What is an AI Agent?](/agentic-ai/agentic-ai-02-what-is-an-ai-agent)
 - [Agentic AI hub](/agentic-ai)
